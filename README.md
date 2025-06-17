@@ -50,7 +50,7 @@ section {
 h1 {
   font-size: 2.5rem;
   margin: 1.5rem 0 1rem;
-  color: #222;
+  color: #000;
 }
 
 .button {
