@@ -1,4 +1,3 @@
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -93,7 +92,7 @@ a {
     </form>
   </section>  <section>
     <h2>İletişim</h2>
-    <p>Bize ulaşmak için: <a href="tiktok.com/@mazz99theboss" target="_blank">@mazz99theboss</a></p>
+    <p>Bize ulaşmak için: <a href="https://tiktok.com/@mazz99theboss" target="_blank">@mazz99theboss</a></p>
   </section>  <footer>
     ZZONE99 © 2018 - Tüm hakları saklıdır.
   </footer>
