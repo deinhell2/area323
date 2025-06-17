@@ -1,141 +1,148 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html><html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZZONE99 - PUBG MOBILE</title>
+  <title>ZZONE99 Clan</title>
   <style>
-    body {
-      margin: 0;
-      background-color: #0a0a0a;
-      color: #feda6a;
-      font-family: Arial, sans-serif;
-    }
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-    }
-    header img {
-      max-width: 300px;
-    }
-    section {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #111;
-      border-radius: 10px;
-      border: 2px solid #feda6a;
-    }
-    h2 {
-      border-bottom: 1px solid #feda6a;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    .members, .uyeler {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-    .card, .card-nofoto {
-      background: #1a1a1a;
-      padding: 15px;
-      border: 1px solid #feda6a;
-      border-radius: 8px;
-      width: 140px;
-      text-align: center;
-      color: #fff;
-    }
-    .card img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 10px;
-    }
-    a {
-      color: #feda6a;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      background: #1a1a1a;
-      color: white;
-      border: 1px solid #feda6a;
-      border-radius: 5px;
-    }
-    form button {
-      background: #feda6a;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    footer {
-      text-align: center;
-      color: #888;
-      padding: 30px 10px;
-      font-size: 14px;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  background: linear-gradient(-45deg, #000000, #222222, #111111, #333333);
+  background-size: 400% 400%;
+  animation: backgroundFlow 15s ease infinite;
+}
+
+@keyframes backgroundFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px 20px 20px;
+}
+
+header img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 48px;
+  color: #FF003C;
+  text-shadow: 2px 2px 10px #ff0059;
+}
+
+.slogan {
+  margin: 20px 0;
+  font-size: 20px;
+  color: #ffffffcc;
+  text-transform: uppercase;
+}
+
+section.members, section.form-section {
+  padding: 30px 20px;
+  max-width: 600px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 0 10px #ff005977;
+  margin-bottom: 40px;
+}
+
+section.members h2, section.form-section h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+ul.member-list {
+  list-style: none;
+  font-size: 20px;
+}
+
+ul.member-list li {
+  margin: 10px 0;
+}
+
+.social {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.social a {
+  display: inline-block;
+  margin: 0 15px;
+  font-size: 18px;
+  color: #FF0059;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+  color: #999;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input, form textarea, form button {
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+
+form button {
+  background-color: #FF0059;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #e6004d;
+}
+
   </style>
 </head>
 <body>
-
   <header>
-    <img src="logo.png" alt="ZZONE99 Logo">
-  </header>
-
-  <section>
-    <h2>Hakkımızda</h2>
-    <p>ZZONE99, PUBG MOBILE evreninde 2018'den beri aktif, agresif ve disiplinli bir klan grubudur. Amacımız sadece savaşmak değil, iz bırakmak!</p>
-  </section>
-
-  <section>
-    <h2>Kadro</h2>
-    <div class="members">
-      <div class="card">
-        <img src="https://robohash.org/mazz99?set=set2" alt="mAzz99">
-        <strong>mAzz99</strong><br>
-        <a href="https://tiktok.com/@mazz99theboss" target="_blank">TikTok</a>
-      </div>
-      <div class="card">
-        <img src="https://robohash.org/yazz99?set=set2" alt="yAzz99">
-        <strong>yAzz99</strong><br>
-        <a href="https://tiktok.com/@yazz99" target="_blank">TikTok</a>
-      </div>
-      <div class="card">
-        <img src="https://robohash.org/iszz99?set=set2" alt="iSzz99">
-        <strong>iSzz99</strong>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Üyelerimiz</h2>
-    <div class="uyeler">
-      <div class="card-nofoto">Üye1</div>
-      <div class="card-nofoto">Üye2</div>
-      <div class="card-nofoto">Üye3</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Klan Başvurusu</h2>
-    <form action="mailto:tayf.pm@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="oyuncuAdi" placeholder="Oyuncu Adın" required>
-      <input type="text" name="yas" placeholder="Yaş" required>
-      <textarea name="neden" rows="4" placeholder="Neden katılmak istiyorsun?" required></textarea>
-      <button type="submit">Gönder</button>
+    <img src="/mnt/data/A_logo_design_features_the_text_\"ZZONE99\"_beneath_.png" alt="ZZONE99 Logo">
+    <h1>ZZONE99</h1>
+    <p class="slogan">ZAFER BİZİM ZONEMİZDE YAZILIR!</p>
+  </header>  <section class="members">
+    <h2>Üyeler</h2>
+    <ul class="member-list">
+      <li><strong>mAzz99</strong> - Lider</li>
+      <li><strong>yAzz99</strong> - Lider</li>
+      <li><strong>iSzz99</strong> - Yönetici</li>
+    </ul>
+  </section>  <section class="form-section">
+    <h2>Başvuru Formu</h2>
+    <form action="https://formspree.io/f/xkgbzjqp" method="POST">
+      <input type="text" name="name" placeholder="İsmin" required />
+      <input type="text" name="uid" placeholder="PUBG UID" required />
+      <textarea name="reason" placeholder="Neden katılmak istiyorsun?" required></textarea>
+      <button type="submit">Başvur</button>
     </form>
-  </section>
-
-  <footer>
-    ZZONE99 © 2018 - PUBG MOBILE TAKIMI
+  </section>  <div class="social">
+    <a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">@mAzz99theboss</a>
+    <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">@babavizyondapm</a>
+  </div>  <footer>
+    &copy; 2025 ZZONE99 Klanı. Tüm hakları saklıdır.
   </footer>
-
 </body>
 </html>
