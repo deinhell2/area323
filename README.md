@@ -125,13 +125,13 @@
     <h2>Klan Başarıları</h2>
     <div class="stats">
       <div class="card">
-        🏆<br><strong>13 Turnuva Zaferi</strong>
+        🏆<br><strong>METRO ROYALE YAĞMA TR 3</strong>
       </div>
       <div class="card">
-        🔥<br><strong>En Yüksek K/D: 7.2</strong>
+        🔥<br><strong>METRO ROYALE YAĞMA GLOBAL 15</strong>
       </div>
       <div class="card">
-        🥇<br><strong>1.lik - Sezon 17</strong>
+        🥇<br><strong>~</strong>
       </div>
     </div>
   </section>  <section>
@@ -146,7 +146,8 @@
   </section>  <section>
     <h2>İletişim & TikTok</h2>
     <p>Bize ulaşmak için: <a href="https://tiktok.com/mazz99theboss" target="_blank">@mazz99theboss</a></p>
-    <iframe src="https://www.tiktok.com/embed/7384198059052348677" allowfullscreen></iframe>
+    <a href="https://tiktok.com/yazz99" target="_blank">@yazz99</a></p>
+    <iframe src="[https://www.tiktok.com/embed/7384198059052348677"](https://vt.tiktok.com/ZSkb3RGw1/)allowfullscreen></iframe>
   </section>  <footer>
     ZZONE99 © 2018 - Tüm hakları saklıdır.
   </footer>
