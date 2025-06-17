@@ -2,23 +2,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZZONE99 Clan</title>
+  <title>Klan Alım - 2018'den Beri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');* {
+    * {
+      box-sizing: border-box;
+    }body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
   font-family: 'Orbitron', sans-serif;
-  color: #fff;
-  background: linear-gradient(-45deg, #000000, #222222, #111111, #333333);
+  color: white;
+  background: linear-gradient(270deg, #0f0f0f, #1a1a1a);
   background-size: 400% 400%;
-  animation: backgroundFlow 15s ease infinite;
+  animation: backgroundShift 10s ease infinite;
 }
 
-@keyframes backgroundFlow {
+@keyframes backgroundShift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
@@ -26,139 +24,156 @@ body {
 
 header {
   text-align: center;
-  padding: 40px 20px 20px 20px;
+  padding: 2rem 1rem;
 }
 
 header img {
-  width: 120px;
-  margin-bottom: 20px;
+  width: 40vw;
+  max-width: 200px;
+  margin-bottom: 1rem;
 }
 
-header h1 {
-  font-size: 52px;
-  color: #FF003C;
-  text-shadow: 2px 2px 15px #ff0059;
-  letter-spacing: 3px;
+h1 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
 }
 
-.slogan {
-  margin: 20px 0;
-  font-size: 22px;
-  color: #ffffffcc;
-  text-transform: uppercase;
-  font-style: italic;
-  text-shadow: 1px 1px 4px #000;
+p {
+  max-width: 90%;
+  margin: 1rem auto;
+  font-size: 1rem;
 }
 
-section.members, section.form-section {
-  padding: 30px 25px;
-  max-width: 700px;
-  margin: 40px auto;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  box-shadow: 0 0 20px #ff005977;
-  backdrop-filter: blur(6px);
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
-section.members h2, section.form-section h2 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #FF0059;
+@media (min-width: 600px) {
+  .buttons {
+    flex-direction: row;
+  }
 }
 
-ul.member-list {
-  list-style: none;
-  font-size: 20px;
-  padding: 0;
-}
-
-ul.member-list li {
-  margin: 12px 0;
-  text-align: center;
-}
-
-.social {
-  text-align: center;
-  margin: 30px 0;
-}
-
-.social a {
-  display: inline-block;
-  margin: 0 15px;
-  font-size: 18px;
-  color: #FF0059;
+.button {
+  padding: 1rem 2rem;
+  background-color: #e50914;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: background 0.3s ease;
+  text-align: center;
+  width: 200px;
 }
 
-.social a:hover {
-  color: #ff66a5;
+.button:hover {
+  background-color: #ff2a2a;
+}
+
+.leader-section {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.leader-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .leader-cards {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.card {
+  background: #222;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  flex: 1;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #ff5959;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.card a:hover {
+  text-decoration: underline;
 }
 
 footer {
+  margin-top: 4rem;
   text-align: center;
-  font-size: 14px;
-  padding: 20px;
-  color: #999;
+  padding: 2rem 1rem;
+  border-top: 1px solid #333;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+.socials a {
+  display: block;
+  color: #ccc;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  text-decoration: none;
 }
 
-form input, form textarea, form button {
-  margin-bottom: 15px;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-}
-
-form input, form textarea {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-
-form button {
-  background-color: #FF0059;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-form button:hover {
-  background-color: #e6004d;
+@media (min-width: 600px) {
+  .socials a {
+    display: inline-block;
+    margin: 0 1rem;
+  }
 }
 
   </style>
 </head>
 <body>
   <header>
-    <img src="Logo.png" alt="ZZONE99 Logo">
-    <h1>ZZONE99</h1>
-    <p class="slogan">ZAFER BİZİM ZONEMİZDE YAZILIR!</p>
-  </header>  <section class="members">
-    <h2>Üyeler</h2>
-    <ul class="member-list">
-      <li><strong>mAzz99</strong> - Lider</li>
-      <li><strong>yAzz99</strong> - Lider</li>
-      <li><strong>iSzz99</strong> - Yönetici</li>
-    </ul>
-  </section>  <section class="form-section">
-    <h2>Başvuru Formu</h2>
-    <form action="https://formspree.io/f/xkgbzjqp" method="POST">
-      <input type="text" name="name" placeholder="İsmin" required />
-      <input type="text" name="uid" placeholder="PUBG UID" required />
-      <textarea name="reason" placeholder="Neden katılmak istiyorsun?" required></textarea>
-      <button type="submit">Başvur</button>
-    </form>
-  </section>  <div class="social">
-    <a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">@mAzz99theboss</a>
-    <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">@babavizyondapm</a>
-  </div>  <footer>
-    &copy; 2025 ZZONE99 Klanı. Tüm hakları saklıdır.
+    <img src="logo.png" alt="Klan Logosu">
+    <h1>2018'den Beri Sahada: Önce Fur die GANG, Sonra AREA323. Şimdi Yepyeni Bir Güç!</h1>
+    <p>Klanımız 2018 yılından bu yana sahalarda! Taktik, takım oyunu ve zafer için buradayız. PUBG arenasında bizimle oynamaya hazır mısın?</p>
+    <div class="buttons">
+      <a href="https://formspree.io/f/xkgbzjqp" class="button">Başvuru Yap</a>
+      <a href="#iletisim" class="button">İletişim</a>
+    </div>
+  </header>  <section class="leader-section">
+    <h2>Klan Liderleri</h2>
+    <div class="leader-cards">
+      <div class="card">
+        <h3>mAzz99</h3>
+        <p>Taktiksel lider, kurucu. Ekibin beyni!</p>
+        <a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">TikTok: @mAzz99theboss</a>
+      </div>
+      <div class="card">
+        <h3>yAzz99</h3>
+        <p>Vizyoner stratejist. Sahada ve planlamada öncü.</p>
+        <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">TikTok: @babavizyondapm</a>
+      </div>
+    </div>
+  </section>  <footer id="iletisim">
+    <h2>İletişim</h2>
+    <div class="socials">
+      <a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">mAzz99 (@mAzz99theboss)</a>
+      <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">yAzz99 (@babavizyondapm)</a>
+    </div>
   </footer>
 </body>
 </html>
