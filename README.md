@@ -1,22 +1,17 @@
-<!DOCTYPE html><html lang="tr">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZZONE99 - PUBG MOBILE Klanı</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Orbitron', sans-serif;
       color: #feda6a;
-      background-color: #000;
-      background: url('https://cdn.pixabay.com/photo/2021/04/25/19/35/war-6206675_1280.jpg') no-repeat center center fixed;
+      background: #000 url('https://cdn.pixabay.com/photo/2021/04/25/19/35/war-6206675_1280.jpg') no-repeat center center fixed;
       background-size: cover;
-      overflow-x: hidden;
     }
     header {
       text-align: center;
@@ -107,18 +102,20 @@
       padding: 30px;
       color: #ccc;
     }
-    a {
-      color: #feda6a;
-    }
+    a { color: #feda6a; }
   </style>
 </head>
 <body>
   <header>
     <img src="logo.png" alt="ZZONE99 Logo" />
-  </header>  <section>
+  </header>
+
+  <section>
     <h2>Hakkımızda</h2>
-    <p>ZZONE99, PUBG MOBILE arenasında 2018'den bu yana aktif olan elit bir klan grubudur. Agresif oyun tarzı, takım uyumu ve oyun zekasıyla rakiplerine korku salan bir ekip olarak bilinmektedir. Amacımız sadece kazanmak değil, korku yaymak!</p>
-  </section>  <section>
+    <p>ZZONE99, PUBG MOBILE arenasında 2018'den bu yana aktif olan elit bir klan grubudur. Agresif oyun tarzı, takım uyumu ve oyun zekasıyla rakiplerine korku salan bir ekip olarak bilinmektedir.</p>
+  </section>
+
+  <section>
     <h2>Kadro</h2>
     <div class="members">
       <div class="card">
@@ -136,15 +133,18 @@
         <strong>iSzz99</strong>
       </div>
     </div>
-  </section>  <section>
+  </section>
+
+  <section>
     <h2>Üyelerimiz</h2>
     <div class="uyeler">
       <div class="card-nofoto">Üye1</div>
       <div class="card-nofoto">Üye2</div>
       <div class="card-nofoto">Üye3</div>
-      <div class="card-nofoto">Üye4</div>
     </div>
-  </section>  <section>
+  </section>
+
+  <section>
     <h2>Klanımıza Katıl</h2>
     <form action="mailto:tayf.pm@gmail.com" method="POST" enctype="text/plain">
       <input type="text" name="oyuncuAdi" placeholder="Oyuncu Adın (PUBG Mobile)" required />
@@ -153,7 +153,9 @@
       <textarea name="neden" rows="4" placeholder="Neden klana katılmak istiyorsun?" required></textarea>
       <button type="submit">Başvur</button>
     </form>
-  </section>  <footer>
+  </section>
+
+  <footer>
     ZZONE99 © 2018 - PUBG MOBILE TAKIMI
   </footer>
 </body>
