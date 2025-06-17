@@ -120,7 +120,7 @@
       <div class="card">
         <img src="https://robohash.org/yazz99?set=set2" alt="yAzz99" />
         <strong>yAzz99</strong><br>Yönetici<br>
-        <a href="https://tiktok.com/@yazz99" target="_blank">TikTok</a>
+        <a href="https://tiktok.com/@babavizyondapm" target="_blank">TikTok</a>
       </div>
       <div class="card">
         <img src="https://robohash.org/iszz99?set=set2" alt="iSzz99" />
