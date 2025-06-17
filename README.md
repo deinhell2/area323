@@ -110,15 +110,15 @@
     <div class="members">
       <div class="card">
         <img src="https://api.dicebear.com/6.x/adventurer/svg?seed=1" alt="Üye" />
-        <strong>Mazz99</strong><br>Lider
+        <strong>mAzz99</strong><br>Lider
       </div>
       <div class="card">
         <img src="https://api.dicebear.com/6.x/adventurer/svg?seed=2" alt="Üye" />
-        <strong>KaraKurt</strong><br>Sniper
+        <strong>yAzz99</strong><br>Sniper
       </div>
       <div class="card">
         <img src="https://api.dicebear.com/6.x/adventurer/svg?seed=3" alt="Üye" />
-        <strong>Hayalet</strong><br>Taarruz
+        <strong>iSzz99</strong><br>Taarruz
       </div>
     </div>
   </section>  <section>
