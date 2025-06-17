@@ -1,4 +1,3 @@
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -63,10 +62,10 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    .members, .stats {
+    .members {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 20px;
       justify-content: center;
     }
     .card {
@@ -74,7 +73,7 @@
       border: 1px solid #f00;
       padding: 15px;
       border-radius: 10px;
-      width: 150px;
+      width: 180px;
       text-align: center;
     }
     .card img {
@@ -82,6 +81,11 @@
       height: 80px;
       border-radius: 50%;
       margin-bottom: 10px;
+    }
+    .card a {
+      color: #f00;
+      text-decoration: none;
+      font-size: 14px;
     }
     iframe {
       width: 100%;
@@ -106,48 +110,32 @@
     <h2>Klan Hakkında</h2>
     <p>ZZONE99, 2018 yılından beri aktif olan, kuralsız ama etkili bir takım ruhuyla ilerleyen agresif bir oyuncu topluluğudur. "Ne dengemiz ne dengimiz var" felsefesiyle sahaları domine eder.</p>
   </section>  <section>
-    <h2>Üyeler</h2>
+    <h2>Yönetim Kadrosu</h2>
     <div class="members">
       <div class="card">
-        <img src="https://api.dicebear.com/6.x/adventurer/svg?seed=1" alt="Üye" />
-        <strong>mAzz99</strong><br>Lider
+        <img src="https://robohash.org/mazz99?set=set2" alt="mAzz99" />
+        <strong>mAzz99</strong><br>Lider<br>
+        <a href="https://tiktok.com/@mazz99theboss" target="_blank">TikTok</a>
       </div>
       <div class="card">
-        <img src="https://api.dicebear.com/6.x/adventurer/svg?seed=2" alt="Üye" />
-        <strong>yAzz99</strong><br>Sniper
+        <img src="https://robohash.org/yazz99?set=set2" alt="yAzz99" />
+        <strong>yAzz99</strong><br>Yönetici<br>
+        <a href="https://tiktok.com/@yazz99" target="_blank">TikTok</a>
       </div>
       <div class="card">
-        <img src="https://api.dicebear.com/6.x/adventurer/svg?seed=3" alt="Üye" />
-        <strong>iSzz99</strong><br>Taarruz
-      </div>
-    </div>
-  </section>  <section>
-    <h2>Klan Başarıları</h2>
-    <div class="stats">
-      <div class="card">
-        🏆<br><strong>METRO ROYALE YAĞMA TR 3</strong>
-      </div>
-      <div class="card">
-        🔥<br><strong>METRO ROYALE YAĞMA GLOBAL 15</strong>
-      </div>
-      <div class="card">
-        🥇<br><strong>~</strong>
+        <img src="https://robohash.org/iszz99?set=set2" alt="iSzz99" />
+        <strong>iSzz99</strong><br>Yönetici
       </div>
     </div>
   </section>  <section>
     <h2>Başvuru Formu</h2>
-    <form action="https://formspree.io/f/moqgjebz" method="POST">
+    <form action="mailto:tayf.pm@gmail.com" method="POST" enctype="text/plain">
       <input type="text" name="oyuncuAdi" placeholder="Oyuncu Adın" required />
       <input type="text" name="yas" placeholder="Yaş" required />
       <input type="text" name="oyun" placeholder="Oynadığın Oyun" required />
       <textarea name="neden" rows="4" placeholder="Neden klana katılmak istiyorsun?" required></textarea>
       <button type="submit">Başvur</button>
     </form>
-  </section>  <section>
-    <h2>İletişim & TikTok</h2>
-    <p>Bize ulaşmak için: <a href="https://tiktok.com/mazz99theboss" target="_blank">@mazz99theboss</a></p>
-    <a href="https://tiktok.com/yazz99" target="_blank">@yazz99</a></p>
-    <iframe src="[https://www.tiktok.com/embed/7384198059052348677"](https://vt.tiktok.com/ZSkb3RGw1/)allowfullscreen></iframe>
   </section>  <footer>
     ZZONE99 © 2018 - Tüm hakları saklıdır.
   </footer>
