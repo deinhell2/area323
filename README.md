@@ -35,41 +35,47 @@ header img {
 }
 
 header h1 {
-  font-size: 48px;
+  font-size: 52px;
   color: #FF003C;
-  text-shadow: 2px 2px 10px #ff0059;
+  text-shadow: 2px 2px 15px #ff0059;
+  letter-spacing: 3px;
 }
 
 .slogan {
   margin: 20px 0;
-  font-size: 20px;
+  font-size: 22px;
   color: #ffffffcc;
   text-transform: uppercase;
+  font-style: italic;
+  text-shadow: 1px 1px 4px #000;
 }
 
 section.members, section.form-section {
-  padding: 30px 20px;
-  max-width: 600px;
-  margin: auto;
+  padding: 30px 25px;
+  max-width: 700px;
+  margin: 40px auto;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  box-shadow: 0 0 10px #ff005977;
-  margin-bottom: 40px;
+  box-shadow: 0 0 20px #ff005977;
+  backdrop-filter: blur(6px);
 }
 
 section.members h2, section.form-section h2 {
   text-align: center;
   font-size: 28px;
   margin-bottom: 20px;
+  color: #FF0059;
 }
 
 ul.member-list {
   list-style: none;
   font-size: 20px;
+  padding: 0;
 }
 
 ul.member-list li {
-  margin: 10px 0;
+  margin: 12px 0;
+  text-align: center;
 }
 
 .social {
@@ -83,6 +89,11 @@ ul.member-list li {
   font-size: 18px;
   color: #FF0059;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social a:hover {
+  color: #ff66a5;
 }
 
 footer {
@@ -105,6 +116,11 @@ form input, form textarea, form button {
   border: none;
 }
 
+form input, form textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
 form button {
   background-color: #FF0059;
   color: white;
@@ -120,7 +136,7 @@ form button:hover {
 </head>
 <body>
   <header>
-    <img src="/mnt/data/A_logo_design_features_the_text_\"ZZONE99\"_beneath_.png" alt="ZZONE99 Logo">
+    <img src="Logo.png" alt="ZZONE99 Logo">
     <h1>ZZONE99</h1>
     <p class="slogan">ZAFER BİZİM ZONEMİZDE YAZILIR!</p>
   </header>  <section class="members">
