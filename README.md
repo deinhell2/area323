@@ -1,268 +1,223 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ZZONE99 PUBG Mobile Klan Sitesi - Since 2018" />
-  <meta name="keywords" content="zzone99, pubg mobile, klan, başvuru" />
-  <meta name="author" content="ZZONE99" />
-  <title>ZZONE99 - Since 2018</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="ZZONE99 PUBG Mobile klanı için başvuru ve tanıtım sitesi. Since 2018."/>
+  <meta name="keywords" content="ZZONE99, PUBG Mobile, Clan Başvuru, Fur die Gang, AREA323"/>
+  <meta name="author" content="ZZONE99"/>
+  <title>ZZONE99</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Montserrat&display=swap" rel="stylesheet"/>
   <style>
-    /* RESET + GLOBAL */
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0f0f0f;
+      background: linear-gradient(135deg, #111, #1f1f1f);
       color: #fff;
       overflow-x: hidden;
     }
+    header, section, footer {
+      padding: 2rem;
+      text-align: center;
+    }
 
-    /* LOADING */
+    /* Loading */
     #loading {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: #0f0f0f;
+      background: #000;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      z-index: 9999;
+      transition: 1s;
+    }
+
+    /* Giriş ekranı */
+    #giris {
+      height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
+      background: radial-gradient(circle, #222, #000);
+      animation: fadeIn 2s ease forwards;
     }
-
-    .spinner {
-      border: 6px solid #222;
-      border-top: 6px solid #0ef;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
+    #giris img {
+      width: 120px;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
     }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 60px 20px 20px;
-      animation: fadeIn 2s ease-in-out;
+    #giris h1 {
+      font-size: 2.5rem;
+      letter-spacing: 5px;
+      font-family: 'Orbitron', sans-serif;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
     }
 
-    #logo {
-      width: 120px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-      color: #0ef;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin: 20px;
-    }
-
-    nav a {
+    .buton {
+      margin: 1rem auto;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #0f0f0f;
+      border: 1px solid #444;
+      border-radius: 5px;
       color: #fff;
       text-decoration: none;
-      padding: 10px 20px;
-      border: 1px solid #0ef;
-      border-radius: 8px;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
-
-    nav a:hover {
-      background: #0ef;
+    .buton:hover {
+      background: #fff;
       color: #000;
     }
 
-    section {
-      max-width: 800px;
+    #aciklama {
+      max-width: 700px;
       margin: auto;
-      padding: 40px 20px;
-      animation: fadeIn 1.5s ease;
+      font-size: 1.1rem;
+      line-height: 1.7;
     }
 
-    h2 {
-      font-size: 28px;
-      color: #0ef;
-      margin-bottom: 10px;
-    }
-
-    p, label {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-
-    form input, form select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 12px;
-      border: none;
-      border-radius: 6px;
-      background: #1a1a1a;
-      color: #fff;
-    }
-
-    .button {
-      background: #0ef;
-      color: #000;
-      padding: 12px 24px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .button:hover {
-      background: #0cf;
-    }
-
-    .social {
+    .uyeler {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      margin-top: 30px;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .uye {
+      background: #222;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
 
-    .social-icon {
-      position: relative;
+    form {
+      max-width: 500px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #1b1b1b;
+      padding: 2rem;
+      border-radius: 10px;
     }
-
-    .social-icon img {
-      width: 40px;
-      cursor: pointer;
+    input, textarea {
+      padding: 0.8rem;
+      background: #333;
+      border: 1px solid #555;
+      color: #fff;
+      border-radius: 5px;
     }
-
-    .popup {
-      display: none;
-      position: absolute;
-      top: 50px;
-      left: -20px;
-      background: #111;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 14px;
-      white-space: nowrap;
+    .tiktok {
+      margin-top: 2rem;
     }
-
-    .social-icon:hover .popup {
-      display: block;
-    }
-
-    .counter {
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.6;
-      margin-top: 30px;
+    .tiktok a {
+      display: inline-block;
+      margin: 0.5rem;
+      text-decoration: none;
+      color: #1DA1F2;
     }
 
     footer {
-      text-align: center;
-      padding: 30px;
-      background: #111;
-      color: #ccc;
-      font-size: 14px;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
+    #onlineCount {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #0f0;
+    }
+
+    @media(max-width: 600px) {
+      #giris h1 { font-size: 1.8rem; }
+      .uyeler { flex-direction: column; }
     }
   </style>
+  <script>
+    // Simüle edilmiş online kişi sayısı
+    function updateOnlineCount() {
+      const count = Math.floor(Math.random() * 20) + 3;
+      document.getElementById("onlineCount").innerText = "Online Üyeler: " + count;
+    }
+    window.onload = () => {
+      document.getElementById("loading").style.display = "none";
+      updateOnlineCount();
+      setInterval(updateOnlineCount, 7000);
+    };
+  </script>
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loading">
-  <div class="spinner"></div>
-</div>
+  <div id="loading">Yükleniyor...</div>
 
-<header>
-  <img src="logo.png" id="logo" alt="ZZONE99 Logo">
-  <h1>ZZONE99</h1>
-  <p>Since 2018 • Für die GANG → AREA323 → ZZONE99</p>
-</header>
-
-<nav>
-  <a href="#tanitim">Tanıtım</a>
-  <a href="#basvuru">Başvuru</a>
-  <a href="#iletisim">İletişim</a>
-</nav>
-
-<section id="tanitim">
-  <h2>Klan Tanıtımı</h2>
-  <p>ZZONE99, disiplinli ve vizyon sahibi oyuncuların toplandığı bir PUBG Mobile klanıdır. 2018’den bu yana sahnedeyiz.</p>
-</section>
-
-<section id="basvuru">
-  <h2>Başvuru Formu</h2>
-  <form action="https://formspree.io/f/xldnljve" method="POST">
-    <label>Oyuncu Adı ve UID</label>
-    <input type="text" name="Oyuncu Adı ve UID" required />
-    <label>Yaş</label>
-    <input type="number" name="Yaş" required />
-    <label>Aktiflik Durumu</label>
-    <select name="Aktiflik" required>
-      <option value="">Seçiniz</option>
-      <option>Her gün</option>
-      <option>Haftalık</option>
-      <option>Nadiren</option>
-    </select>
-    <label>Kullandığınız Cihaz</label>
-    <input type="text" name="Cihaz" required />
-    <button class="button" type="submit">Başvuru Yap</button>
-  </form>
-</section>
-
-<section id="iletisim">
-  <h2>İletişim / Sosyal Medya</h2>
-  <p><strong>Oyun İçi:</strong> mAzz99 (516572604), yAzz99</p>
-  <div class="social">
-    <div class="social-icon">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok mAzz99">
-      <div class="popup">@mAzz99theboss</div>
-    </div>
-    <div class="social-icon">
-      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok yAzz99">
-      <div class="popup">@babavizyondapm</div>
-    </div>
+  <!-- Giriş -->
+  <div id="giris">
+    <img src="img/logo.png" alt="Logo">
+    <h1>ZZONE99</h1>
+    <a href="#tanitim" class="buton">Giriş Yap</a>
   </div>
-</section>
 
-<div class="counter">
-  Bu site <span id="visitor-count">0</span> defa ziyaret edildi.
-</div>
+  <!-- Tanıtım -->
+  <section id="tanitim">
+    <h2>Tanıtım</h2>
+    <div id="aciklama">
+      <p>
+        ZZONE99, PUBG Mobile sahnesinde 2018 yılından beri aktif olan bir klan topluluğudur.
+        İlk olarak “Für die GANG” adıyla kurulan ekip, daha sonra “AREA323” adı altında yükselişini sürdürmüş,
+        bugün ise yepyeni bir vizyonla ZZONE99 adıyla yoluna devam etmektedir.
+        Hedefimiz sadece oyun kazanmak değil, aynı zamanda kaliteli bir topluluk oluşturmak.
+      </p>
+      <p id="onlineCount"></p>
+    </div>
+  </section>
 
-<footer>
-  Für die Famillia
-</footer>
+  <!-- Üyeler -->
+  <section id="uyeler">
+    <h2>Üyeler</h2>
+    <div class="uyeler">
+      <div class="uye">mAzz99</div>
+      <div class="uye">yAzz99</div>
+      <div class="uye">iSzz99</div>
+    </div>
+  </section>
 
-<script>
-  // Loading ekranı
-  window.addEventListener("load", function () {
-    document.getElementById("loading").style.display = "none";
-  });
+  <!-- Başvuru -->
+  <section id="basvuru">
+    <h2>Başvuru Formu</h2>
+    <form action="https://formspree.io/f/xldnljve" method="POST">
+      <input type="text" name="Oyuncu Adı ve UID" placeholder="Oyuncu Adı ve UID" required>
+      <input type="text" name="Yaş" placeholder="Yaşınız" required>
+      <input type="text" name="Aktiflik" placeholder="Günde kaç saat oynuyorsunuz?" required>
+      <input type="text" name="Kullandığı cihaz" placeholder="Kullandığınız cihaz" required>
+      <button type="submit" class="buton">Başvuruyu Gönder</button>
+    </form>
+  </section>
 
-  // Ziyaretçi Sayacı
-  let count = localStorage.getItem("zzone_visit_count");
-  count = count ? parseInt(count) + 1 : 1;
-  localStorage.setItem("zzone_visit_count", count);
-  document.getElementById("visitor-count").textContent = count;
-</script>
+  <!-- TikTok ve İletişim -->
+  <section class="tiktok">
+    <h2>İletişim</h2>
+    <p><a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">📱 @mAzz99theboss</a></p>
+    <p><a href="https://www.tiktok.com/@babavizyondapm" target="_blank">📱 @babavizyondapm</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Für die Famillia • Since 2018
+  </footer>
 
 </body>
