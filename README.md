@@ -2,18 +2,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ZZONE99</title>
-<meta name="description" content="PUBG Mobile klanı ZZONE99 - 2018’den beri aktif, kaliteli topluluk. Katılmak için başvuru yap!" />
+<title>zzone99</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
   * {
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
   }
   body {
-    margin: 0; padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #001f3f, #0074D9);
+    background: linear-gradient(135deg, #0a2c44, #004d79);
     color: #e0f7ff;
     min-height: 100vh;
     display: flex;
@@ -24,9 +22,8 @@
     padding: 40px 20px 20px;
   }
   header img.logo {
-    width: 160px;
+    width: 140px;
     animation: glow 3s ease-in-out infinite alternate;
-    margin-bottom: 10px;
   }
   @keyframes glow {
     0% {filter: drop-shadow(0 0 4px #00ffff);}
@@ -36,7 +33,7 @@
     font-size: 3rem;
     font-weight: 900;
     letter-spacing: 0.15em;
-    margin: 0;
+    margin-top: 10px;
     color: #00e6ff;
     text-shadow:
       0 0 5px #00e6ff,
@@ -48,62 +45,30 @@
     flex-grow: 1;
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 15px 40px;
+    padding: 20px 15px 40px;
   }
   section {
-    background: rgba(0, 36, 70, 0.65);
+    background: rgba(0, 36, 70, 0.7);
     border-radius: 12px;
     margin-bottom: 30px;
     padding: 25px 30px;
-    box-shadow: 0 0 15px rgba(0, 230, 255, 0.25);
+    box-shadow: 0 0 15px rgba(0, 230, 255, 0.2);
     transition: background 0.3s ease;
   }
   section:hover {
     background: rgba(0, 36, 70, 0.85);
   }
   section h2 {
-    margin-top: 0;
+    margin-bottom: 20px;
     font-size: 1.9rem;
     border-bottom: 2px solid #00e6ff;
     padding-bottom: 8px;
-    margin-bottom: 20px;
   }
   /* Tanıtım metni */
   #tanitim p {
     line-height: 1.5;
     font-size: 1.15rem;
   }
-
-  /* Karakter logosu bölümü */
-  #uyeler .member-list {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-  }
-  #uyeler .member {
-    text-align: center;
-    max-width: 140px;
-  }
-  #uyeler .member img {
-    width: 140px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #00e6ff;
-    transition: transform 0.3s ease;
-  }
-  #uyeler .member img:hover {
-    transform: scale(1.05) rotate(3deg);
-    filter: drop-shadow(0 0 6px #00ffff);
-  }
-  #uyeler .member .nick {
-    margin-top: 10px;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #00e6ff;
-    text-shadow: 0 0 7px #00b8d9;
-  }
-
   /* Başvuru formu */
   #basvuru form {
     display: flex;
@@ -112,7 +77,7 @@
   }
   #basvuru label {
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   #basvuru input, #basvuru select, #basvuru textarea {
     padding: 10px 12px;
@@ -156,7 +121,6 @@
   #basvuru .feedback.error {
     color: #ff6b6b;
   }
-
   /* İletişim bölümü */
   #iletisim {
     text-align: center;
@@ -202,7 +166,6 @@
     margin-right: 5px;
     filter: drop-shadow(0 0 1px #00b8d9);
   }
-
   /* Footer */
   footer {
     text-align: center;
@@ -214,20 +177,10 @@
     box-shadow: inset 0 2px 5px #003355;
     user-select: none;
   }
-
   /* Responsive */
   @media (max-width: 600px) {
     header h1 {
       font-size: 2.5rem;
-    }
-    #uyeler .member-list {
-      gap: 30px;
-    }
-    #uyeler .member {
-      max-width: 120px;
-    }
-    #uyeler .member img {
-      width: 120px;
     }
     #iletisim .contacts {
       gap: 25px;
@@ -243,6 +196,7 @@
     }
   }
 </style>
+<title>zzone99</title>
 </head>
 <body>
 
@@ -262,19 +216,7 @@
     </p>
   </section>
 
-  <section id="uyeler" aria-label="Klan Üyeleri">
-    <h2>ÜYELER</h2>
-    <div class="member-list">
-      <div class="member" role="group" aria-label="mAzz99">
-        <img src="mazz.png" alt="mAzz99 Logo" />
-        <div class="nick">mAzz99</div>
-      </div>
-      <div class="member" role="group" aria-label="yAzz99">
-        <img src="yazz.png" alt="yAzz99 Logo" />
-        <div class="nick">yAzz99</div>
-      </div>
-    </div>
-  </section>
+  <!-- Oyun İçi ve Üyeler bölümleri kaldırıldı -->
 
   <section id="basvuru" aria-label="Klan Başvuru Formu">
     <h2>KLANA KATIL</h2>
@@ -327,7 +269,6 @@
 </footer>
 
 <script>
-  // Başvuru formu gönderimi ve geri bildirim
   const form = document.getElementById('applyForm');
   const feedback = document.getElementById('feedbackMsg');
 
@@ -366,4 +307,3 @@
 </script>
 
 </body>
-
