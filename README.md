@@ -2,43 +2,75 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>zzone99</title>
-<meta name="description" content="ZZONE99 PUBG Mobile Klan Sitesi - Since 2018" />
-<meta name="keywords" content="PUBG, ZZONE99, Klan, Oyun, Başvuru" />
+<title>zzone99 - PUBG Mobile Klan</title>
+<meta name="description" content="ZZONE99 PUBG Mobile Klan Sitesi - Rekabetçi, Dost Canlısı ve Aktif" />
+<meta name="keywords" content="PUBG, ZZONE99, Klan, PUBG Mobile, Başvuru, Türkiye" />
 <meta name="author" content="ZZONE99 Klan" />
 <link rel="icon" href="logo.png" type="image/png" />
+
 <style>
-  /* Reset & base */
+  /* Reset & Base */
   * {
     margin: 0; padding: 0; box-sizing: border-box;
   }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1e2a38, #16232f);
-    color: #eee;
+    background: var(--bg);
+    color: var(--text-color);
     overflow-x: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
   }
   a {
-    color: #00d8ff;
+    color: var(--accent);
     text-decoration: none;
   }
   a:hover {
     text-decoration: underline;
   }
 
+  /* Tema renkleri */
+  :root {
+    --accent: #00d8ff;
+    --bg: linear-gradient(135deg, #1e2a38, #16232f);
+    --bg-alt: rgba(0, 216, 255, 0.15);
+    --text-color: #eee;
+    --box-bg: rgba(0,0,0,0.3);
+    --shadow: #00d8ff44;
+    --popup-bg: #001f35;
+  }
+  body.dark {
+    --accent: #00d8ff;
+    --bg: linear-gradient(135deg, #16232f, #0d151f);
+    --bg-alt: rgba(0, 216, 255, 0.25);
+    --text-color: #ccc;
+    --box-bg: rgba(5,5,5,0.6);
+    --shadow: #00d8ff66;
+    --popup-bg: #000a12;
+  }
+  body.light {
+    --accent: #0077cc;
+    --bg: linear-gradient(135deg, #f5f7fa, #e9eff5);
+    --bg-alt: rgba(0, 119, 204, 0.12);
+    --text-color: #202020;
+    --box-bg: rgba(255,255,255,0.8);
+    --shadow: #0077cc44;
+    --popup-bg: #f0f5fa;
+  }
+
   /* Animasyonlu arkaplan */
   body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0; right:0; bottom: 0;
-    background: radial-gradient(circle at center, #00405f, #0a1e2d);
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at center, var(--accent), #0a1e2d);
     z-index: -3;
     animation: bgPulse 20s ease-in-out infinite alternate;
+    filter: brightness(0.7);
   }
   @keyframes bgPulse {
-    0% { filter: brightness(1); }
-    50% { filter: brightness(1.3); }
-    100% { filter: brightness(1); }
+    0% { filter: brightness(0.7); }
+    50% { filter: brightness(1.2); }
+    100% { filter: brightness(0.7); }
   }
 
   /* Logo Animasyonu */
@@ -55,40 +87,42 @@
     from { opacity: 0; transform: scale(0.5); }
   }
   #logo-container img {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
-    filter: drop-shadow(0 0 6px #00d8ffaa);
+    filter: drop-shadow(0 0 8px var(--accent));
+    border-radius: 50%;
   }
   #logo-container h1 {
     font-size: 3rem;
-    margin-top: 10px;
-    color: #00d8ff;
+    margin-top: 12px;
+    color: var(--accent);
     letter-spacing: 0.15em;
-    text-shadow: 0 0 8px #00d8ffaa;
+    text-shadow: 0 0 10px var(--accent);
   }
 
   /* Giriş animasyonu ekranı */
   #intro {
     position: fixed;
     inset: 0;
-    background: #0c1621;
+    background: var(--bg);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     z-index: 9999;
     animation: fadeOut 0.8s ease forwards;
-    animation-delay: 2.2s;
+    animation-delay: 2.5s;
   }
   #intro img {
-    width: 130px;
-    filter: drop-shadow(0 0 10px #00d8ff);
+    width: 140px;
+    filter: drop-shadow(0 0 12px var(--accent));
+    border-radius: 50%;
   }
   #intro h1 {
-    margin-top: 15px;
-    font-size: 2.5rem;
-    color: #00d8ff;
+    margin-top: 20px;
+    font-size: 2.8rem;
+    color: var(--accent);
     letter-spacing: 0.2em;
     font-weight: 700;
   }
@@ -100,8 +134,8 @@
   #main {
     opacity: 0;
     animation: fadeInMain 1s ease forwards;
-    animation-delay: 2.7s;
-    padding: 20px;
+    animation-delay: 3s;
+    padding: 24px 20px 60px;
     max-width: 960px;
     margin: 0 auto;
   }
@@ -112,73 +146,74 @@
   /* Butonlar */
   .btn {
     display: inline-block;
-    padding: 12px 28px;
+    padding: 14px 32px;
     margin: 12px 8px 20px 8px;
     border-radius: 30px;
-    border: 2px solid #00d8ff;
+    border: 2px solid var(--accent);
     background: transparent;
-    color: #00d8ff;
-    font-weight: 600;
+    color: var(--accent);
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0 8px #00d8ff44;
+    box-shadow: 0 0 10px var(--accent);
     user-select: none;
   }
   .btn:hover {
-    background: #00d8ff;
-    color: #0c1621;
-    box-shadow: 0 0 15px #00d8ffdd;
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--accent);
   }
 
   /* Sayfa bölümleri */
   section {
-    margin-bottom: 40px;
-    border-radius: 12px;
-    background: rgba(0,0,0,0.3);
-    padding: 20px;
-    box-shadow: 0 0 15px #00d8ff44;
+    margin-bottom: 48px;
+    border-radius: 14px;
+    background: var(--box-bg);
+    padding: 28px 32px;
+    box-shadow: 0 0 18px var(--shadow);
+    transition: background 0.4s ease;
   }
   section h2 {
-    margin-bottom: 16px;
-    font-size: 2rem;
-    color: #00d8ff;
-    border-bottom: 2px solid #00d8ff;
-    padding-bottom: 6px;
+    margin-bottom: 22px;
+    font-size: 2.4rem;
+    color: var(--accent);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 8px;
     user-select: none;
   }
   section p, section li {
-    font-size: 1.1rem;
-    line-height: 1.4;
+    font-size: 1.2rem;
+    line-height: 1.6;
   }
   ul {
     list-style-type: disc;
-    margin-left: 20px;
+    margin-left: 26px;
   }
 
   /* Başvuru formu */
   form {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    max-width: 500px;
+    gap: 16px;
+    max-width: 540px;
   }
   input, select, textarea {
-    padding: 10px 14px;
-    font-size: 1rem;
-    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+    border-radius: 10px;
     border: none;
     outline: none;
-    background: #001f35;
-    color: #ccc;
-    box-shadow: inset 0 0 5px #00d8ff55;
+    background: var(--popup-bg);
+    color: var(--text-color);
+    box-shadow: inset 0 0 8px var(--accent);
     transition: box-shadow 0.3s ease;
   }
   input:focus, select:focus, textarea:focus {
-    box-shadow: 0 0 10px #00d8ffbb;
+    box-shadow: 0 0 14px var(--accent);
   }
   button[type="submit"] {
-    max-width: 200px;
-    margin-top: 8px;
+    max-width: 220px;
+    margin-top: 10px;
     align-self: flex-start;
   }
 
@@ -188,24 +223,65 @@
     padding-left: 0;
   }
   #uyeler li {
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: #a0f0ff;
+    margin-bottom: 14px;
+    font-weight: 700;
+    color: var(--accent);
   }
 
   /* TikTok embed container */
   .tiktok-container {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  /* İletişim linklerine ikon ve pop-up */
+  .contact-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .contact-link img {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 0 5px var(--accent));
+    transition: transform 0.3s ease;
+  }
+  .contact-link:hover img {
+    transform: scale(1.1);
+  }
+  .popup-tooltip {
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--popup-bg);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    user-select: none;
+    z-index: 10;
+  }
+  .contact-link:hover .popup-tooltip {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   /* Burger Menü */
   #burger {
     position: fixed;
     top: 20px; right: 20px;
-    width: 35px; height: 28px;
+    width: 38px; height: 30px;
     cursor: pointer;
     z-index: 10001;
     display: none;
@@ -215,31 +291,31 @@
   #burger div {
     width: 100%;
     height: 4px;
-    background-color: #00d8ff;
-    border-radius: 3px;
+    background-color: var(--accent);
+    border-radius: 4px;
     transition: all 0.3s ease;
   }
   #burger.active div:nth-child(1) {
-    transform: translateY(12px) rotate(45deg);
+    transform: translateY(13px) rotate(45deg);
   }
   #burger.active div:nth-child(2) {
     opacity: 0;
   }
   #burger.active div:nth-child(3) {
-    transform: translateY(-12px) rotate(-45deg);
+    transform: translateY(-13px) rotate(-45deg);
   }
 
   nav {
     position: fixed;
     top: 0; right: 0;
     height: 100vh;
-    width: 240px;
-    background: rgba(0, 216, 255, 0.15);
-    backdrop-filter: blur(12px);
-    box-shadow: -4px 0 16px #00d8ff44;
+    width: 260px;
+    background: var(--bg-alt);
+    backdrop-filter: blur(14px);
+    box-shadow: -4px 0 22px var(--shadow);
     transform: translateX(100%);
     transition: transform 0.35s ease;
-    padding-top: 60px;
+    padding-top: 70px;
     z-index: 10000;
   }
   nav.active {
@@ -247,18 +323,65 @@
   }
   nav ul {
     list-style: none;
-    padding-left: 24px;
+    padding-left: 28px;
   }
   nav ul li {
-    margin-bottom: 28px;
+    margin-bottom: 32px;
   }
   nav ul li a {
-    font-weight: 600;
-    font-size: 1.3rem;
-    color: #00d8ff;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--accent);
   }
   nav ul li a:hover {
     color: #a0f0ff;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 24px 20px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* Ziyaretçi Sayacı */
+  #visitorCounter {
+    position: fixed;
+    bottom: 18px;
+    left: 18px;
+    color: var(--accent);
+    font-weight: 700;
+    user-select:none;
+    font-family: monospace;
+    font-size: 15px;
+    z-index: 10000;
+    text-shadow: 0 0 10px var(--accent);
+  }
+
+  /* Tema Seçici */
+  #theme-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--bg-alt);
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 15px var(--accent);
+    cursor: pointer;
+    z-index: 10002;
+    transition: background 0.4s ease;
+  }
+  #theme-toggle:hover {
+    background: var(--accent);
+  }
+  #theme-toggle img {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 0 6px var(--accent));
   }
 
   /* Responsive */
@@ -267,31 +390,41 @@
       display: flex;
     }
     #main {
-      padding: 20px 12px;
+      padding: 18px 14px 60px;
+    }
+    .tiktok-container {
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>
+
 </head>
 <body>
 
 <!-- Giriş animasyonu -->
-<div id="intro">
+<div id="intro" role="alert" aria-live="assertive">
   <img src="logo.png" alt="ZZONE99 Logo" />
   <h1>ZZONE99</h1>
 </div>
 
+<!-- Tema Seçici -->
+<button id="theme-toggle" aria-label="Tema değiştirme butonu" title="Tema değiştir">
+  <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" alt="Tema değiştir ikonu" />
+</button>
+
 <!-- Burger Menü -->
-<div id="burger" aria-label="Toggle menu" role="button" tabindex="0">
+<div id="burger" aria-label="Menüyü aç/kapat" role="button" tabindex="0" aria-expanded="false">
   <div></div><div></div><div></div>
 </div>
 
 <!-- Menü -->
-<nav id="menu">
+<nav id="menu" role="navigation" aria-label="Ana menü">
   <ul>
-    <li><a href="#tanitim" onclick="closeMenu()">Tanıtım</a></li>
-    <li><a href="#basvuru" onclick="closeMenu()">Başvuru</a></li>
-    <li><a href="#iletisim" onclick="closeMenu()">İletişim</a></li>
-    <li><a href="#uyeler" onclick="closeMenu()">Üyeler</a></li>
+    <li><a href="#tanitim" onclick="closeMenu()" aria-label="Tanıtım bölümüne git">Tanıtım</a></li>
+    <li><a href="#basvuru" onclick="closeMenu()" aria-label="Başvuru formuna git">Başvuru</a></li>
+    <li><a href="#iletisim" onclick="closeMenu()" aria-label="İletişim bölümüne git">İletişim</a></li>
+    <li><a href="#uyeler" onclick="closeMenu()" aria-label="Üyeler bölümüne git">Üyeler</a></li>
   </ul>
 </nav>
 
@@ -304,24 +437,28 @@
       <img src="logo.png" alt="ZZONE99 Logo" />
       <h1>ZZONE99</h1>
     </div>
-    <p style="margin-top:20px; font-size:1.2rem; line-height:1.5; max-width:720px;">
-      Since 2018, klanımız <strong>Für die GANG</strong> ve <strong>AREA323</strong> olarak
-      başlayan yolculuğuna, yeni bir vizyon ile <strong>ZZONE99</strong> olarak devam etmektedir.
+    <p style="margin-top:22px; font-size:1.25rem; line-height:1.7; max-width:720px;">
+      2018 yılında <strong>Für die GANG</strong> ve <strong>AREA323</strong> olarak başlayan yolculuğumuz,
+      aktif ve disiplinli yapımızla, <strong>ZZONE99</strong> adı altında PUBG Mobile arenasında varlığını sürdürüyor.
+      Klanımız; rekabetçi, dost canlısı, takım ruhuna önem veren ve Türkiye'nin dört bir yanından oyuncuları bir araya getiriyor.
+    </p>
+    <p style="max-width: 720px; font-style: italic; color: var(--accent); margin-top: 10px;">
+      "Takım olarak güçlüyüz, birlikte daha iyiyiz." - ZZONE99
     </p>
   </section>
 
   <!-- Başvuru -->
   <section id="basvuru" tabindex="0">
     <h2>Başvuru Formu</h2>
-    <form action="https://formspree.io/f/xldnljve" method="POST">
+    <form action="https://formspree.io/f/xldnljve" method="POST" aria-label="Klan başvuru formu">
       <label for="oyuncu">Oyuncu Adı ve UID</label>
-      <input type="text" name="oyuncu" id="oyuncu" placeholder="Örn: mAzz99 #123456" required />
+      <input type="text" name="oyuncu" id="oyuncu" placeholder="Örn: mAzz99 #123456" required aria-required="true" />
 
       <label for="yas">Yaş</label>
-      <input type="number" name="yas" id="yas" placeholder="Yaşınızı yazın" min="12" max="99" required />
+      <input type="number" name="yas" id="yas" placeholder="Yaşınızı yazın" min="12" max="99" required aria-required="true" />
 
       <label for="aktiflik">Aktiflik</label>
-      <select name="aktiflik" id="aktiflik" required>
+      <select name="aktiflik" id="aktiflik" required aria-required="true">
         <option value="" disabled selected>Seçiniz</option>
         <option value="Günlük">Günlük</option>
         <option value="Haftalık">Haftalık</option>
@@ -329,114 +466,6 @@
       </select>
 
       <label for="cihaz">Kullandığı cihaz</label>
-      <input type="text" name="cihaz" id="cihaz" placeholder="Örn: Android, iPhone" required />
+      <input type="text" name="cihaz" id="cihaz" placeholder="Örn: Android, iPhone" required aria-required="true" />
 
-      <label for="iletisim_oyun">Oyun İçi İletişim (mAzz99 516572604)</label>
-      <input type="text" name="iletisim_oyun" id="iletisim_oyun" value="mAzz99 516572604" readonly />
-      
-      <button type="submit" class="btn">Başvur</button>
-    </form>
-  </section>
-
-  <!-- İletişim -->
-  <section id="iletisim" tabindex="0">
-    <h2>İletişim</h2>
-    <p>Bizimle TikTok üzerinden iletişime geçebilirsiniz:</p>
-    <ul>
-      <li><a href="https://www.tiktok.com/@mAzz99theboss" target="_blank" rel="noopener">@mAzz99theboss</a></li>
-      <li><a href="https://www.tiktok.com/@babavizyondapm" target="_blank" rel="noopener">@babavizyondapm</a></li>
-    </ul>
-    <div class="tiktok-container">
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mAzz99theboss" data-video-id="" style="max-width: 325px; min-width: 325px;" > </blockquote>
-      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@babavizyondapm" data-video-id="" style="max-width: 325px; min-width: 325px;" > </blockquote>
-    </div>
-  </section>
-
-  <!-- Üyeler -->
-  <section id="uyeler" tabindex="0">
-    <h2>Üyeler</h2>
-    <ul>
-      <li><strong>Lider Kadrosu:</strong> mAzz99, yAzz99</li>
-      <li><strong>Yönetici Kadrosu:</strong> iSzz99</li>
-    </ul>
-  </section>
-
-  <footer style="text-align:center; margin-top:40px; padding: 20px 0; color:#00405f; font-weight: 600;">
-    Für die Famillia
-  </footer>
-</main>
-
-<!-- Ziyaretçi Sayacı -->
-<div style="position: fixed; bottom: 15px; left: 15px; color: #00d8ff; font-weight: 600; user-select:none; font-family: monospace; font-size: 14px; z-index: 10000;">
-  Ziyaretçi Sayısı: <span id="visitorCount">0</span>
-</div>
-
-<!-- Tawk.to Canlı Sohbet -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/68526ad5a39e6f190afdd004/1iu0v2kel';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-
-<script async src="https://www.tiktok.com/embed.js"></script>
-
-<script>
-  // Intro ekranını 2 saniye sonra gizle
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('main').style.opacity = '1';
-    }, 2200);
-  });
-
-  // Burger menü açma/kapatma
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('active');
-    menu.classList.toggle('active');
-  });
-  function closeMenu() {
-    burger.classList.remove('active');
-    menu.classList.remove('active');
-  }
-
-  // Basit ziyaretçi sayacı (localStorage tabanlı)
-  const countEl = document.getElementById('visitorCount');
-  let count = localStorage.getItem('visitorCount');
-  if(!count) count = 0;
-  count = parseInt(count) + 1;
-  localStorage.setItem('visitorCount', count);
-  countEl.textContent = count;
-
-  // Smooth scroll navigation for anchor links
-  document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      e.preventDefault();
-      const targetID = anchor.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetID);
-      if(targetSection){
-        targetSection.scrollIntoView({behavior: 'smooth'});
-        closeMenu();
-        // Update URL without reloading page
-        history.pushState(null, null, `#${targetID}`);
-      }
-    });
-  });
-
-  // Accessibility: allow burger menu toggle with keyboard
-  burger.addEventListener('keydown', e => {
-    if(e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      burger.click();
-    }
-  });
-</script>
-</body>
+      <label for="iletisim_oyun">Oyun İçi İletişim
