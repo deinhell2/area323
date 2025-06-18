@@ -6,6 +6,32 @@
 <style>
   /* Genel body */
   body {
+  <!-- Tanıtım Açıklaması -->
+<section style="
+  max-width: 700px; 
+  margin: 20px auto 40px; 
+  padding: 15px 25px; 
+  background: rgba(0, 255, 247, 0.1); 
+  border-left: 5px solid #00fff7;
+  color: #a0f0f9;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.6;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00fff730;
+  ">
+  İlk olarak <strong>“Für die GANG”</strong> adıyla kurulan ekip, daha sonra <strong>“AREA323”</strong> adı altında yükselişini sürdürmüş,<br>        
+  bugün ise yepyeni bir vizyonla <strong>ZZONE99</strong> adıyla yoluna devam etmektedir.<br>
+  Hedefimiz sadece oyun kazanmak değil, aynı zamanda kaliteli bir topluluk oluşturmak.
+</section>
+
+<header>
+  <img src="logo.png" alt="ZZONE99 Logo" />
+  <h1>ZZONE99</h1>
+</header>
+
+<!-- Devamı... -->
+
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #0a1f2f, #003346);
