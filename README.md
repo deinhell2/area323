@@ -69,6 +69,12 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .logo {
@@ -120,6 +126,7 @@
       align-items: center;
       padding: 3rem 1rem;
       gap: 2rem;
+      opacity: 0;
     }
 
     .section {
@@ -154,18 +161,18 @@
   </div>
 
   <div id="main-content" class="centered">
-    <div class="section">
+    <div class="section" id="tanitim">
       <h2>Tanıtım</h2>
       <p>Since 2018<br>Klanın ilk çıkış ismi <strong>Für die GANG</strong>, sonrasında <strong>AREA323</strong> ve yeni bir vizyon ile <strong>ZZONE99</strong> olarak devam edecektir.</p>
     </div>
 
-    <div class="section">
+    <div class="section" id="uyeler">
       <h2>Üyeler</h2>
       <p><strong>Lider Kadrosu:</strong> mAzz99, yAzz99<br><strong>Yönetici Kadrosu:</strong> iSzz99</p>
-      <div class="counter" id="memberCount">Toplam Üye: 23</div>
+      <div class="counter" id="memberCount">Toplam Üye: yükleniyor...</div>
     </div>
 
-    <div class="section">
+    <div class="section" id="basvuru">
       <h2>Başvuru Formu</h2>
       <form action="https://formspree.io/f/xldnljve" method="POST">
         <input type="text" name="oyuncu_adi_uid" placeholder="Oyuncu Adı ve UID" required><br><br>
@@ -176,7 +183,7 @@
       </form>
     </div>
 
-    <div class="section">
+    <div class="section" id="iletisim">
       <h2>İletişim</h2>
       <p>TikTok: <br>@mAzz99theboss<br>@babavizyondapm</p>
       <p>Oyun İçi İletişim: mAzz99 - 516572604</p>
@@ -187,8 +194,26 @@
 
   <script>
     function enterSite() {
-      document.getElementById("entry").style.display = "none";
-      document.getElementById("main-content").style.display = "flex";
+      const entry = document.getElementById("entry");
+      const main = document.getElementById("main-content");
+      entry.classList.add("hidden");
+      setTimeout(() => {
+        entry.style.display = "none";
+        main.style.display = "flex";
+        setTimeout(() => main.style.opacity = 1, 50);
+        history.pushState(null, null, "#main");
+      }, 1000);
     }
+
+    // Dinamik üye sayısı (örnek JSON verisi simülasyonu)
+    document.addEventListener("DOMContentLoaded", () => {
+      const memberCount = document.getElementById("memberCount");
+      // Simülasyon - Gerçek API varsa fetch ile değiştirilebilir
+      const uyeler = ["mAzz99", "yAzz99", "iSzz99", "üyex", "üyey", "üyelz"];
+      memberCount.innerText = `Toplam Üye: ${uyeler.length}`;
+
+      // Sayfa yönlendirme için hash kontrolü
+      if (window.location.hash === "#main") enterSite();
+    });
   </script>
 </body>
