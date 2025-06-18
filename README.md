@@ -167,7 +167,7 @@
 
   <!-- Giriş -->
   <div id="giris">
-    <img src="img/logo.png" alt="Logo">
+    <img src="logo.png" alt="Logo">
     <h1>ZZONE99</h1>
     <a href="#tanitim" class="buton">Giriş Yap</a>
   </div>
@@ -185,17 +185,6 @@
       <p id="onlineCount"></p>
     </div>
   </section>
-
-  <!-- Üyeler -->
-  <section id="uyeler">
-    <h2>Üyeler</h2>
-    <div class="uyeler">
-      <div class="uye">mAzz99</div>
-      <div class="uye">yAzz99</div>
-      <div class="uye">iSzz99</div>
-    </div>
-  </section>
-
   <!-- Başvuru -->
   <section id="basvuru">
     <h2>Başvuru Formu</h2>
