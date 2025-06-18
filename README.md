@@ -17,7 +17,7 @@
       position:fixed;
       top:-50%; left:-50%;
       width:200%; height:200%;
-      background:radial-gradient(circle at center,#00f0ff,transparent 70%);
+      background:radial-gradient(circle at center,#264b6c,transparent 70%);
       filter:blur(150px);
       z-index:0;
     }
