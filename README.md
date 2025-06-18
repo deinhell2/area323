@@ -2,529 +2,259 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ZZONE99 - PUBG Mobile Klanı</title>
-<meta name="description" content="ZZONE99, 2018’den beri PUBG Mobile arenasında dostluk ve başarıyla yoluna devam eden köklü bir klan." />
+<title>ZZONE99</title>
 <style>
-  /* --- Temel Reset & Font --- */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-  * {
-    margin:0; padding:0; box-sizing:border-box;
-    font-family: 'Poppins', sans-serif;
-  }
+  /* Genel body */
   body {
-    background: #0a111f;
-    color: #a0f0f8;
-    min-height: 100vh;
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a1f2f, #003346);
+    color: #e0f7fa;
     overflow-x: hidden;
-    position: relative;
-  }
-  a {
-    color: #5bf0e0;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  a:hover {
-    color: #00fff7;
   }
 
-  /* --- RGB Arkaplan animasyonu --- */
-  #rgbGlow {
-    position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    pointer-events:none;
-    background:
-      radial-gradient(circle at 30% 30%, rgba(0,255,255,0.25), transparent 40%),
-      radial-gradient(circle at 70% 70%, rgba(0,191,255,0.25), transparent 40%);
-    animation: glowPulse 5s ease-in-out infinite;
-    z-index: -1;
-  }
-  @keyframes glowPulse {
-    0%,100% {opacity:0.15;}
-    50% {opacity:0.05;}
-  }
-
-  /* --- Container --- */
-  .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px 20px;
-  }
-
-  /* --- Giriş Ekranı (Overlay) --- */
-  #entryScreen {
-    position: fixed;
-    top:0; left:0; width:100%; height:100vh;
-    background: #05111f;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeInOut 4s forwards;
-  }
-  #entryScreen img {
-    width: 120px;
-    height: auto;
-    filter: drop-shadow(0 0 8px #00fff7);
-    animation: logoPulse 4s ease-in-out infinite;
-  }
-  #entryScreen h1 {
-    margin-top: 20px;
-    font-size: 3rem;
-    font-weight: 900;
-    color: #00fff7;
-    text-shadow:
-      0 0 10px #00fff7,
-      0 0 20px #00fff7,
-      0 0 30px #00fff7;
-    animation: glowText 4s ease-in-out infinite;
-  }
-
-  @keyframes fadeInOut {
-    0% {opacity:0;}
-    10% {opacity:1;}
-    90% {opacity:1;}
-    100% {opacity:0; pointer-events:none;}
-  }
-  @keyframes logoPulse {
-    0%, 100% {filter: drop-shadow(0 0 8px #00fff7);}
-    50% {filter: drop-shadow(0 0 18px #00fff7);}
-  }
-  @keyframes glowText {
-    0%, 100% {
-      text-shadow:
-        0 0 10px #00fff7,
-        0 0 20px #00fff7,
-        0 0 30px #00fff7;
-    }
-    50% {
-      text-shadow:
-        0 0 15px #00fff7,
-        0 0 30px #00fff7,
-        0 0 40px #00fff7;
-    }
-  }
-
-  /* --- Başlık & Açıklama --- */
+  /* Giriş animasyonu fadeIn 2 saniye */
   header {
     text-align: center;
-    margin-bottom: 40px;
-  }
-  header img.logo-main {
-    width: 100px;
-    filter: drop-shadow(0 0 5px #00fff7);
-    margin-bottom: 15px;
-  }
-  header h2 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #00f0ff;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px #00fff7;
-  }
-  header p.description {
-    max-width: 600px;
-    margin: 0 auto;
-    font-size: 1.05rem;
-    line-height: 1.5;
-    color: #c4f6fa;
+    padding: 50px 20px;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
   }
 
-  /* --- Nick & Logo Bölümü --- */
-  .members {
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Logo */
+  header img {
+    width: 140px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px #00fff7);
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { filter: drop-shadow(0 0 5px #00fff7);}
+    100% { filter: drop-shadow(0 0 20px #00fff7);}
+  }
+
+  /* Başlık */
+  header h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    color: #00fff7;
+    text-shadow: 0 0 10px #00fff7;
+  }
+
+  /* Butonlar container */
+  .buttons {
     display: flex;
     justify-content: center;
-    gap: 60px;
-    margin: 50px 0 70px 0;
+    gap: 40px;
+    margin-top: 30px;
     flex-wrap: wrap;
   }
-  .member-card {
-    background: rgba(0,255,255,0.07);
-    border-radius: 16px;
-    padding: 20px 25px;
-    width: 140px;
-    text-align: center;
-    box-shadow:
-      0 0 10px #00fff7,
-      inset 0 0 6px #00fff7;
-    transition: box-shadow 0.3s ease;
-  }
-  .member-card:hover {
-    box-shadow:
-      0 0 20px #00fff7,
-      inset 0 0 12px #00fff7;
-  }
-  .member-card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 5px #00fff7);
-  }
-  .member-nick {
-    margin-top: 12px;
-    font-weight: 900;
-    font-size: 1.3rem;
-    color: #00fff7;
-    text-shadow:
-      0 0 6px #00fff7,
-      0 0 12px #00fff7;
-  }
 
-  /* --- Klan'a Katıl Buton ve Popup Form --- */
-  #btnBasvuru {
-    display: block;
-    margin: 0 auto 50px auto;
-    padding: 15px 40px;
-    font-size: 1.3rem;
-    background: #00d5ff;
-    color: #01131a;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 0 15px #00d5ff;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-  #btnBasvuru:hover {
+  /* Butonlar stili */
+  button {
     background: #00fff7;
-    box-shadow: 0 0 30px #00fff7;
+    border: none;
+    padding: 15px 45px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #002b33;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px #00fff7aa;
+  }
+  button:hover {
+    background: #00c6b8;
+    box-shadow: 0 0 25px #00fff7ff;
   }
 
-  /* Popup form kaplama */
-  #popupFormWrapper {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-  }
-  #popupFormWrapper.active {
+  /* TikTok profilleri */
+  .tiktok-profiles {
+    margin: 35px auto 0;
+    max-width: 360px;
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .tiktok-profile {
+    background: #004d66;
+    padding: 12px 18px;
+    border-radius: 15px;
+    box-shadow: 0 0 12px #00fff7aa;
+    flex: 1 1 140px;
+    text-align: center;
+  }
+  .tiktok-profile a {
+    color: #00fff7;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+  .tiktok-profile a:hover {
+    text-decoration: underline;
   }
 
-  /* Popup form kutusu */
-  #popupForm {
-    background: #01131a;
-    padding: 30px 35px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 0 30px #00fff7;
-    position: relative;
+  /* Başvuru durumu sorgulama */
+  .application-status {
+    margin: 50px auto 70px;
+    text-align: center;
+    max-width: 320px;
   }
-  #popupForm h3 {
+  .application-status h2 {
+    font-size: 1.8rem;
     margin-bottom: 20px;
     color: #00fff7;
-    text-align: center;
-    font-weight: 700;
+    text-shadow: 0 0 8px #00fff7bb;
   }
-  #popupForm label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #8ef2ff;
-  }
-  #popupForm input,
-  #popupForm select,
-  #popupForm textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 18px;
+  .application-status input {
+    width: 90%;
+    padding: 12px 15px;
+    font-size: 1rem;
     border-radius: 10px;
     border: none;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
+    outline: none;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 10px #00fff7aa;
+    color: #004d66;
+    font-weight: 600;
   }
-  #popupForm textarea {
-    resize: vertical;
-  }
-  #popupForm button[type="submit"] {
-    width: 100%;
-    padding: 15px;
-    background: #00fff7;
-    color: #01131a;
-    font-weight: 800;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: background 0.3s ease;
-  }
-  #popupForm button[type="submit"]:hover {
-    background: #00d5ff;
-  }
-  /* Kapat butonu */
-  #closePopup {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    font-size: 1.8rem;
-    color: #00fff7;
-    cursor: pointer;
-    user-select: none;
+  .application-status button {
+    width: 94%;
   }
 
-  /* Form durum mesajı */
-  #formStatus {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: 700;
-  }
-  #formStatus.success {
-    color: #32d632;
-  }
-  #formStatus.error {
-    color: #f54343;
-  }
-
-  /* --- Tiktok Pop-up --- */
-  #tiktokPopup {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #01131a;
-    padding: 12px 20px;
-    border-radius: 40px;
-    box-shadow: 0 0 20px #00fff7;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    cursor: pointer;
-    color: #00fff7;
-    font-weight: 700;
-    user-select: none;
-    z-index: 9999;
-  }
-  #tiktokPopup:hover {
-    background: #00fff7;
-    color: #01131a;
-    box-shadow: 0 0 40px #00fff7;
-  }
-  #tiktokPopup svg {
-    width: 24px;
-    height: 24px;
-    fill: currentColor;
-  }
-
-  /* --- Tanıtım bölümü (açıklama) --- */
-  #tanitim {
-    max-width: 700px;
-    margin: 0 auto 60px auto;
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #aafcff;
-  }
-
-  /* --- Sayfa Geçiş Animasyonu --- */
-  main {
-    opacity: 0;
-    animation: fadeInPage 1.2s forwards;
-  }
-  @keyframes fadeInPage {
-    to {opacity: 1;}
-  }
-
-  /* --- Responsive --- */
-  @media(max-width:600px) {
-    header h2 {
-      font-size: 1.8rem;
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2.8rem;
     }
-    .members {
-      gap: 30px;
+    .buttons {
+      flex-direction: column;
+      gap: 20px;
     }
-    .member-card {
-      width: 120px;
-      padding: 15px 18px;
+    button {
+      width: 80%;
+      padding: 14px;
     }
-    .member-card img {
-      width: 80px;
-      height: 80px;
-    }
-    #btnBasvuru {
-      width: 90%;
-      font-size: 1.1rem;
-      padding: 12px 0;
+    .tiktok-profiles {
+      max-width: 90vw;
+      gap: 15px;
     }
   }
 </style>
 </head>
 <body>
 
-<div id="rgbGlow"></div>
-
-<!-- Giriş Ekranı -->
-<div id="entryScreen" aria-label="Giriş Ekranı">
+<header>
   <img src="logo.png" alt="ZZONE99 Logo" />
   <h1>ZZONE99</h1>
+</header>
+
+<div class="buttons">
+  <button onclick="document.getElementById('popup').style.display='flex'">Klana Katıl</button>
+  <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">İletişim</button>
 </div>
 
-<div class="container" role="main">
+<div class="tiktok-profiles">
+  <div class="tiktok-profile"><a href="https://www.tiktok.com/@mazz99theboss" target="_blank" rel="noopener">@mazz99theboss</a></div>
+  <div class="tiktok-profile"><a href="https://www.tiktok.com/@babavizyondapm" target="_blank" rel="noopener">@babavizyondapm</a></div>
+</div>
 
-  <!-- Başlık ve Açıklama -->
-  <header>
-    <img src="logo.png" alt="ZZONE99 Logo" class="logo-main" />
-    <h2>ZZONE99 PUBG Mobile Klanı</h2>
-  </header>
+<section class="application-status" id="application-status">
+  <h2>Başvuru Durumu Sorgula</h2>
+  <input id="uidInput" type="text" placeholder="Oyun UID'nizi girin" />
+  <br />
+  <button onclick="checkApplicationStatus()">Durumu Sorgula</button>
+</section>
 
-  <!-- Tanıtım Açıklaması -->
-  <section id="tanitim" aria-label="Klan Tanıtımı">
-    <p>
-      PUBG Mobile sahnesinde 2018 yılından beri aktif olan bir klan topluluğudur.
-      İlk olarak “Für die GANG” adıyla kurulan ekip, daha sonra “AREA323” adı altında yükselişini sürdürmüş, 
-      bugün ise yepyeni bir vizyonla ZZONE99 adıyla yoluna devam etmektedir.
-      Hedefimiz sadece oyun kazanmak değil, aynı zamanda kaliteli bir topluluk oluşturmaktır.
-    </p>
-  </section>
+<section id="contact" style="max-width:400px;margin:50px auto; text-align:center;">
+  <h2 style="color:#00fff7;">İletişim</h2>
+  <p>
+    TikTok Profilleri:<br />
+    <a href="https://www.tiktok.com/@mazz99theboss" target="_blank" rel="noopener" style="color:#00fff7; font-weight:bold;">@mazz99theboss</a><br />
+    <a href="https://www.tiktok.com/@babavizyondapm" target="_blank" rel="noopener" style="color:#00fff7; font-weight:bold;">@babavizyondapm</a>
+  </p>
+</section>
 
-  <!-- Üyeler Bölümü -->
-  <section class="members" aria-label="Klan Üyeleri">
-    <div class="member-card" tabindex="0">
-      <img src="mazz.png" alt="mAzz99 Logo" />
-      <div class="member-nick">mAzz99</div>
-    </div>
-    <div class="member-card" tabindex="0">
-      <img src="yazz.png" alt="yAzz99 Logo" />
-      <div class="member-nick">yAzz99</div>
-    </div>
-  </section>
-
-  <!-- Klan'a Katıl Butonu -->
-  <button id="btnBasvuru" aria-haspopup="dialog" aria-controls="popupFormWrapper" aria-expanded="false">KLANA KATIL</button>
-
-  <!-- Başvuru Formu Popup -->
-  <div id="popupFormWrapper" role="dialog" aria-modal="true" aria-labelledby="popupTitle" tabindex="-1">
-    <form id="popupForm" action="https://formspree.io/f/xldnljve" method="POST" novalidate>
-      <button id="closePopup" aria-label="Formu Kapat">&times;</button>
-      <h3 id="popupTitle">Klan Başvuru Formu</h3>
-
-      <label for="uid">UID (Oyuncu Kimliği):</label>
-      <input type="text" id="uid" name="UID" required placeholder="Örn: 123456789" />
-
-      <label for="oyunIsmi">Oyun İsim:</label>
-      <input type="text" id="oyunIsmi" name="OyunIsmi" required placeholder="Oyundaki isminiz" />
-
-      <label for="isim">Adınız:</label>
-      <input type="text" id="isim" name="Isim" required placeholder="Gerçek adınız" />
-
-      <label for="yas">Yaşınız:</label>
-      <input type="number" id="yas" name="Yas" min="13" max="99" required />
-
-      <label for="cihaz">Kullandığınız Cihaz:</label>
-      <select id="cihaz" name="Cihaz" required>
-        <option value="" disabled selected>Cihazınızı seçin</option>
-        <option value="Android">Android</option>
-        <option value="iOS">iOS</option>
-        <option value="Emulator">Emulator</option>
-        <option value="Diğer">Diğer</option>
-      </select>
-
-      <label for="aktiflik">Aktiflik Durumu:</label>
-      <textarea id="aktiflik" name="Aktiflik" rows="3" placeholder="Klan için aktiflik durumunuz ve diğer bilgiler"></textarea>
-
-      <button type="submit">Başvuruyu Gönder</button>
-
-      <div id="formStatus" role="alert" aria-live="polite"></div>
+<!-- Klana Katıl Pop-up -->
+<div id="popup" style="
+  display:none;
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+">
+  <div style="
+    background:#002b33;
+    padding:30px;
+    border-radius:20px;
+    width:90%;
+    max-width:400px;
+    box-shadow: 0 0 20px #00fff7aa;
+    color:#e0f7fa;
+    position: relative;
+  ">
+    <h2 style="text-align:center; color:#00fff7;">Klana Katıl</h2>
+    <form id="joinForm">
+      <input name="uid" placeholder="UID - Oyun İsmi" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:10px; border:none;"/>
+      <input name="name" placeholder="İsim" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:10px; border:none;"/>
+      <input name="age" type="number" placeholder="Yaş" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:10px; border:none;"/>
+      <input name="device" placeholder="Kullandığı Cihaz" required style="width:100%; padding:12px; margin-bottom:15px; border-radius:10px; border:none;"/>
+      <input name="activity" placeholder="Aktiflik" required style="width:100%; padding:12px; margin-bottom:25px; border-radius:10px; border:none;"/>
+      <button type="submit" style="width:100%; background:#00fff7; border:none; padding:15px; border-radius:10px; font-weight:700; color:#002b33; cursor:pointer; transition: background 0.3s;">
+        Başvur
+      </button>
     </form>
+    <button onclick="document.getElementById('popup').style.display='none'" style="position:absolute; top:10px; right:15px; background:none; border:none; font-size:1.5rem; color:#00fff7; cursor:pointer;">&times;</button>
+    <p id="formResponse" style="margin-top:15px; text-align:center;"></p>
   </div>
-
 </div>
-
-<!-- Tiktok Popup -->
-<div id="tiktokPopup" tabindex="0" role="button" aria-label="TikTok Hesapları">
-  <svg viewBox="0 0 24 24"><path d="M9 3a7.5 7.5 0 0 0 7.52 7.5v4.5a4.5 4.5 0 1 1-4.5-4.5V3Z"/></svg>
-  <span>@mAzz99theboss</span>
-  <span>|</span>
-  <span>@babavizyondapm</span>
-</div>
-
-<!-- Footer -->
-<footer style="text-align:center; margin: 50px 0 30px 0; color:#0097a7; font-weight:600; font-size:1rem; user-select:none;">
-  Für die Famiilla &nbsp;&nbsp;|&nbsp;&nbsp; SINCE 2018
-</footer>
 
 <script>
-  // Entry Screen gizleme (4 saniye sonra)
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const entry = document.getElementById('entryScreen');
-      entry.style.display = 'none';
-    }, 4000);
-  });
-
-  // Popup form aç/kapa
-  const btnBasvuru = document.getElementById('btnBasvuru');
-  const popupWrapper = document.getElementById('popupFormWrapper');
-  const closePopupBtn = document.getElementById('closePopup');
-  const formStatus = document.getElementById('formStatus');
-  const popupForm = document.getElementById('popupForm');
-
-  btnBasvuru.addEventListener('click', () => {
-    popupWrapper.classList.add('active');
-    btnBasvuru.setAttribute('aria-expanded', 'true');
-    popupWrapper.focus();
-  });
-
-  closePopupBtn.addEventListener('click', () => {
-    popupWrapper.classList.remove('active');
-    btnBasvuru.setAttribute('aria-expanded', 'false');
-  });
-
-  // Form gönderimi - Formspree entegrasyonu ve geri bildirim
-  popupForm.addEventListener('submit', async (e) => {
+  // Başvuru formu gönderimi
+  document.getElementById('joinForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    formStatus.textContent = 'Başvurunuz gönderiliyor...';
-    formStatus.className = '';
+    const form = e.target;
+    const formData = new FormData(form);
 
-    const formData = new FormData(popupForm);
+    // Formspree endpoint
+    const url = 'https://formspree.io/f/xldnljve';
+
     try {
-      const response = await fetch(popupForm.action, {
+      const response = await fetch(url, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
         body: formData,
+        headers: { 'Accept': 'application/json' }
       });
       if (response.ok) {
-        formStatus.textContent = 'Başvurunuz başarıyla gönderildi. Teşekkürler!';
-        formStatus.className = 'success';
-        popupForm.reset();
+        document.getElementById('formResponse').textContent = 'Başvurunuz başarıyla alındı!';
+        form.reset();
       } else {
-        throw new Error('Gönderim başarısız oldu.');
+        document.getElementById('formResponse').textContent = 'Başvuru gönderilirken hata oluştu. Lütfen tekrar deneyin.';
       }
     } catch (error) {
-      formStatus.textContent = 'Başvuru gönderilirken hata oluştu, lütfen tekrar deneyin.';
-      formStatus.className = 'error';
+      document.getElementById('formResponse').textContent = 'Başvuru gönderilirken hata oluştu. Lütfen internet bağlantınızı kontrol edin.';
     }
   });
 
-  // Tiktok Popup tıklama ile link açma
-  const tiktokPopup = document.getElementById('tiktokPopup');
-  tiktokPopup.addEventListener('click', () => {
-    window.open('https://www.tiktok.com/@mazz99theboss', '_blank');
-  });
-  tiktokPopup.addEventListener('keypress', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      window.open('https://www.tiktok.com/@mazz99theboss', '_blank');
+  // Başvuru durum sorgulama (örnek statik)
+  function checkApplicationStatus() {
+    const uid = document.getElementById('uidInput').value.trim();
+    if (!uid) {
+      alert('Lütfen UID girin!');
+      return;
     }
-  });
-
-  // Ziyaretçi sayacı - basit localStorage ile
-  const visitorCountKey = 'zzone99_visitorCount';
-  let count = localStorage.getItem(visitorCountKey);
-  if (!count) {
-    count = 1;
-  } else {
-    count = parseInt(count) + 1;
+    // Gerçek sorgu API bağlanabilir burada, şimdilik örnek alert:
+    alert(`Başvuru durumu: Onay Bekliyor (UID: ${uid})`);
   }
-  localStorage.setItem(visitorCountKey, count);
-  // Footer altına göster
-  const footer = document.querySelector('footer');
-  const counterEl = document.createElement('div');
-  counterEl.textContent = `Bugün Ziyaretçi: ${count}`;
-  counterEl.style.color = '#00fff7';
-  counterEl.style.marginTop = '8px';
-  footer.appendChild(counterEl);
 </script>
 
 </body>
