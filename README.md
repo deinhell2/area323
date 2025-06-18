@@ -1,194 +1,170 @@
-
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZZONE99 - Klan Sitesi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <title>ZZONE99 - PUBG Klanı</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }body {
-  font-family: 'Orbitron', sans-serif;
-  background: linear-gradient(270deg, #e0f7fa, #fff);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-  color: #333;
-  overflow-x: hidden;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(-45deg, #e0f7fa, #ffffff, #f1f8e9, #e3f2fd);
+      background-size: 400% 400%;
+      animation: bgAnim 15s ease infinite;
+      color: #222;
+      overflow-x: hidden;
+    }
+    @keyframes bgAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
 
-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
+    .logo {
+      width: 140px;
+      animation: spinLogo 4s infinite ease-in-out;
+    }
+    @keyframes spinLogo {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(3deg) scale(1.05); }
+      100% { transform: rotate(0deg); }
+    }
 
-.logo {
-  width: 160px;
-  height: auto;
-  animation: pulse 2s infinite ease-in-out;
-}
+    h1 {
+      font-size: 3rem;
+      margin: 1rem 0;
+      font-weight: 700;
+      animation: fadeIn 2s ease-in;
+    }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.9; }
-  100% { transform: scale(1); opacity: 1; }
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-h1 {
-  font-size: 2.5rem;
-  margin: 1.5rem 0 1rem;
-  color: #000;
-}
+    .button {
+      background: #00bcd4;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      margin-top: 2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      background: #008c9e;
+      transform: scale(1.05);
+    }
 
-.button {
-  background: #00bcd4;
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 8px;
-  margin: 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s ease;
-  text-decoration: none;
-}
+    .hidden { display: none; }
 
-.button:hover {
-  background: #008c9e;
-}
+    .content {
+      max-width: 800px;
+      padding: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
 
-.content {
-  max-width: 800px;
-  padding: 2rem;
-}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      width: 100%;
+      margin: 2rem auto;
+    }
 
-.leaders {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
-}
+    input, textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
 
-@media(min-width: 600px) {
-  .leaders {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
+    footer {
+      background: rgba(0,0,0,0.05);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
 
-.card {
-  background: #ffffffcc;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+    .socials a {
+      display: inline-block;
+      margin: 0.5rem;
+      color: #00bcd4;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.card h3 {
-  margin-bottom: 0.5rem;
-  color: #00bcd4;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 500px;
-  margin: 2rem auto;
-}
-
-input, textarea {
-  padding: 0.8rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-footer {
-  background: #f0f0f0;
-  padding: 2rem;
-  text-align: center;
-}
-
-.socials a {
-  display: block;
-  color: #00bcd4;
-  text-decoration: none;
-  margin: 0.5rem 0;
-}
-
-.hidden {
-  display: none;
-}
-
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .button { width: 90%; }
+    }
   </style>
   <script>
     function showSection(id) {
       document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');
     }
-    window.onload = () => showSection('giris');
+    window.onload = () => showSection('acilis');
   </script>
 </head>
 <body>
-  <!-- Giriş Bölümü -->
-  <section id="giris">
+  <!-- Açılış Sayfası -->
+  <section id="acilis">
     <img src="logo.png" alt="ZZONE99 Logo" class="logo">
     <h1>ZZONE99</h1>
-    <button class="button" onclick="showSection('tanitim')">Tanıtım</button>
-    <button class="button" onclick="showSection('liderler')">Liderler</button>
+    <button class="button" onclick="showSection('anasayfa')">Giriş</button>
+  </section>
+
+  <!-- Ana Sayfa -->
+  <section id="anasayfa" class="hidden">
+    <img src="logo.png" alt="ZZONE99 Logo" class="logo">
+    <h1>ZZONE99</h1>
+    <div class="content">
+      <p><strong>Since 2018</strong> - Klanın ilk çıkış ismi <strong>Für die GANG</strong>, sonrasında <strong>AREA323</strong> ve yeni bir vizyon ile <strong>ZZONE99</strong> olarak devam edecektir.</p>
+    </div>
     <button class="button" onclick="showSection('basvuru')">Başvuru Yap</button>
     <button class="button" onclick="showSection('iletisim')">İletişim</button>
-  </section>  <!-- Tanıtım -->  <section id="tanitim" class="hidden">
-    <div class="content">
-      <h1>Tanıtım</h1>
-      <p>Since 2018 - Klanın ilk çıkış ismi <strong>Für die GANG</strong>, sonrasında <strong>AREA323</strong> ve yeni bir vizyon ile <strong>ZZONE99</strong> olarak devam edecektir.</p>
-      <button class="button" onclick="showSection('giris')">Geri Dön</button>
-    </div>
-  </section>  <!-- Lider Kartları -->  <section id="liderler" class="hidden">
-    <h1>Klan Liderleri</h1>
-    <div class="leaders">
-      <div class="card">
-        <h3>mAzz99</h3>
-        <p>TikTok: <a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">@mAzz99theboss</a></p>
-      </div>
-      <div class="card">
-        <h3>yAzz99</h3>
-        <p>TikTok: <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">@babavizyondapm</a></p>
-      </div>
-    </div>
-    <button class="button" onclick="showSection('giris')">Geri Dön</button>
-  </section>  <!-- Başvuru Formu -->  <section id="basvuru" class="hidden">
+    <button class="button" onclick="showSection('acilis')">Çıkış</button>
+  </section>
+
+  <!-- Başvuru Formu -->
+  <section id="basvuru" class="hidden">
     <h1>Başvuru Formu</h1>
     <form action="https://formspree.io/f/xldnljve" method="POST">
       <input type="text" name="oyuncu_id" placeholder="Oyuncu ID" required>
       <input type="text" name="oyun_suresi" placeholder="Ne zamandır oynuyorsun?" required>
       <input type="text" name="eski_klanlar" placeholder="Eski Clan'ların" required>
       <input type="text" name="cihaz" placeholder="Kullandığın cihaz" required>
-      <button class="button" type="submit">Başvuru Gönder</button>
+      <button class="button" type="submit">Gönder</button>
     </form>
-    <button class="button" onclick="showSection('giris')">Geri Dön</button>
-  </section>  <!-- Sosyal Medya -->  <section id="iletisim" class="hidden">
+    <button class="button" onclick="showSection('anasayfa')">Geri Dön</button>
+  </section>
+
+  <!-- İletişim -->
+  <section id="iletisim" class="hidden">
     <h1>İletişim</h1>
     <div class="socials">
       <a href="https://www.tiktok.com/@mAzz99theboss" target="_blank">@mAzz99theboss</a>
       <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">@babavizyondapm</a>
     </div>
-    <button class="button" onclick="showSection('giris')">Geri Dön</button>
-  </section>  <footer>
+    <button class="button" onclick="showSection('anasayfa')">Geri Dön</button>
+  </section>
+
+  <footer>
     <p>&copy; 2025 ZZONE99. Tüm hakları saklıdır.</p>
   </footer>
 </body>
-</html>
