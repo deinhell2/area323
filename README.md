@@ -2,564 +2,498 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ZZONE99 PUBG Mobile Klanı</title>
-  <meta name="description" content="PUBG Mobile sahnesinde 2018 yılından beri aktif olan ZZONE99 klanı. Kaliteli bir topluluk ve oyun başarısı için buradayız." />
-  <meta property="og:title" content="ZZONE99 PUBG Mobile Klanı" />
-  <meta property="og:description" content="PUBG Mobile sahnesinde 2018 yılından beri aktif olan ZZONE99 klanı. Kaliteli bir topluluk ve oyun başarısı için buradayız." />
-  <meta property="og:image" content="logo.png" />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#007FFF" />
-
+  <title>ZZONE99</title>
   <style>
-    /* --- GENEL STİLLER --- */
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    /* Reset ve temel */
     * {
       box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body, html {
       margin: 0; padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #00111f, #004080);
-      color: #e0f7ff;
-      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #00fff7;
+      user-select: none;
+    }
+    body {
+      background: linear-gradient(135deg, #001f3f, #004d66);
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 15px 50px;
     }
     a {
-      color: #00cfff;
+      color: #00fff7;
       text-decoration: none;
-      transition: color 0.3s ease;
     }
     a:hover {
-      color: #72e0ff;
+      color: #66fff7;
     }
 
-    /* --- LOADING SCREEN --- */
-    #loadingScreen {
+    /* Loading Screen */
+    #loading-screen {
       position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, #00111f, #004080);
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background-color: #001a33;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      animation: fadeOut 1s ease forwards;
-      animation-delay: 2s;
+      user-select: none;
+      transition: opacity 0.5s ease;
     }
-    #loadingScreen.fadeOut {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+    #loading-logo {
+      width: 140px;
+      animation: glow 2s infinite alternate;
     }
-    #loadingScreen img {
-      width: 120px;
-      animation: logoPulse 2s ease-in-out infinite;
-    }
-    #loadingScreen h1 {
-      font-size: 3rem;
-      color: #00d4ff;
-      text-shadow: 0 0 8px #00d4ff;
-      margin: 1rem 0 0 0;
-      letter-spacing: 6px;
+    #loading-text {
+      font-size: 3.5rem;
       font-weight: 900;
-      animation: textGlow 2s ease-in-out infinite;
+      margin-top: 15px;
+      text-shadow: 0 0 10px #00fff7;
+      animation: glow 2s infinite alternate;
     }
-    @keyframes logoPulse {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px #00d4ff);}
-      50% { transform: scale(1.1); filter: drop-shadow(0 0 20px #00f0ff);}
-    }
-    @keyframes textGlow {
-      0%, 100% { text-shadow: 0 0 5px #00cfff, 0 0 15px #00f0ff; }
-      50% { text-shadow: 0 0 15px #00e5ff, 0 0 25px #00f0ff; }
-    }
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
+    @keyframes glow {
+      0% {
+        filter: drop-shadow(0 0 5px #00fff7);
+      }
+      100% {
+        filter: drop-shadow(0 0 20px #00fff7);
       }
     }
 
-    /* --- FLOATING NAV --- */
-    #floatingMenu {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(0, 132, 255, 0.8);
-      border-radius: 50px;
-      padding: 10px 20px;
-      box-shadow: 0 0 15px #00cfff;
-      z-index: 1000;
-      display: flex;
-      gap: 20px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    /* Başlık ve açıklama */
+    header {
+      margin-top: 100px;
+      text-align: center;
+      max-width: 900px;
+      user-select: text;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      letter-spacing: 5px;
+      font-weight: 900;
+      text-shadow: 0 0 15px #00fff7;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      color: #a0e9f8cc;
+      font-weight: 600;
+      user-select: text;
+    }
+
+    /* Liderler Bölümü */
+    section.liderler {
+      margin: 60px 0;
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+    }
+    section.liderler h2 {
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 8px #00fff7;
       user-select: none;
     }
-    #floatingMenu a {
-      color: #e0f7ff;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-    }
-    #floatingMenu a:hover {
-      color: #00f7ff;
-      text-shadow: 0 0 8px #00f7ff;
-    }
-
-    /* --- ANA KUTU --- */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 2rem 1rem 4rem;
-      text-align: center;
-    }
-
-    /* --- BANNER --- */
-    #banner {
-      margin-top: 1rem;
-      margin-bottom: 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    #banner img {
-      max-width: 140px;
-      filter: drop-shadow(0 0 10px #00d4ff);
-      animation: logoGlow 3s ease-in-out infinite alternate;
-    }
-    #banner h2 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: #00d4ff;
-      text-shadow: 0 0 10px #00d4ff;
-      letter-spacing: 0.2em;
-      margin: 0;
-      animation: textPulse 3s ease-in-out infinite alternate;
-    }
-    @keyframes logoGlow {
-      from { filter: drop-shadow(0 0 10px #00d4ff);}
-      to { filter: drop-shadow(0 0 25px #00ffff);}
-    }
-    @keyframes textPulse {
-      from { text-shadow: 0 0 10px #00d4ff;}
-      to { text-shadow: 0 0 20px #00ffff;}
-    }
-
-    /* --- TANITIM --- */
-    #intro {
-      font-size: 1.2rem;
-      line-height: 1.5;
-      color: #caf0f8;
-      max-width: 900px;
-      margin: 0 auto 4rem auto;
-      text-align: center;
-      font-weight: 500;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 1s ease forwards;
-      animation-delay: 2.3s;
-    }
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* --- LİDERLER --- */
-    #leaders {
+    .lider-container {
       display: flex;
       justify-content: center;
-      gap: 4rem;
-      margin-bottom: 4rem;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-      animation-delay: 2.7s;
+      gap: 60px;
       flex-wrap: wrap;
     }
-    .leader-card {
-      background: rgba(0, 132, 255, 0.2);
+    .lider {
+      background: rgba(0, 255, 247, 0.1);
       border-radius: 15px;
-      padding: 1rem;
+      padding: 15px;
       width: 180px;
-      color: #e0f7ff;
-      box-shadow: 0 0 15px #00bfff;
+      box-shadow: 0 0 15px #00fff7cc;
       transition: transform 0.3s ease;
       cursor: default;
-      user-select: none;
-      text-align: center;
     }
-    .leader-card:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 25px #00eaff;
+    .lider:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #00fff7ff;
     }
-    .leader-card img {
-      width: 130px;
-      border-radius: 15px;
-      margin-bottom: 1rem;
-      filter: drop-shadow(0 0 8px #00d4ff);
-      transition: filter 0.3s ease;
-    }
-    .leader-card img:hover {
-      filter: drop-shadow(0 0 20px #00ffff);
-    }
-    .leader-card h3 {
-      margin: 0 0 0.3rem;
-      font-weight: 700;
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #00cfff;
-      text-shadow: 0 0 10px #00cfff;
-    }
-    .leader-card p {
-      margin: 0;
-      font-weight: 500;
-      font-size: 0.9rem;
-      letter-spacing: 0.05em;
-      color: #b0e0ff;
-    }
-
-    /* --- BAŞVURU BUTONU --- */
-    #applyBtn {
-      background: #00cfff;
-      color: #00111f;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 40px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00cfff;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      margin: 2rem auto 4rem;
+    .lider img {
+      width: 150px;
+      height: auto;
       display: block;
+      margin: 0 auto 10px;
+      filter: drop-shadow(0 0 6px #00fff7);
+      background: transparent;
+      border-radius: 15px;
     }
-    #applyBtn:hover {
-      background: #00e6ff;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #00e6ff;
+    .lider .nick {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #00fff7;
+      margin-bottom: 5px;
+      text-shadow: 0 0 5px #00fff7;
+    }
+    .lider .id {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #66f7f7aa;
+      user-select: text;
     }
 
-    /* --- BAŞVURU MODAL --- */
-    #applyModal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
-    #applyModal.active {
+    /* TikTok Linkler */
+    .tiktok-links {
+      margin-top: 25px;
       display: flex;
+      justify-content: center;
+      gap: 35px;
+      user-select: none;
     }
-    #applyModal .modal-content {
-      background: #002640;
-      border-radius: 15px;
-      padding: 2rem;
+    .tiktok-links a {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      transition: transform 0.3s ease;
+    }
+    .tiktok-links a:hover {
+      transform: scale(1.2);
+    }
+    .tiktok-links img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 6px #00fff7);
+    }
+
+    /* Butonlar */
+    .button-container {
+      margin: 40px 0 30px;
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      user-select: none;
+    }
+    button {
+      background: linear-gradient(135deg, #00f2ff, #00a6ff);
+      border: none;
+      padding: 15px 35px;
+      border-radius: 50px;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #001f3f;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00fff7;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #00a6ff, #00f2ff);
+      box-shadow: 0 0 25px #00fff7;
+      transform: scale(1.05);
+    }
+    button:focus {
+      outline: none;
+    }
+
+    /* Başvuru Formu Popup */
+    #popup-form {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #001f3fcc;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px #00fff7cc;
+      z-index: 10000;
+      transition: transform 0.4s ease;
       width: 90%;
       max-width: 420px;
-      box-shadow: 0 0 25px #00cfff;
-      color: #caf0f8;
-      position: relative;
     }
-    #applyModal .modal-content h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
+    #popup-form.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    #popup-form h3 {
+      color: #00fff7;
+      margin-bottom: 25px;
       text-align: center;
-      color: #00d4ff;
-      letter-spacing: 0.15em;
+      font-weight: 900;
+      text-shadow: 0 0 10px #00fff7;
     }
-    #applyModal label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: 600;
-      color: #b0e0ff;
+    #popup-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-    #applyModal input, #applyModal select {
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 8px;
+    #popup-form input, #popup-form select {
+      padding: 12px 15px;
+      border-radius: 10px;
       border: none;
-      margin-top: 0.3rem;
       font-size: 1rem;
-      font-weight: 500;
-      color: #00111f;
+      font-weight: 600;
+      user-select: text;
     }
-    #applyModal button {
-      margin-top: 1.5rem;
-      width: 100%;
-      padding: 12px 0;
-      background: #00cfff;
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
+    #popup-form input:focus, #popup-form select:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00fff7;
+    }
+    #popup-form button {
+      margin-top: 15px;
+      background: #00fff7;
+      color: #001f3f;
+      font-weight: 900;
       font-size: 1.2rem;
       cursor: pointer;
-      color: #00111f;
-      transition: background-color 0.3s ease;
+      transition: background 0.3s ease;
+      box-shadow: none;
+      border-radius: 10px;
+      padding: 12px 0;
+      user-select: none;
     }
-    #applyModal button:hover {
-      background: #00e6ff;
-    }
-    #applyModal .close-btn {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 1.8rem;
-      color: #00d4ff;
-      cursor: pointer;
-      font-weight: 700;
+    #popup-form button:hover {
+      background: #00b9c7;
     }
 
-    /* --- GERİ BİLDİRİM MESAJI --- */
-    #feedbackMsg {
-      margin-top: 1rem;
+    /* Mesajlar */
+    #form-message {
+      margin-top: 15px;
       text-align: center;
       font-weight: 700;
       font-size: 1.1rem;
-      color: #00ffcc;
-    }
-    #feedbackMsg.error {
-      color: #ff5555;
-    }
-
-    /* --- FOOTER --- */
-    footer {
-      text-align: center;
-      color: #00aaff;
-      padding: 1rem 1rem 2rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
       user-select: none;
-      border-top: 1px solid #00cfff55;
     }
-    footer span {
-      display: block;
-      margin-top: 0.3rem;
-      font-size: 0.9rem;
-      color: #0099ccaa;
-      font-weight: 400;
-      font-style: italic;
+    #form-message.error {
+      color: #ff4c4c;
+      text-shadow: 0 0 10px #ff4c4c;
     }
 
-    /* --- SCROLL ANİMASYONLARI --- */
-    .fade-in {
+    /* Ziyaretçi sayacı */
+    #visitor-bar {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      width: 180px;
+      height: 25px;
+      border-radius: 50px;
+      background: #00294d;
+      box-shadow: 0 0 10px #00fff7cc inset;
+      overflow: hidden;
+      user-select: none;
+      z-index: 999;
+    }
+    #visitor-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #00fff7;
+      border-radius: 50px;
+      transition: width 0.5s ease;
+    }
+    #visitor-count {
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 900;
+      font-size: 1rem;
+      color: #001f3f;
+      text-shadow: none;
+      user-select: none;
+    }
+
+    /* Sayfa geçiş animasyonu */
+    body.fade-out {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+      transition: opacity 0.5s ease;
     }
 
-    /* --- RESPONSIVE --- */
-    @media (max-width: 768px) {
-      #leaders {
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.4rem;
       }
-      #floatingMenu {
-        flex-direction: column;
-        padding: 10px;
-        right: 10px;
-        top: 10px;
-        gap: 10px;
-      }
-      #applyBtn {
-        width: 80%;
+      header p {
         font-size: 1rem;
-        padding: 10px 15px;
+      }
+      .lider-container {
+        gap: 30px;
+      }
+      .lider {
+        width: 140px;
+        padding: 10px;
+      }
+      .lider img {
+        width: 120px;
+      }
+      .button-container {
+        flex-direction: column;
+        gap: 25px;
+      }
+      button {
+        width: 100%;
+        max-width: 300px;
+      }
+      .tiktok-links {
+        gap: 25px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <img src="logo.png" alt="ZZONE99 Logo" id="loading-logo" />
+    <h1 id="loading-text">ZZONE99</h1>
+  </div>
 
-  <!-- LOADING SCREEN -->
-  <div id="loadingScreen">
-    <img src="logo.png" alt="ZZONE99 Logo" />
+  <!-- Header / Tanıtım -->
+  <header>
     <h1>ZZONE99</h1>
-  </div>
+    <p>İlk olarak “Für die GANG” adıyla kurulan ekip, daha sonra “AREA323” adı altında yükselişini sürdürmüş,<br>
+       bugün ise yepyeni bir vizyonla ZZONE99 adıyla yoluna devam etmektedir.<br>
+       Hedefimiz sadece oyun kazanmak değil, aynı zamanda kaliteli bir topluluk oluşturmak.</p>
+  </header>
 
-  <!-- FLOATING MENU -->
-  <div id="floatingMenu">
-    <a href="#intro">Tanıtım</a>
-    <a href="#leaders">Liderler</a>
-    <a href="#" id="openApply">Klana Katıl</a>
-  </div>
-
-  <!-- ANA CONTAINER -->
-  <div class="container">
-
-    <!-- BANNER -->
-    <section id="banner">
-      <img src="logo.png" alt="ZZONE99 Logo" />
-      <h2>ZZONE99</h2>
-    </section>
-
-    <!-- TANITIM -->
-    <section id="intro" class="fade-in">
-      PUBG Mobile sahnesinde 2018 yılından beri aktif olan bir klan topluluğudur.
-      İlk olarak “Für die GANG” adıyla kurulan ekip, daha sonra “AREA323” adı altında yükselişini sürdürmüş,
-      bugün ise yepyeni bir vizyonla ZZONE99 adıyla yoluna devam etmektedir.
-      Hedefimiz sadece oyun kazanmak değil, aynı zamanda kaliteli bir topluluk oluşturmaktır.
-    </section>
-
-    <!-- LIDERLER -->
-    <section id="leaders" class="fade-in">
-      <div class="leader-card">
+  <!-- Liderler -->
+  <section class="liderler">
+    <h2>LİDERLER</h2>
+    <div class="lider-container">
+      <div class="lider">
         <img src="mazz.png" alt="mAzz99" />
-        <h3>mAzz99</h3>
-        <p>ID: 516572604</p>
+        <div class="nick">mAzz99</div>
+        <div class="id">516572604</div>
       </div>
-      <div class="leader-card">
+      <div class="lider">
         <img src="yazz.png" alt="yAzz99" />
-        <h3>yAzz99</h3>
-        <p>ID: 520654025</p>
+        <div class="nick">yAzz99</div>
+        <div class="id">520654025</div>
       </div>
-    </section>
-
-    <!-- BASVURU BUTONU -->
-    <button id="applyBtn">Klana Katıl</button>
-
-  </div>
-
-  <!-- BASVURU MODAL -->
-  <div id="applyModal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeApply">&times;</span>
-      <h2>Başvuru Formu</h2>
-      <form id="applyForm" action="https://formspree.io/f/xldnljve" method="POST" novalidate>
-        <label for="uid">UID - Oyun İsmi</label>
-        <input type="text" id="uid" name="UID-Oyun İsmi" placeholder="UID ve Oyun İsmi" required />
-        <label for="name">İsim</label>
-        <input type="text" id="name" name="İsim" placeholder="Adınız" required />
-        <label for="age">Yaş</label>
-        <input type="number" id="age" name="Yaş" min="12" max="99" placeholder="Yaşınız" required />
-        <label for="device">Cihaz</label>
-        <select id="device" name="Cihaz" required>
-          <option value="" disabled selected>Cihaz Seçiniz</option>
-          <option value="Android">Android</option>
-          <option value="iOS">iOS</option>
-          <option value="Emulator">Emülatör</option>
-          <option value="Diğer">Diğer</option>
-        </select>
-        <label for="activity">Aktiflik (günlük saat)</label>
-        <input type="number" id="activity" name="Aktiflik" min="0" max="24" placeholder="Günde kaç saat aktif?" required />
-        <button type="submit">Başvur</button>
-        <p id="feedbackMsg"></p>
-      </form>
     </div>
+    <div class="tiktok-links">
+      <a href="https://www.tiktok.com/@mazz99theboss" target="_blank" rel="noopener noreferrer">
+        <img src="tiktok-icon.png" alt="TikTok mAzz99" />
+      </a>
+      <a href="https://www.tiktok.com/@babavizyondapm" target="_blank" rel="noopener noreferrer">
+        <img src="tiktok-icon.png" alt="TikTok yAzz99" />
+      </a>
+    </div>
+  </section>
+
+  <!-- Butonlar -->
+  <div class="button-container">
+    <button id="openFormBtn">KLANA KATIL</button>
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    Für die Famiilla<br/>
-    <span>SINCE 2018</span>
-  </footer>
+  <!-- Başvuru Formu Popup -->
+  <div id="popup-form">
+    <h3>Klana Katıl Başvurusu</h3>
+    <form id="application-form" action="https://formspree.io/f/xldnljve" method="POST">
+      <input type="text" name="uid" placeholder="UID" required autocomplete="off" />
+      <input type="text" name="oyun_ismi" placeholder="Oyun İsmi" required autocomplete="off" />
+      <input type="text" name="isim" placeholder="İsim" required autocomplete="off" />
+      <input type="number" name="yas" placeholder="Yaş" min="10" max="80" required autocomplete="off" />
+      <select name="cihaz" required>
+        <option value="" disabled selected>Cihaz</option>
+        <option value="Android">Android</option>
+        <option value="iOS">iOS</option>
+        <option value="Diğer">Diğer</option>
+      </select>
+      <select name="aktiflik" required>
+        <option value="" disabled selected>Aktiflik</option>
+        <option value="Haftada 7 Gün">Haftada 7 Gün</option>
+        <option value="Haftada 4-6 Gün">Haftada 4-6 Gün</option>
+        <option value="Haftada 1-3 Gün">Haftada 1-3 Gün</option>
+      </select>
+      <button type="submit">Başvuruyu Gönder</button>
+    </form>
+    <div id="form-message"></div>
+  </div>
+
+  <!-- Ziyaretçi sayacı -->
+  <div id="visitor-bar">
+    <div id="visitor-bar-fill"></div>
+    <div id="visitor-count">0</div>
+  </div>
 
   <script>
-    // LOADING SCREEN KAYBOLMASI
+    // Loading ekranı 2 saniye sonra kaybolur
     window.addEventListener('load', () => {
-      const loadingScreen = document.getElementById('loadingScreen');
-      loadingScreen.classList.add('fadeOut');
-      setTimeout(() => loadingScreen.style.display = 'none', 1000);
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => loadingScreen.style.display = 'none', 500);
+      }, 2000);
     });
 
-    // APPLY MODAL AÇMA/KAPAMA
-    const openApply = document.getElementById('openApply');
-    const applyBtn = document.getElementById('applyBtn');
-    const applyModal = document.getElementById('applyModal');
-    const closeApply = document.getElementById('closeApply');
+    // Pop-up form açma / kapama
+    const openFormBtn = document.getElementById('openFormBtn');
+    const popupForm = document.getElementById('popup-form');
+    const formMessage = document.getElementById('form-message');
 
-    function openModal() {
-      applyModal.classList.add('active');
-    }
-    function closeModal() {
-      applyModal.classList.remove('active');
-      clearFeedback();
-      applyForm.reset();
-    }
+    openFormBtn.addEventListener('click', () => {
+      popupForm.classList.add('active');
+      formMessage.textContent = '';
+      document.getElementById('application-form').reset();
+    });
 
-    openApply.addEventListener('click', (e) => {
+    // Form gönderimi (formspree)
+    const applicationForm = document.getElementById('application-form');
+    applicationForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      openModal();
-    });
-    applyBtn.addEventListener('click', openModal);
-    closeApply.addEventListener('click', closeModal);
-    applyModal.addEventListener('click', (e) => {
-      if (e.target === applyModal) closeModal();
-    });
+      formMessage.textContent = 'Gönderiliyor...';
 
-    // FORM VALIDATION VE FORM SUBMIT
-    const applyForm = document.getElementById('applyForm');
-    const feedbackMsg = document.getElementById('feedbackMsg');
-
-    function clearFeedback() {
-      feedbackMsg.textContent = '';
-      feedbackMsg.classList.remove('error');
-    }
-
-    applyForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      clearFeedback();
-
-      // Basit validasyon
-      if (!applyForm.checkValidity()) {
-        feedbackMsg.textContent = 'Lütfen tüm alanları doğru şekilde doldurunuz.';
-        feedbackMsg.classList.add('error');
-        return;
-      }
-
-      // Submit Formspree'e fetch ile
-      fetch(applyForm.action, {
+      const formData = new FormData(applicationForm);
+      fetch(applicationForm.action, {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(applyForm)
+        body: formData,
+        headers: { 'Accept': 'application/json' }
       }).then(response => {
         if (response.ok) {
-          feedbackMsg.textContent = 'Başvurunuz başarıyla alındı, teşekkürler!';
-          feedbackMsg.classList.remove('error');
-          applyForm.reset();
-          setTimeout(closeModal, 3000);
+          formMessage.textContent = 'Başvurunuz alındı, teşekkürler!';
+          applicationForm.reset();
+          setTimeout(() => {
+            popupForm.classList.remove('active');
+            formMessage.textContent = '';
+          }, 3000);
         } else {
           response.json().then(data => {
-            if (Object.hasOwn(data, 'errors')) {
-              feedbackMsg.textContent = data["errors"].map(error => error["message"]).join(", ");
-            } else {
-              feedbackMsg.textContent = 'Bir hata oluştu. Lütfen tekrar deneyiniz.';
-            }
-            feedbackMsg.classList.add('error');
+            formMessage.textContent = data.error || 'Başvuru gönderilirken hata oluştu.';
+            formMessage.classList.add('error');
           });
         }
       }).catch(() => {
-        feedbackMsg.textContent = 'Sunucuya ulaşılamıyor. İnternet bağlantınızı kontrol edin.';
-        feedbackMsg.classList.add('error');
+        formMessage.textContent = 'Başvuru gönderilirken hata oluştu.';
+        formMessage.classList.add('error');
       });
     });
 
-    // SAYFA KAYDIRMA EFECTİ (fade-in)
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0, rootMargin: "0px 0px -100px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        appearOnScroll.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    // Basit ziyaretçi sayacı (localStorage ile)
+    const visitorCountEl = document.getElementById('visitor-count');
+    const visitorBarFill = document.getElementById('visitor-bar-fill');
+    function updateVisitorCount() {
+      let count = localStorage.getItem('zzone99_visitor_count');
+      if (!count) {
+        count = 1;
+      } else {
+        count = parseInt(count) + 1;
+      }
+      localStorage.setItem('zzone99_visitor_count', count);
+      visitorCountEl.textContent = count;
+      // Bar doluluk oranı max 1000 ziyaretçi varsayım
+      let widthPercent = Math.min((count / 1000) * 100, 100);
+      visitorBarFill.style.width = widthPercent + '%';
+    }
+    updateVisitorCount();
 
+    // Sayfa geçiş animasyonu (basit fade)
+    document.querySelectorAll('a').forEach(link => {
+      if (link.href && link.target !== '_blank' && !link.href.includes('#')) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.add('fade-out');
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 500);
+        });
+      }
+    });
   </script>
-
 </body>
+
