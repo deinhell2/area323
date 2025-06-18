@@ -8,10 +8,10 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(-45deg, #e0f7fa, #ffffff, #f1f8e9, #e3f2fd);
+      background: radial-gradient(circle at 10% 20%, #111927, #0d1117, #1a1f2b);
       background-size: 400% 400%;
-      animation: bgAnim 15s ease infinite;
-      color: #222;
+      animation: bgAnim 20s ease infinite;
+      color: #f0f0f0;
       overflow-x: hidden;
     }
     @keyframes bgAnim {
@@ -28,6 +28,8 @@
       align-items: center;
       padding: 2rem;
       text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
     }
 
     .logo {
@@ -53,18 +55,19 @@
     }
 
     .button {
-      background: #00bcd4;
-      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       padding: 1rem 2rem;
-      border: none;
-      border-radius: 8px;
-      margin-top: 2rem;
+      border: 1px solid #ffffff33;
+      border-radius: 12px;
+      margin-top: 1.2rem;
       cursor: pointer;
       font-size: 1rem;
       transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
     }
     .button:hover {
-      background: #008c9e;
+      background: rgba(255, 255, 255, 0.25);
       transform: scale(1.05);
     }
 
@@ -88,13 +91,15 @@
 
     input, textarea {
       padding: 1rem;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
       font-size: 1rem;
     }
 
     footer {
-      background: rgba(0,0,0,0.05);
+      background: rgba(255, 255, 255, 0.05);
       text-align: center;
       padding: 1.5rem;
       font-size: 0.9rem;
@@ -103,9 +108,21 @@
     .socials a {
       display: inline-block;
       margin: 0.5rem;
-      color: #00bcd4;
+      color: #00e5ff;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    .members {
+      margin-top: 2rem;
+    }
+    .members h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .members ul {
+      list-style: none;
+      font-size: 1.1rem;
     }
 
     @media (max-width: 600px) {
@@ -136,21 +153,37 @@
     <div class="content">
       <p><strong>Since 2018</strong> - Klanın ilk çıkış ismi <strong>Für die GANG</strong>, sonrasında <strong>AREA323</strong> ve yeni bir vizyon ile <strong>ZZONE99</strong> olarak devam edecektir.</p>
     </div>
+    <button class="button" onclick="showSection('uyeler')">Üyeler</button>
     <button class="button" onclick="showSection('basvuru')">Başvuru Yap</button>
     <button class="button" onclick="showSection('iletisim')">İletişim</button>
     <button class="button" onclick="showSection('acilis')">Çıkış</button>
+  </section>
+
+  <!-- Üyeler Kısmı -->
+  <section id="uyeler" class="hidden">
+    <h1>Üyeler</h1>
+    <div class="members">
+      <h2>Lider Kadrosu</h2>
+      <ul><li>mAzz99</li><li>yAzz99</li></ul>
+      <h2>Yönetici Kadrosu</h2>
+      <ul><li>iSzz99</li></ul>
+    </div>
+    <button class="button" onclick="showSection('anasayfa')">Geri Dön</button>
   </section>
 
   <!-- Başvuru Formu -->
   <section id="basvuru" class="hidden">
     <h1>Başvuru Formu</h1>
     <form action="https://formspree.io/f/xldnljve" method="POST">
-      <input type="text" name="oyuncu_id" placeholder="Oyuncu ID" required>
-      <input type="text" name="oyun_suresi" placeholder="Ne zamandır oynuyorsun?" required>
-      <input type="text" name="eski_klanlar" placeholder="Eski Clan'ların" required>
-      <input type="text" name="cihaz" placeholder="Kullandığın cihaz" required>
+      <input type="text" name="oyuncu_adi_uid" placeholder="Oyuncu Adı ve UID" required>
+      <input type="number" name="yas" placeholder="Yaş" required>
+      <input type="text" name="aktiflik" placeholder="Aktiflik durumu (gün/saat)" required>
+      <input type="text" name="cihaz" placeholder="Kullandığı cihaz" required>
       <button class="button" type="submit">Gönder</button>
     </form>
+    <div class="content">
+      <p><strong>Oyun içi iletişim:</strong> mAzz99 - 516572604</p>
+    </div>
     <button class="button" onclick="showSection('anasayfa')">Geri Dön</button>
   </section>
 
@@ -165,6 +198,6 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 ZZONE99. Tüm hakları saklıdır.</p>
+    <p>&copy; 2025 ZZONE99. Tüm hakları saklıdır. | für die famillia</p>
   </footer>
 </body>
