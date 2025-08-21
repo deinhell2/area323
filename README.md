@@ -1,372 +1,243 @@
-<html lang="tr">
+<!DOCTYPE html><html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ZZONE99 PUBG MOBILE KLANI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AREA323</title>
+  <meta name="theme-color" content="#0a0a0a" />
   <style>
-    /* Reset & Temel */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
-    body {
-      position: relative;
-      background: #0e1217;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+    :root{
+      --bg:#0a0a0a;--card:#111;--txt:#fff;--muted:#9aa1a6;--primary:#ff003c;--accent:#00e6ff;
     }
-    body::before {
-      content:"";
-      position:fixed;
-      top:-50%; left:-50%;
-      width:200%; height:200%;
-      background:radial-gradient(circle at center,#264b6c,transparent 70%);
-      filter:blur(150px);
-      z-index:0;
-    }
-    img { max-width:100%; display:block; }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none}/* === Loading (Preloader) === */
+#loading{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999}
+#loading .pulse{width:140px;height:140px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:#0f0f0f;box-shadow:0 0 40px rgba(255,0,60,.3);animation:floaty 2.2s ease-in-out infinite}
+#loading .pulse img{width:110px;filter:drop-shadow(0 0 18px var(--primary))}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-    /* Preloader (Giriş Animasyonu) */
-    #preloader {
-      position:fixed;
-      inset:0;
-      background:#0e1217;
-      z-index:9999;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-    }
-    #preloader img {
-      width:140px;
-      filter:drop-shadow(0 0 20px #00fffa);
-      animation:grow-logo 2s ease forwards;
-    }
-    #preloader h1 {
-      margin-top:15px;
-      font-size:3rem;
-      color:#00fffa;
-      text-shadow:0 0 15px #00fffa;
-      animation:fadeText 2s ease forwards;
-    }
-    #preloader p {
-      margin-top: 8px;
-      font-size:1.1rem;
-      color:#9ae7fa;
-      text-shadow:0 0 8px #0099aa;
-      opacity:0;
-      animation:fadeText 2s ease forwards 0.5s;
-    }
-    @keyframes grow-logo {
-      from { transform:scale(0.5); opacity:0; }
-      to { transform:scale(1); opacity:1; }
-    }
-    @keyframes fadeText {
-      from { opacity:0; }
-      to { opacity:1; }
-    }
-    .fade-away {
-      animation:fade-out 1s ease forwards;
-    }
-    @keyframes fade-out { to { opacity:0; visibility:hidden; } }
+/* === Navbar + Burger === */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--primary)}
+.brand img{width:30px;height:30px;filter:drop-shadow(0 0 8px var(--primary))}
+ul.menu{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+ul.menu a{color:#fff;opacity:.9}
+ul.menu a:hover{color:var(--primary)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:26px;height:3px;background:#fff;transition:.3s}
+@media(max-width:840px){ul.menu{display:none;position:absolute;right:12px;top:56px;background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:12px;flex-direction:column;padding:10px;width:200px}
+  ul.menu.open{display:flex}
+  .burger{display:flex}
+}
 
-    /* Header */
-    header {
-      position:relative;
-      z-index:1;
-      padding:20px 0;
-      text-align:center;
-    }
-    header img {
-      width:80px;
-      filter:drop-shadow(0 0 10px #00fffa);
-    }
-    header h2 {
-      margin-top:12px;
-      font-size:2.5rem;
-      color:#00fffa;
-      text-shadow:0 0 10px #00fffa;
-    }
+/* === Background subtle motion === */
+.bg-animation{position:fixed;inset:0;z-index:-1;background:url('https://www.transparenttextures.com/patterns/dark-matter.png');animation:movebg 60s linear infinite}
+@keyframes movebg{from{background-position:0 0}to{background-position:1000px 1000px}}
 
-    /* Ana Bölümler */
-    main {
-      position:relative; z-index:1;
-      max-width:900px;
-      margin:50px auto 60px;
-      padding:0 20px;
-    }
-    section { margin-bottom:60px; }
-    h3.section-title {
-      font-size:2rem;
-      color:#00fffa;
-      margin-bottom:25px;
-      text-align:center;
-      text-shadow:0 0 10px #00fffa;
-    }
+/* === Hero === */
+.hero{min-height:100vh;display:grid;place-items:center;padding-top:80px;text-align:center;background:radial-gradient(60% 60% at 50% 30%,#1a1a1a 0%,#000 100%)}
+.hero-inner{display:flex;flex-direction:column;align-items:center;gap:16px;animation:fadeIn 1s}
+.hero-inner img{width:210px;filter:drop-shadow(0 0 20px var(--primary))}
+.title{font-size:40px;text-shadow:0 0 10px var(--primary)}
+.subtitle{opacity:.8}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-    #description { 
-      background:rgba(0,116,217,0.15);
-      border-radius:10px;
-      padding:20px;
-      color:#d0e9ff;
-      line-height:1.6;
-      text-align:justify;
-      box-shadow:0 0 12px #0074D9;
-    }
+/* === Sections / Page transition feel === */
+main{opacity:0;transition:opacity .5s ease}
+main.ready{opacity:1}
+section{padding:80px 16px}
+.container{max-width:1100px;margin:auto}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px}
 
-    #leaders {
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:40px;
-    }
-    .leader-card {
-      width:180px;
-      background:rgba(0,116,217,0.2);
-      border-radius:12px;
-      padding:15px;
-      box-shadow:0 0 15px #00fffa;
-      text-align:center;
-      transition:transform 0.3s ease;
-    }
-    .leader-card:hover {
-      transform:scale(1.05);
-      box-shadow:0 0 25px #00fffa;
-    }
-    .leader-card img {
-      width:100px;
-      height:100px;
-      margin-bottom:12px;
-      border-radius:50%;
-      filter:drop-shadow(0 0 5px #00fffa);
-    }
-    .leader-card .nick {
-      font-size:1.3rem;
-      color:#00fffa;
-      font-weight:bold;
-      text-shadow:0 0 8px #00fffa;
-    }
-    .leader-card .id {
-      font-size:0.9rem;
-      color:#9ae7fa;
-      margin-top:5px;
-    }
+/* === Neon buttons === */
+.btn{display:inline-block;padding:12px 18px;border:2px solid var(--primary);color:var(--primary);font-weight:700;text-transform:uppercase;border-radius:12px;transition:.25s;letter-spacing:.5px}
+.btn:hover{background:var(--primary);color:#fff;box-shadow:0 0 16px var(--primary),0 0 36px var(--primary)}
 
-    /* Buton */
-    .btn-katil {
-      display:block;
-      margin:30px auto;
-      padding:12px 30px;
-      font-size:1.2rem;
-      font-weight:700;
-      background:#00fffa;
-      color:#001522;
-      border:none;
-      border-radius:40px;
-      cursor:pointer;
-      box-shadow:0 0 15px #00fffa;
-      transition:background 0.3s ease,transform .2s ease;
-    }
-    .btn-katil:hover {
-      background:#00ccdd;
-      transform:scale(1.05);
-    }
+/* === Grid helpers === */
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:1fr 1fr}
+@media(max-width:840px){.grid-2{grid-template-columns:1fr}}
 
-    /* İletişim */
-    .tiktok-links {
-      display:flex;
-      justify-content:center;
-      gap:30px;
-      flex-wrap:wrap;
-    }
-    .tiktok-links a {
-      display:flex;
-      align-items:center;
-      gap:8px;
-      color:#00fffa;
-      font-size:1.1rem;
-      font-weight:600;
-      text-decoration:none;
-      transition:color 0.3s ease;
-    }
-    .tiktok-links a:hover { color:#9ae7fa; }
-    .tiktok-links img {
-      width:28px;
-      filter:drop-shadow(0 0 5px #00fffa);
-    }
+/* === Forms === */
+form{display:flex;flex-direction:column;gap:12px}
+input,textarea,select{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#0c0c0c;color:#fff}
+label{font-size:14px;color:var(--muted)}
 
-    /* Başvuru Formu */
-    .form-wrapper {
-      max-width:400px;
-      margin:0 auto;
-      text-align:center;
-    }
-    .form-wrapper form {
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .form-wrapper input, .form-wrapper select {
-      padding:10px;
-      font-size:1rem;
-      border:none;
-      border-radius:6px;
-      outline:none;
-    }
-    .form-wrapper button[type=submit] {
-      margin-top:10px;
-      padding:12px;
-      font-size:1.1rem;
-      font-weight:700;
-      background:#00fffa;
-      color:#001522;
-      border:none;
-      border-radius:30px;
-      cursor:pointer;
-      box-shadow:0 0 10px #00fffa;
-      transition:background 0.3s ease;
-    }
-    .form-wrapper button[type=submit]:hover {
-      background:#00ccdd;
-    }
-    .message {
-      margin-top:10px;
-      font-size:1rem;
-      font-weight:600;
-      color:#9ae7fa;
-    }
+/* === Footer === */
+footer{background:#0d0d0d;border-top:1px solid rgba(255,255,255,.06);padding:24px;text-align:center;color:#9aa1a6}
 
-    /* Footer Marquee */
-    footer {
-      position:fixed;
-      bottom:0; left:0;
-      width:100%;
-      background:#001522;
-      overflow:hidden;
-      z-index:1;
-      box-shadow:0 -2px 10px #00fffa;
-    }
-    .marquee {
-      display:flex;
-      gap:50px;
-      animation:marquee 15s linear infinite;
-      align-items:center;
-      white-space:nowrap;
-      padding:10px 0;
-    }
-    .marquee img {
-      width:30px;
-      filter:drop-shadow(0 0 5px #00fffa);
-    }
-    .marquee span {
-      font-size:1.2rem;
-      font-weight:bold;
-      color:#00fffa;
-      text-shadow:0 0 10px #00fffa;
-    }
-    @keyframes marquee {
-      from { transform:translateX(100%); }
-      to { transform:translateX(-100%); }
-    }
-
-    /* Responsive */
-    @media(max-width:600px){
-      #leaders { gap:20px; }
-      .leader-card { width:140px; padding:12px; }
-      .leader-card img { width:80px; height:80px; }
-      .btn-katil { font-size:1rem; padding:10px 25px; }
-    }
   </style>
 </head>
 <body>
-
-<!-- Preloader -->
-<div id="preloader">
-  <img src="logo.png" alt="ZZONE99 Logo" />
-  <h1>ZZONE99</h1>
-  <p>NE DENGEMİZ NE DENGİMİZ VAR ZZONE99 MARKA</p>
-</div>
-
-<header>
-  <img src="logo.png" alt="logo" />
-  <h2>ZZONE99</h2>
-</header>
-
-<main>
-  <section id="description">
-    <h3 class="section-title">Klan Hakkında</h3>
-    <p>İlk olarak “Für die GANG” adıyla kurulan ekip, daha sonra “AREA323” adı altında...
-      bugün ise yepyeni bir vizyonla ZZONE99 adıyla yoluna devam ediyoruz. Hedefimiz sadece oyun kazanmak değil, kaliteli ve kalıcı bir topluluk oluşturmak.</p>
-  </section>
-
-  <section id="leaders">
-    <h3 class="section-title">Liderler</h3>
-    <div class="leader-card"><img src="mazz.png" alt="mAzz99" /><div class="nick">mAzz99</div><div class="id">ID: 516572604</div></div>
-    <div class="leader-card"><img src="yazz.png" alt="yAzz99" /><div class="nick">yAzz99</div><div class="id">ID: 520654025</div></div>
-  </section>
-
-  <button class="btn-katil" onclick="document.getElementById('basvuru').scrollIntoView()">KLANA KATIL</button>
-
-  <section id="contact">
-    <h3 class="section-title">İletişim</h3>
-    <div class="tiktok-links">
-      <a href="https://www.tiktok.com/@mazz99theboss" target="_blank"><img src="tiktok-icon.png" alt="" />@mazz99theboss</a>
-      <a href="https://www.tiktok.com/@babavizyondapm" target="_blank"><img src="tiktok-icon.png" alt="" />@babavizyondapm</a>
+  <!-- Preloader -->
+  <div id="loading" aria-label="Loading">
+    <div class="pulse"><img src="logo.png" alt="AREA323 Logo" /></div>
+  </div>  <!-- BG effect -->  <div class="bg-animation" aria-hidden="true"></div>  <!-- Navbar -->  <nav>
+    <div class="nav-inner">
+      <div class="brand"><img src="logo.png" alt="A"/>AREA323</div>
+      <div class="burger" id="burger" aria-label="Menüyü aç/kapat" aria-expanded="false"><span></span><span></span><span></span></div>
+      <ul class="menu" id="menu">
+        <li><a href="#hero">Ana Sayfa</a></li>
+        <li><a href="#about">Hakkımızda</a></li>
+        <li><a href="#leaders">Liderler</a></li>
+        <li><a href="#apply">Başvuru</a></li>
+        <li><a href="#tracker">Takip</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
     </div>
-  </section>
-
-  <section id="basvuru" class="form-wrapper">
-    <h3 class="section-title">Başvuru Formu</h3>
-    <form id="frm" action="https://formspree.io/f/xldnljve" method="POST">
-      <input type="text" name="UID" placeholder="UID" required />
-      <input type="text" name="Oyun_Ismi" placeholder="Oyun İsmi" required />
-      <input type="text" name="İsim" placeholder="İsim" required />
-      <input type="number" name="Yaş" placeholder="Yaş" required min="10" max="99" />
-      <select name="Cihaz" required>
-        <option value="">Cihaz</option>
-        <option>Android</option>
-        <option>iOS</option>
-      </select>
-      <select name="Aktiflik" required>
-        <option value="">Aktiflik</option>
-        <option>Günlük</option>
-        <option>Haftalık</option>
-        <option>Aylık</option>
-      </select>
-      <button type="submit">Gönder</button>
-    </form>
-    <div class="message" id="msg"></div>
-  </section>
-</main>
-
-<footer>
-  <div class="marquee">
-    <img src="logo.png" alt="" /><span>NE DENGEMİZ NE DENGİMİZ VAR ZZONE99 MARKA</span>
-    <img src="logo.png" alt="" /><span>NE DENGEMİZ NE DENGİMİZ VAR ZZONE99 MARKA</span>
+  </nav>  <!-- Hero -->  <header id="hero" class="hero">
+    <div class="hero-inner">
+      <img src="logo.png" alt="AREA323" />
+      <h1 class="title">Für die Famillia</h1>
+      <p class="subtitle">SINCE 2018 • Beyond Limits</p>
+      <div>
+        <a class="btn" href="#apply">Klan Başvurusu</a>
+        <a class="btn" href="#tracker">Başvuru Takip</a>
+      </div>
+    </div>
+  </header>  <main id="main">
+    <!-- Hakkımızda -->
+    <section id="about">
+      <div class="container grid grid-2">
+        <div class="card">
+          <h2>Hakkımızda</h2>
+          <p>AREA323, sadece bir klan değil bir aile. 2018’den beri PUBG Mobile sahnesinde aktif olan ekibimiz, disiplin, dostluk ve rekabeti aynı potada eritiyor. Amacımız birlikte büyümek, sahnede en iyiler arasında yer almak ve her maçta takım ruhunu hissettirmek.</p>
+        </div>
+        <div class="card">
+          <h3>Değerlerimiz</h3>
+          <ul>
+            <li>Takım Ruhu ve Saygı</li>
+            <li>Sürekli Gelişim</li>
+            <li>Rekabet ve Eğlence Dengesi</li>
+          </ul>
+        </div>
+      </div>
+    </section><!-- Liderler -->
+<section id="leaders">
+  <div class="container">
+    <div class="card">
+      <h2>Liderler</h2>
+      <div class="grid grid-2" style="margin-top:12px">
+        <div class="card">
+          <h3>EXILE323</h3>
+          <p><strong>ID:</strong> 516572604</p>
+        </div>
+        <div class="card">
+          <h3>Yakında</h3>
+          <p>Yeni lider veya moderatör eklenecek.</p>
+        </div>
+      </div>
+    </div>
   </div>
-</footer>
+</section>
 
-<script>
-  window.addEventListener('load',()=>{
-    setTimeout(()=>{
-      document.getElementById('preloader').classList.add('fade-away');
-    },2000);
-  });
+<!-- Başvuru Formu (Formspree) -->
+<section id="apply">
+  <div class="container">
+    <div class="card">
+      <h2>Klan Başvurusu</h2>
+      <form action="https://formspree.io/f/xqalrayd" method="POST">
+        <label>UID
+          <input name="uid" type="text" placeholder="Oyun UID" required />
+        </label>
+        <label>Oyun Nicki
+          <input name="nick" type="text" placeholder="Nick" required />
+        </label>
+        <label>Yaş
+          <input name="age" type="number" min="10" max="80" placeholder="18" required />
+        </label>
+        <label>Cihaz
+          <input name="device" type="text" placeholder="iOS / Android / Model" />
+        </label>
+        <label>Aktiflik
+          <select name="activity">
+            <option value="gunluk">Günlük</option>
+            <option value="haftalik">Haftalık</option>
+            <option value="degisken">Değişken</option>
+          </select>
+        </label>
+        <label>Not
+          <textarea name="note" rows="3" placeholder="Eklemek istediğin bir şey var mı?"></textarea>
+        </label>
+        <button class="btn" type="submit">Gönder</button>
+      </form>
+    </div>
+  </div>
+</section>
 
-  // Formspree AJAX
-  const form=document.getElementById('frm'),
-        msg=document.getElementById('msg');
-  form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const data=new FormData(form);
-    fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}})
-    .then(res=>{
-      if(res.ok){
-        msg.textContent='Başvurunuz alınmıştır, teşekkürler!';
-        form.reset();
-      } else res.json().then(d=>{
-        msg.textContent=(d.errors||[]).map(er=>er.message).join(', ')||'Hata!';
-      });
-    }).catch(()=>msg.textContent='Bağlantı hatası!');
-  });
-</script>
-</body>
+<!-- Başvuru Takip Sistemi (Mock) -->
+<section id="tracker">
+  <div class="container">
+    <div class="card">
+      <h2>Başvuru Takip</h2>
+      <p>Başvuru yaptıktan sonra aşağıya UID veya ID girerek durumunu kontrol edebilirsin.</p>
+      <form id="trackForm" onsubmit="return false;">
+        <label>UID / ID
+          <input id="trackId" type="text" placeholder="Örn: 516572604" required />
+        </label>
+        <button class="btn" id="trackBtn">Durumu Sorgula</button>
+      </form>
+      <div id="trackResult" style="margin-top:12px;color:#cbd5e1"></div>
+    </div>
+  </div>
+</section>
 
+<!-- İletişim / Sosyal -->
+<section id="contact">
+  <div class="container grid grid-2">
+    <div class="card">
+      <h2>İletişim</h2>
+      <p>İşbirliği ve takım başvuruları için bize sosyal medya üzerinden ulaşabilirsin.</p>
+      <p><strong>TikTok:</strong> <a href="https://www.tiktok.com/@exile323" target="_blank" rel="noopener">@exile323</a></p>
+    </div>
+    <div class="card">
+      <h3>Duyuru</h3>
+      <p>Başvurular **açıktır**. Formu doldurduktan sonra Takip bölümünden durumunu sorgulayabilirsin.</p>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    Für die Famillia | SINCE 2018
+  </footer>  <script>
+    // Preloader -> hide when ready
+    window.addEventListener('load',()=>{
+      document.getElementById('loading').style.display='none';
+      document.getElementById('main').classList.add('ready');
+    });
+
+    // Burger menu
+    const burger=document.getElementById('burger');
+    const menu=document.getElementById('menu');
+    burger?.addEventListener('click',()=>{
+      const isOpen=menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded',isOpen?'true':'false');
+    });
+
+    // Simple page-transition feel (fade on anchor click)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',()=>{
+        const main=document.getElementById('main');
+        main.classList.remove('ready');
+        setTimeout(()=>main.classList.add('ready'),250);
+      })
+    });
+
+    // Tracker mock logic
+    const mockStatuses={
+      '516572604':{status:'Onaylandı ✅',note:'Lider ID'},
+      '123456789':{status:'Beklemede ⏳',note:'Değerlendirme sürecinde'},
+      '987654321':{status:'Reddedildi ❌',note:'Kriterleri karşılamıyor'}
+    };
+    const trackBtn=document.getElementById('trackBtn');
+    const trackId=document.getElementById('trackId');
+    const trackResult=document.getElementById('trackResult');
+    trackBtn?.addEventListener('click',()=>{
+      const key=(trackId.value||'').trim();
+      if(!key){trackResult.textContent='Lütfen bir UID/ID gir.';return}
+      const data=mockStatuses[key];
+      trackResult.innerHTML=data?`<strong>Durum:</strong> ${data.status}<br/><small>${data.note}</small>`:`<strong>Durum:</strong> Beklemede ⏳<br/><small>Kayıt bulunamadıysa başvurun yeni düşmüş olabilir.</small>`;
+    });
+  </script></body>
+</html>
