@@ -4,241 +4,193 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AREA323</title>
   <style>
-    /* Reset */
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      background: #000;
-      overflow-x: hidden;
+    /* Genel */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #fdfdfd; color: #222; line-height: 1.6; overflow-x: hidden; }
+
+    /* Giriş Animasyonu */
+    #preloader {
+      position: fixed; width: 100%; height: 100%;
+      background: #fff;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      z-index: 2000;
+      animation: fadeOut 2s ease 3s forwards;
+    }
+    #preloader img {
+      width: 140px; animation: zoomIn 2s ease forwards;
+    }
+    #preloader h1 {
+      margin-top: 1rem;
+      font-size: 2.5rem;
+      color: #0077ff;
+      text-shadow: 0 0 10px #0077ff, 0 0 20px #00f0ff;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #0077ff, 0 0 10px #00f0ff; }
+      to { text-shadow: 0 0 20px #0077ff, 0 0 40px #00f0ff; }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
     }
 
-    /* Neon grid arkaplan */
-    body::before {
-      content:"";
-      position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      background:linear-gradient(45deg,rgba(0,255,255,.2) 25%,transparent 25%),
-                 linear-gradient(-45deg,rgba(255,0,255,.2) 25%,transparent 25%);
-      background-size:50px 50px;
-      animation:movebg 10s linear infinite;
-      z-index:-1;
+    /* Navbar */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      transition: box-shadow 0.3s;
     }
-    @keyframes movebg {
-      0%{background-position:0 0,0 0;}
-      100%{background-position:100px 100px, -100px -100px;}
+    nav.scrolled { box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    nav .logo { font-size: 1.6rem; font-weight: bold; color: #0077ff; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; }
+    nav ul li a {
+      text-decoration: none; font-weight: 600; color: #333;
+      position: relative; transition: color 0.3s;
+    }
+    nav ul li a::after {
+      content: ''; position: absolute; bottom: -5px; left: 0;
+      width: 0%; height: 2px; background: #0077ff;
+      transition: width 0.3s;
+    }
+    nav ul li a:hover { color: #0077ff; }
+    nav ul li a:hover::after { width: 100%; }
+
+    /* Burger Menü */
+    .burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .burger div { width: 25px; height: 3px; background: #333; }
+    @media (max-width: 768px) {
+      nav ul { 
+        display: none; flex-direction: column; background: #fff;
+        position: absolute; top: 60px; right: 20px; width: 200px; 
+        border: 1px solid #ddd; border-radius: 8px; padding: 1rem;
+      }
+      nav ul.active { display: flex; }
+      .burger { display: flex; }
     }
 
-    /* Giriş animasyonu */
-    #loading {
-      position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      background:#000;
-      display:flex;align-items:center;justify-content:center;
-      flex-direction:column;
-      z-index:9999;
+    /* Bölümler */
+    section { padding: 5rem 2rem; text-align: center; }
+    section h2 { font-size: 2.2rem; margin-bottom: 1rem; color: #0077ff; }
+    section p { max-width: 700px; margin: auto; font-size: 1.1rem; }
+
+    /* Butonlar */
+    button, input[type=submit] {
+      padding: 12px 25px; border: none; border-radius: 25px;
+      background: linear-gradient(90deg, #0077ff, #00f0ff);
+      color: white; font-size: 1rem; font-weight: bold; cursor: pointer;
+      transition: all 0.4s ease;
     }
-    #loading img {
-      width:120px;
-      animation:pop 1s ease forwards;
-    }
-    @keyframes pop {
-      0%{opacity:0;transform:scale(0.5);}
-      100%{opacity:1;transform:scale(1);}
+    button:hover, input[type=submit]:hover {
+      background-position: right center;
+      transform: scale(1.08);
+      box-shadow: 0 0 15px rgba(0,119,255,0.6);
     }
 
-    /* Header */
-    header {
-      text-align:center;
-      padding:30px 20px;
+    /* Form */
+    form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 1rem; }
+    input, textarea {
+      padding: 12px; border: 2px solid #ccc; border-radius: 8px; font-size: 1rem;
+      transition: all 0.3s ease;
     }
-    header h1 {
-      font-size:2.5rem;
-      letter-spacing:3px;
-      color:#0ff;
-      text-shadow:0 0 15px #0ff;
+    input:focus, textarea:focus {
+      border-color: #0077ff; box-shadow: 0 0 10px rgba(0,119,255,0.4);
+      outline: none;
     }
 
-    /* Orta logo + buton */
-    .center {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      margin-top:20px;
+    /* İletişim */
+    .socials { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+    .socials a {
+      display: flex; align-items: center; gap: 0.5rem;
+      text-decoration: none; font-weight: bold; color: #333;
+      transition: transform 0.4s;
     }
-    .center img {
-      width:200px;
-      margin-bottom:20px;
-    }
-    .glitch-btn {
-      padding:15px 30px;
-      font-size:1.2rem;
-      color:#fff;
-      background:transparent;
-      border:2px solid #0ff;
-      cursor:pointer;
-      position:relative;
-      overflow:hidden;
-    }
-    .glitch-btn::before {
-      content:"";
-      position:absolute;
-      top:0;left:-100%;width:100%;height:100%;
-      background:#0ff;
-      transition:0.3s;
-      z-index:-1;
-    }
-    .glitch-btn:hover::before {left:0;}
-    .glitch-btn:hover {color:#000;}
-
-    /* Liderler */
-    section {
-      padding:60px 20px;
-      text-align:center;
-    }
-    .leaders {
-      display:flex;
-      justify-content:center;
-      gap:40px;
-      flex-wrap:wrap;
-    }
-    .leader {
-      background:rgba(255,255,255,0.05);
-      padding:20px;
-      border-radius:15px;
-      width:220px;
-      box-shadow:0 0 20px rgba(0,255,255,0.3);
-    }
-    .leader img {width:100%;border-radius:15px;}
-    .leader h3 {margin:10px 0 5px;font-size:1.3rem;}
-    .leader p {font-size:0.9rem;color:#ccc;}
-    .leader a img {width:25px;margin-top:10px;}
-
-    /* Başvuru formu */
-    form {
-      max-width:500px;
-      margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      gap:15px;
-    }
-    input, select {
-      padding:12px;
-      border:none;
-      border-radius:8px;
-      outline:none;
-    }
-    button[type=submit] {
-      padding:12px;
-      border:none;
-      border-radius:8px;
-      background:#0ff;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    #success {
-      display:none;
-      text-align:center;
-      margin-top:15px;
-      color:#0f0;
-      font-weight:bold;
-      animation:fadein 1s;
-    }
-    @keyframes fadein {from{opacity:0;}to{opacity:1;}}
+    .socials a:hover { transform: rotate(-5deg) scale(1.1); color: #0077ff; }
+    .socials img { width: 28px; height: 28px; }
 
     /* Footer */
     footer {
-      text-align:center;
-      padding:20px;
-      font-size:0.9rem;
-      color:#888;
-    }
-
-    @media(max-width:768px){
-      .leaders{flex-direction:column;align-items:center;}
+      background: #111; color: #fff; text-align: center;
+      padding: 1.5rem; margin-top: 2rem;
+      font-weight: bold; letter-spacing: 1px;
+      text-shadow: 0 0 10px #0077ff, 0 0 20px #00f0ff;
     }
   </style>
 </head>
 <body>
-  <!-- Loading -->
-  <div id="loading">
-    <img src="logo.png" alt="Logo">
-  </div>
-
-  <header>
+  <!-- Preloader -->
+  <div id="preloader">
+    <img src="logo.png" alt="AREA323 Logo">
     <h1>AREA323</h1>
-  </header>
-
-  <div class="center">
-    <img src="logo.png" alt="Klan Logo">
-    <a href="#form"><button class="glitch-btn">KLANA KATIL</button></a>
   </div>
 
-  <!-- Liderler -->
-  <section>
-    <h2>Liderler</h2>
-    <div class="leaders">
-      <div class="leader">
-        <img src="exile.png" alt="EXILE323">
-        <h3>EXILE323</h3>
-        <p>ID: 516572604</p>
-        <a href="https://www.tiktok.com/@exile323" target="_blank">
-          <img src="tiktok-logo.png" alt="TikTok">
-        </a>
-      </div>
-      <div class="leader">
-        <img src="exile.png" alt="BABAVIZYONDA">
-        <h3>BABAVIZYONDA</h3>
-        <p>@babavizyondapm</p>
-        <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">
-          <img src="tiktok-logo.png" alt="TikTok">
-        </a>
-      </div>
-    </div>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">AREA323</div>
+    <ul>
+      <li><a href="#tanitim">Tanıtım</a></li>
+      <li><a href="#basvuru">Başvuru</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul>
+    <div class="burger"><div></div><div></div><div></div></div>
+  </nav>
+
+  <!-- Tanıtım -->
+  <section id="tanitim">
+    <h2>Klan Tanıtımı</h2>
+    <p>AREA323, sadece bir klan değil, bir aile. Strateji, disiplin ve dostluğu birleştirerek sahada fark yaratan elit bir PUBG Mobile ekibiyiz. Bizimle olan herkes bu hikayenin bir parçasıdır.</p>
   </section>
 
   <!-- Başvuru -->
-  <section id="form">
-    <h2>Başvuru Formu</h2>
-    <form action="https://formspree.io/f/xqalrayd" method="POST" id="applyForm">
-      <input type="text" name="ad" placeholder="Adın" required>
-      <input type="text" name="nick" placeholder="Oyun Nickin" required>
-      <input type="number" name="fps" placeholder="FPS (örn. 90)" required>
-      <input type="number" name="yas" placeholder="Yaşın" required>
-      <input type="text" name="cihaz" placeholder="Cihazın" required>
-      <input type="text" name="aktiflik" placeholder="Aktiflik (örn. Günlük)" required>
-      <input type="text" name="tecrube" placeholder="PUBG Tecrüben" required>
-      <button type="submit">Başvur</button>
+  <section id="basvuru">
+    <h2>Klana Katıl</h2>
+    <form action="https://formspree.io/f/xqalrayd" method="POST">
+      <input type="text" name="ad" placeholder="Adınız" required>
+      <input type="text" name="nick" placeholder="Oyun Nickiniz" required>
+      <input type="number" name="yas" placeholder="Yaşınız" required>
+      <input type="text" name="uid" placeholder="UID" required>
+      <input type="text" name="cihaz" placeholder="Cihazınız" required>
+      <input type="text" name="aktiflik" placeholder="Aktiflik Durumunuz" required>
+      <input type="submit" value="Başvur">
     </form>
-    <div id="success">✅ Başvurun başarıyla gönderildi!</div>
   </section>
 
+  <!-- İletişim -->
+  <section id="iletisim">
+    <h2>İletişim</h2>
+    <div class="socials">
+      <a href="https://www.tiktok.com/@exile323" target="_blank">
+        <img src="tictoc-icon.png" alt="TikTok"> @exile323
+      </a>
+      <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">
+        <img src="tictoc-icon.png" alt="TikTok"> @babavizyondapm
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>Für die Famillia • SINCE 2018</p>
+    AREA323 – Since 2018
   </footer>
 
   <script>
-    // Loading screen
-    window.addEventListener("load", ()=>{
-      setTimeout(()=>{
-        document.getElementById("loading").style.display="none";
-      },1500);
+    // Burger Menü
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('nav ul');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
 
-    // Form başarı mesajı
-    const form = document.getElementById("applyForm");
-    form.addEventListener("submit", async function(e){
-      e.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: {'Accept':'application/json'}
-      });
-      if (response.ok) {
-        form.reset();
-        document.getElementById("success").style.display="block";
-      }
+    // Navbar scroll efekti
+    window.addEventListener("scroll", () => {
+      document.querySelector("nav").classList.toggle("scrolled", window.scrollY > 50);
     });
   </script>
 </body>
