@@ -1,243 +1,159 @@
-<!DOCTYPE html><html lang="tr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AREA323</title>
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXILE323</title>
   <style>
-    :root{
-      --bg:#0a0a0a;--card:#111;--txt:#fff;--muted:#9aa1a6;--primary:#ff003c;--accent:#00e6ff;
+    /* GENEL AYARLAR */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Orbitron', sans-serif;}
+    body {background:#0a0a0f; color:#fff; overflow-x:hidden;}
+    a {color:#0ff; text-decoration:none; transition:0.3s;}
+    a:hover {color:#fff; text-shadow:0 0 10px #0ff;}
+
+    /* LOADING SCREEN */
+    #loading {
+      position:fixed; width:100%; height:100%;
+      background:#000; display:flex; align-items:center; justify-content:center;
+      z-index:9999; flex-direction:column;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;scroll-behavior:smooth}
-    a{color:var(--accent);text-decoration:none}/* === Loading (Preloader) === */
-#loading{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999}
-#loading .pulse{width:140px;height:140px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:#0f0f0f;box-shadow:0 0 40px rgba(255,0,60,.3);animation:floaty 2.2s ease-in-out infinite}
-#loading .pulse img{width:110px;filter:drop-shadow(0 0 18px var(--primary))}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    #loading img {width:120px; animation:pulse 2s infinite;}
+    @keyframes pulse {0%{transform:scale(1);} 50%{transform:scale(1.2);} 100%{transform:scale(1);}}
 
-/* === Navbar + Burger === */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--primary)}
-.brand img{width:30px;height:30px;filter:drop-shadow(0 0 8px var(--primary))}
-ul.menu{list-style:none;display:flex;gap:18px;margin:0;padding:0}
-ul.menu a{color:#fff;opacity:.9}
-ul.menu a:hover{color:var(--primary)}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.burger span{width:26px;height:3px;background:#fff;transition:.3s}
-@media(max-width:840px){ul.menu{display:none;position:absolute;right:12px;top:56px;background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:12px;flex-direction:column;padding:10px;width:200px}
-  ul.menu.open{display:flex}
-  .burger{display:flex}
-}
+    /* HEADER */
+    header {position:fixed; top:0; width:100%; display:flex; justify-content:space-between; 
+      align-items:center; padding:20px; background:rgba(0,0,0,0.6); backdrop-filter:blur(10px); z-index:100;}
+    header h1 {font-size:22px; color:#0ff; text-shadow:0 0 10px #0ff;}
+    nav {display:flex; gap:20px;}
+    nav a {font-weight:bold;}
+    
+    /* BURGER MENU */
+    .burger {display:none; cursor:pointer; flex-direction:column; gap:5px;}
+    .burger div {width:25px; height:3px; background:#0ff;}
 
-/* === Background subtle motion === */
-.bg-animation{position:fixed;inset:0;z-index:-1;background:url('https://www.transparenttextures.com/patterns/dark-matter.png');animation:movebg 60s linear infinite}
-@keyframes movebg{from{background-position:0 0}to{background-position:1000px 1000px}}
+    @media(max-width:768px){
+      nav {display:none; flex-direction:column; position:absolute; top:70px; right:20px; background:#111; padding:15px; border-radius:10px;}
+      nav.active {display:flex;}
+      .burger {display:flex;}
+    }
 
-/* === Hero === */
-.hero{min-height:100vh;display:grid;place-items:center;padding-top:80px;text-align:center;background:radial-gradient(60% 60% at 50% 30%,#1a1a1a 0%,#000 100%)}
-.hero-inner{display:flex;flex-direction:column;align-items:center;gap:16px;animation:fadeIn 1s}
-.hero-inner img{width:210px;filter:drop-shadow(0 0 20px var(--primary))}
-.title{font-size:40px;text-shadow:0 0 10px var(--primary)}
-.subtitle{opacity:.8}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    /* HERO */
+    .hero {
+      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      background:radial-gradient(circle at center, #0ff2, #000 70%);
+      text-align:center;
+    }
+    .hero h2 {font-size:40px; margin-bottom:15px; text-shadow:0 0 20px #0ff;}
+    .hero p {font-size:18px; max-width:600px; margin:auto; color:#ccc;}
 
-/* === Sections / Page transition feel === */
-main{opacity:0;transition:opacity .5s ease}
-main.ready{opacity:1}
-section{padding:80px 16px}
-.container{max-width:1100px;margin:auto}
-.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px}
+    /* HAKKIMIZDA */
+    section {padding:80px 20px; text-align:center;}
+    section h2 {font-size:30px; margin-bottom:20px; text-shadow:0 0 15px #0ff;}
+    section p {max-width:700px; margin:auto; color:#bbb; line-height:1.6;}
 
-/* === Neon buttons === */
-.btn{display:inline-block;padding:12px 18px;border:2px solid var(--primary);color:var(--primary);font-weight:700;text-transform:uppercase;border-radius:12px;transition:.25s;letter-spacing:.5px}
-.btn:hover{background:var(--primary);color:#fff;box-shadow:0 0 16px var(--primary),0 0 36px var(--primary)}
+    /* LİDERLER */
+    .leaders {display:flex; justify-content:center; flex-wrap:wrap; gap:30px;}
+    .leader-card {
+      background:#111; padding:20px; border-radius:15px; width:250px;
+      transition:0.3s; box-shadow:0 0 15px #0ff5;
+    }
+    .leader-card:hover {transform:scale(1.05); box-shadow:0 0 25px #0ff;}
+    .leader-card img {width:100%; border-radius:10px; margin-bottom:10px;}
+    .leader-card h3 {color:#0ff;}
+    .leader-card p {color:#ccc;}
 
-/* === Grid helpers === */
-.grid{display:grid;gap:16px}
-.grid-2{grid-template-columns:1fr 1fr}
-@media(max-width:840px){.grid-2{grid-template-columns:1fr}}
+    /* BAŞVURU FORMU */
+    form {max-width:500px; margin:auto; display:flex; flex-direction:column; gap:15px;}
+    input, textarea {padding:12px; border:none; border-radius:8px; outline:none;}
+    button {
+      background:#0ff; color:#000; border:none; padding:12px; border-radius:8px;
+      cursor:pointer; font-weight:bold; transition:0.3s;
+    }
+    button:hover {background:#000; color:#0ff; box-shadow:0 0 15px #0ff;}
 
-/* === Forms === */
-form{display:flex;flex-direction:column;gap:12px}
-input,textarea,select{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#0c0c0c;color:#fff}
-label{font-size:14px;color:var(--muted)}
-
-/* === Footer === */
-footer{background:#0d0d0d;border-top:1px solid rgba(255,255,255,.06);padding:24px;text-align:center;color:#9aa1a6}
-
+    /* FOOTER */
+    footer {
+      text-align:center; padding:30px; background:#000; border-top:1px solid #0ff3;
+      margin-top:50px; font-size:14px; color:#aaa;
+    }
   </style>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="loading" aria-label="Loading">
-    <div class="pulse"><img src="logo.png" alt="AREA323 Logo" /></div>
-  </div>  <!-- BG effect -->  <div class="bg-animation" aria-hidden="true"></div>  <!-- Navbar -->  <nav>
-    <div class="nav-inner">
-      <div class="brand"><img src="logo.png" alt="A"/>AREA323</div>
-      <div class="burger" id="burger" aria-label="Menüyü aç/kapat" aria-expanded="false"><span></span><span></span><span></span></div>
-      <ul class="menu" id="menu">
-        <li><a href="#hero">Ana Sayfa</a></li>
-        <li><a href="#about">Hakkımızda</a></li>
-        <li><a href="#leaders">Liderler</a></li>
-        <li><a href="#apply">Başvuru</a></li>
-        <li><a href="#tracker">Takip</a></li>
-        <li><a href="#contact">İletişim</a></li>
-      </ul>
+  <!-- LOADING -->
+  <div id="loading">
+    <img src="logo.png" alt="logo">
+    <p style="color:#0ff; margin-top:10px;">Yükleniyor...</p>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <h1>EXILE323</h1>
+    <div class="burger" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div></div><div></div><div></div>
     </div>
-  </nav>  <!-- Hero -->  <header id="hero" class="hero">
-    <div class="hero-inner">
-      <img src="logo.png" alt="AREA323" />
-      <h1 class="title">Für die Famillia</h1>
-      <p class="subtitle">SINCE 2018 • Beyond Limits</p>
-      <div>
-        <a class="btn" href="#apply">Klan Başvurusu</a>
-        <a class="btn" href="#tracker">Başvuru Takip</a>
+    <nav>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#liderler">Liderler</a>
+      <a href="#basvuru">Başvuru</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h2>Für die Famillia</h2>
+    <p>SINCE 2018 - PUBG MOBILE klanımızı temsil eden resmi sayfa</p>
+  </div>
+
+  <!-- HAKKIMIZDA -->
+  <section id="hakkimizda">
+    <h2>Hakkımızda</h2>
+    <p>EXILE323 klanı, 2018’den beri PUBG Mobile sahnesinde aktif olan, disiplin, dostluk ve başarı üzerine kurulmuş bir topluluktur. 
+    Her üye bir ailenin parçasıdır ve hedefimiz her zaman birlikte yükselmektir.</p>
+  </section>
+
+  <!-- LİDERLER -->
+  <section id="liderler">
+    <h2>Liderler</h2>
+    <div class="leaders">
+      <div class="leader-card">
+        <img src="exile.png" alt="EXILE323">
+        <h3>EXILE323</h3>
+        <p>ID: 516572604</p>
       </div>
     </div>
-  </header>  <main id="main">
-    <!-- Hakkımızda -->
-    <section id="about">
-      <div class="container grid grid-2">
-        <div class="card">
-          <h2>Hakkımızda</h2>
-          <p>AREA323, sadece bir klan değil bir aile. 2018’den beri PUBG Mobile sahnesinde aktif olan ekibimiz, disiplin, dostluk ve rekabeti aynı potada eritiyor. Amacımız birlikte büyümek, sahnede en iyiler arasında yer almak ve her maçta takım ruhunu hissettirmek.</p>
-        </div>
-        <div class="card">
-          <h3>Değerlerimiz</h3>
-          <ul>
-            <li>Takım Ruhu ve Saygı</li>
-            <li>Sürekli Gelişim</li>
-            <li>Rekabet ve Eğlence Dengesi</li>
-          </ul>
-        </div>
-      </div>
-    </section><!-- Liderler -->
-<section id="leaders">
-  <div class="container">
-    <div class="card">
-      <h2>Liderler</h2>
-      <div class="grid grid-2" style="margin-top:12px">
-        <div class="card">
-          <h3>EXILE323</h3>
-          <p><strong>ID:</strong> 516572604</p>
-        </div>
-        <div class="card">
-          <h3>Yakında</h3>
-          <p>Yeni lider veya moderatör eklenecek.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Başvuru Formu (Formspree) -->
-<section id="apply">
-  <div class="container">
-    <div class="card">
-      <h2>Klan Başvurusu</h2>
-      <form action="https://formspree.io/f/xqalrayd" method="POST">
-        <label>UID
-          <input name="uid" type="text" placeholder="Oyun UID" required />
-        </label>
-        <label>Oyun Nicki
-          <input name="nick" type="text" placeholder="Nick" required />
-        </label>
-        <label>Yaş
-          <input name="age" type="number" min="10" max="80" placeholder="18" required />
-        </label>
-        <label>Cihaz
-          <input name="device" type="text" placeholder="iOS / Android / Model" />
-        </label>
-        <label>Aktiflik
-          <select name="activity">
-            <option value="gunluk">Günlük</option>
-            <option value="haftalik">Haftalık</option>
-            <option value="degisken">Değişken</option>
-          </select>
-        </label>
-        <label>Not
-          <textarea name="note" rows="3" placeholder="Eklemek istediğin bir şey var mı?"></textarea>
-        </label>
-        <button class="btn" type="submit">Gönder</button>
-      </form>
-    </div>
-  </div>
-</section>
+  <!-- BAŞVURU -->
+  <section id="basvuru">
+    <h2>Başvuru Formu</h2>
+    <form action="https://formspree.io/f/xqalrayd" method="POST">
+      <input type="text" name="isim" placeholder="Oyun İsmi" required>
+      <input type="text" name="uid" placeholder="UID" required>
+      <input type="number" name="yas" placeholder="Yaş" required>
+      <input type="text" name="cihaz" placeholder="Cihaz" required>
+      <textarea name="aktiflik" placeholder="Aktiflik durumun" rows="3"></textarea>
+      <button type="submit">Başvur</button>
+    </form>
+  </section>
 
-<!-- Başvuru Takip Sistemi (Mock) -->
-<section id="tracker">
-  <div class="container">
-    <div class="card">
-      <h2>Başvuru Takip</h2>
-      <p>Başvuru yaptıktan sonra aşağıya UID veya ID girerek durumunu kontrol edebilirsin.</p>
-      <form id="trackForm" onsubmit="return false;">
-        <label>UID / ID
-          <input id="trackId" type="text" placeholder="Örn: 516572604" required />
-        </label>
-        <button class="btn" id="trackBtn">Durumu Sorgula</button>
-      </form>
-      <div id="trackResult" style="margin-top:12px;color:#cbd5e1"></div>
-    </div>
-  </div>
-</section>
+  <!-- İLETİŞİM -->
+  <section id="iletisim">
+    <h2>İletişim</h2>
+    <p>TikTok: <a href="https://www.tiktok.com/@exile323" target="_blank">@exile323</a></p>
+  </section>
 
-<!-- İletişim / Sosyal -->
-<section id="contact">
-  <div class="container grid grid-2">
-    <div class="card">
-      <h2>İletişim</h2>
-      <p>İşbirliği ve takım başvuruları için bize sosyal medya üzerinden ulaşabilirsin.</p>
-      <p><strong>TikTok:</strong> <a href="https://www.tiktok.com/@exile323" target="_blank" rel="noopener">@exile323</a></p>
-    </div>
-    <div class="card">
-      <h3>Duyuru</h3>
-      <p>Başvurular **açıktır**. Formu doldurduktan sonra Takip bölümünden durumunu sorgulayabilirsin.</p>
-    </div>
-  </div>
-</section>
-
-  </main>  <footer>
+  <!-- FOOTER -->
+  <footer>
     Für die Famillia | SINCE 2018
-  </footer>  <script>
-    // Preloader -> hide when ready
-    window.addEventListener('load',()=>{
-      document.getElementById('loading').style.display='none';
-      document.getElementById('main').classList.add('ready');
-    });
+  </footer>
 
-    // Burger menu
-    const burger=document.getElementById('burger');
-    const menu=document.getElementById('menu');
-    burger?.addEventListener('click',()=>{
-      const isOpen=menu.classList.toggle('open');
-      burger.setAttribute('aria-expanded',isOpen?'true':'false');
+  <script>
+    // LOADING SCREEN KAPANMASI
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+      }, 2000); // 2 saniye
     });
-
-    // Simple page-transition feel (fade on anchor click)
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',()=>{
-        const main=document.getElementById('main');
-        main.classList.remove('ready');
-        setTimeout(()=>main.classList.add('ready'),250);
-      })
-    });
-
-    // Tracker mock logic
-    const mockStatuses={
-      '516572604':{status:'Onaylandı ✅',note:'Lider ID'},
-      '123456789':{status:'Beklemede ⏳',note:'Değerlendirme sürecinde'},
-      '987654321':{status:'Reddedildi ❌',note:'Kriterleri karşılamıyor'}
-    };
-    const trackBtn=document.getElementById('trackBtn');
-    const trackId=document.getElementById('trackId');
-    const trackResult=document.getElementById('trackResult');
-    trackBtn?.addEventListener('click',()=>{
-      const key=(trackId.value||'').trim();
-      if(!key){trackResult.textContent='Lütfen bir UID/ID gir.';return}
-      const data=mockStatuses[key];
-      trackResult.innerHTML=data?`<strong>Durum:</strong> ${data.status}<br/><small>${data.note}</small>`:`<strong>Durum:</strong> Beklemede ⏳<br/><small>Kayıt bulunamadıysa başvurun yeni düşmüş olabilir.</small>`;
-    });
-  </script></body>
+  </script>
+</body>
 </html>
