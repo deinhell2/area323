@@ -4,285 +4,241 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AREA323</title>
   <style>
-    /* GENEL STİL */
+    /* Reset */
+    * {margin:0;padding:0;box-sizing:border-box;}
     body {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Poppins', sans-serif;
       color: #fff;
+      background: #000;
       overflow-x: hidden;
-      background: black;
     }
+
+    /* Neon grid arkaplan */
+    body::before {
+      content:"";
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:linear-gradient(45deg,rgba(0,255,255,.2) 25%,transparent 25%),
+                 linear-gradient(-45deg,rgba(255,0,255,.2) 25%,transparent 25%);
+      background-size:50px 50px;
+      animation:movebg 10s linear infinite;
+      z-index:-1;
+    }
+    @keyframes movebg {
+      0%{background-position:0 0,0 0;}
+      100%{background-position:100px 100px, -100px -100px;}
+    }
+
+    /* Giriş animasyonu */
+    #loading {
+      position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:#000;
+      display:flex;align-items:center;justify-content:center;
+      flex-direction:column;
+      z-index:9999;
+    }
+    #loading img {
+      width:120px;
+      animation:pop 1s ease forwards;
+    }
+    @keyframes pop {
+      0%{opacity:0;transform:scale(0.5);}
+      100%{opacity:1;transform:scale(1);}
+    }
+
+    /* Header */
     header {
-      text-align: center;
-      padding: 30px 0;
-      position: relative;
+      text-align:center;
+      padding:30px 20px;
     }
-    header img.logo {
-      width: 120px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1);}
-      50% { transform: scale(1.1);}
-    }
-    h1 {
-      font-size: 2.5rem;
-      text-shadow: 0 0 15px cyan;
+    header h1 {
+      font-size:2.5rem;
+      letter-spacing:3px;
+      color:#0ff;
+      text-shadow:0 0 15px #0ff;
     }
 
-    /* Dinamik Slogan */
-    .slogan {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      height: 30px;
+    /* Orta logo + buton */
+    .center {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-top:20px;
     }
-
-    /* Glitch Button */
+    .center img {
+      width:200px;
+      margin-bottom:20px;
+    }
     .glitch-btn {
-      display: inline-block;
-      padding: 15px 40px;
-      margin-top: 20px;
-      background: transparent;
-      color: cyan;
-      border: 2px solid cyan;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    .glitch-btn::before, .glitch-btn::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
+      padding:15px 30px;
+      font-size:1.2rem;
+      color:#fff;
+      background:transparent;
+      border:2px solid #0ff;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
     }
     .glitch-btn::before {
-      left: 2px;
-      text-shadow: -2px 0 red;
-      animation: glitch 2s infinite linear alternate-reverse;
+      content:"";
+      position:absolute;
+      top:0;left:-100%;width:100%;height:100%;
+      background:#0ff;
+      transition:0.3s;
+      z-index:-1;
     }
-    .glitch-btn::after {
-      left: -2px;
-      text-shadow: -2px 0 blue;
-      animation: glitch 3s infinite linear alternate-reverse;
-    }
-    @keyframes glitch {
-      0% { clip: rect(0, 900px, 0, 0); }
-      20% { clip: rect(0, 900px, 100px, 0); }
-      40% { clip: rect(0, 900px, 50px, 0); }
-      60% { clip: rect(0, 900px, 150px, 0); }
-      80% { clip: rect(0, 900px, 80px, 0); }
-      100% { clip: rect(0, 900px, 120px, 0); }
-    }
+    .glitch-btn:hover::before {left:0;}
+    .glitch-btn:hover {color:#000;}
 
-    /* Liderler Pop-up */
-    .popup {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.8);
-      border: 2px solid cyan;
-      padding: 15px;
-      border-radius: 10px;
-      display: none;
-      z-index: 1000;
+    /* Liderler */
+    section {
+      padding:60px 20px;
+      text-align:center;
     }
-    .popup.active {
-      display: block;
+    .leaders {
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
     }
-    .popup h3 {
-      margin: 0;
-      font-size: 1rem;
-      color: cyan;
+    .leader {
+      background:rgba(255,255,255,0.05);
+      padding:20px;
+      border-radius:15px;
+      width:220px;
+      box-shadow:0 0 20px rgba(0,255,255,0.3);
     }
+    .leader img {width:100%;border-radius:15px;}
+    .leader h3 {margin:10px 0 5px;font-size:1.3rem;}
+    .leader p {font-size:0.9rem;color:#ccc;}
+    .leader a img {width:25px;margin-top:10px;}
 
-    /* Başvuru Formu */
+    /* Başvuru formu */
     form {
-      max-width: 400px;
-      margin: 40px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      background: rgba(0,0,0,0.7);
-      padding: 20px;
-      border-radius: 10px;
-      border: 2px solid cyan;
+      max-width:500px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:15px;
     }
-    form input, form select, form button {
-      padding: 10px;
-      border: none;
-      outline: none;
-      border-radius: 5px;
+    input, select {
+      padding:12px;
+      border:none;
+      border-radius:8px;
+      outline:none;
     }
-    form input, form select {
-      background: #111;
-      color: #fff;
+    button[type=submit] {
+      padding:12px;
+      border:none;
+      border-radius:8px;
+      background:#0ff;
+      font-weight:bold;
+      cursor:pointer;
     }
-    form button {
-      background: cyan;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
+    #success {
+      display:none;
+      text-align:center;
+      margin-top:15px;
+      color:#0f0;
+      font-weight:bold;
+      animation:fadein 1s;
     }
-    .success-msg {
-      text-align: center;
-      font-size: 1.2rem;
-      color: lime;
-      display: none;
-      animation: fadeIn 2s forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0;}
-      to { opacity: 1;}
-    }
+    @keyframes fadein {from{opacity:0;}to{opacity:1;}}
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      background: rgba(0,0,0,0.8);
-      margin-top: 40px;
+      text-align:center;
+      padding:20px;
+      font-size:0.9rem;
+      color:#888;
     }
 
-    /* Burger Menü */
-    .burger {
-      display: none;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      cursor: pointer;
-      z-index: 2000;
-    }
-    .burger div {
-      width: 30px;
-      height: 3px;
-      background: cyan;
-      margin: 5px;
-    }
-    .menu {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      height: 100%; width: 200px;
-      background: #111;
-      padding-top: 60px;
-      z-index: 1500;
-    }
-    .menu a {
-      display: block;
-      color: white;
-      padding: 10px;
-      text-decoration: none;
-      border-bottom: 1px solid cyan;
-    }
-
-    @media(max-width:768px) {
-      .burger { display: block;}
-    }
-
-    /* Neon Grid Background */
-    .grid {
-      position: fixed;
-      top:0; left:0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(0,255,255,0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      z-index: -1;
-      animation: move 20s linear infinite;
-    }
-    @keyframes move {
-      from { background-position: 0 0; }
-      to { background-position: 100px 100px; }
+    @media(max-width:768px){
+      .leaders{flex-direction:column;align-items:center;}
     }
   </style>
 </head>
 <body>
-  <div class="grid"></div>
-
-  <!-- Burger Menü -->
-  <div class="burger" onclick="toggleMenu()">
-    <div></div><div></div><div></div>
-  </div>
-  <div class="menu" id="menu">
-    <a href="#">Ana Sayfa</a>
-    <a href="#form">Başvuru</a>
-    <a href="#" onclick="togglePopup()">Liderler</a>
+  <!-- Loading -->
+  <div id="loading">
+    <img src="logo.png" alt="Logo">
   </div>
 
   <header>
-    <img src="logo.png" alt="logo" class="logo">
     <h1>AREA323</h1>
-    <div class="slogan" id="slogan"></div>
-    <button class="glitch-btn" data-text="Katıl">Klana Katıl</button>
   </header>
 
-  <!-- Başvuru Formu -->
-  <form id="form" action="https://formspree.io/f/xldnljve" method="POST" onsubmit="showSuccess(event)">
-    <input type="text" name="Ad" placeholder="Ad" required>
-    <input type="text" name="Nick" placeholder="Nick" required>
-    <input type="number" name="FPS" placeholder="FPS" required>
-    <input type="number" name="Yaş" placeholder="Yaş" required>
-    <select name="Cihaz" required>
-      <option value="">Cihaz Seç</option>
-      <option value="Telefon">Telefon</option>
-      <option value="Tablet">Tablet</option>
-      <option value="Emülatör">Emülatör</option>
-    </select>
-    <input type="text" name="Aktiflik" placeholder="Aktiflik (gün/saat)" required>
-    <input type="text" name="Tecrübe" placeholder="Tecrübe" required>
-    <button type="submit">Gönder</button>
-  </form>
-  <div class="success-msg" id="success-msg">✅ Başvurun alındı! Kontrol edildikten sonra bilgilendirileceksin.</div>
-
-  <!-- Liderler Pop-up -->
-  <div class="popup" id="popup">
-    <h3>Liderler</h3>
-    <p>EXILE323 - TikTok: exile323</p>
-    <p>BABAVIZYONDA - TikTok: babavizyondapm</p>
+  <div class="center">
+    <img src="logo.png" alt="Klan Logo">
+    <a href="#form"><button class="glitch-btn">KLANA KATIL</button></a>
   </div>
 
+  <!-- Liderler -->
+  <section>
+    <h2>Liderler</h2>
+    <div class="leaders">
+      <div class="leader">
+        <img src="exile.png" alt="EXILE323">
+        <h3>EXILE323</h3>
+        <p>ID: 516572604</p>
+        <a href="https://www.tiktok.com/@exile323" target="_blank">
+          <img src="tiktok-logo.png" alt="TikTok">
+        </a>
+      </div>
+      <div class="leader">
+        <img src="exile.png" alt="BABAVIZYONDA">
+        <h3>BABAVIZYONDA</h3>
+        <p>@babavizyondapm</p>
+        <a href="https://www.tiktok.com/@babavizyondapm" target="_blank">
+          <img src="tiktok-logo.png" alt="TikTok">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başvuru -->
+  <section id="form">
+    <h2>Başvuru Formu</h2>
+    <form action="https://formspree.io/f/xqalrayd" method="POST" id="applyForm">
+      <input type="text" name="ad" placeholder="Adın" required>
+      <input type="text" name="nick" placeholder="Oyun Nickin" required>
+      <input type="number" name="fps" placeholder="FPS (örn. 90)" required>
+      <input type="number" name="yas" placeholder="Yaşın" required>
+      <input type="text" name="cihaz" placeholder="Cihazın" required>
+      <input type="text" name="aktiflik" placeholder="Aktiflik (örn. Günlük)" required>
+      <input type="text" name="tecrube" placeholder="PUBG Tecrüben" required>
+      <button type="submit">Başvur</button>
+    </form>
+    <div id="success">✅ Başvurun başarıyla gönderildi!</div>
+  </section>
+
   <footer>
-    Für die Familia – Since 2018
+    <p>Für die Famillia • SINCE 2018</p>
   </footer>
 
   <script>
-    // Dinamik Slogan
-    const slogans = [
-      "SINCE 2018",
-      "Für die Familia",
-      "AREA323 ELİT TAKIM",
-      "PUBG MOBILE BEST"
-    ];
-    let idx = 0;
-    const sloganEl = document.getElementById("slogan");
-    setInterval(()=>{
-      sloganEl.textContent = slogans[idx];
-      idx = (idx + 1) % slogans.length;
-    }, 3000);
+    // Loading screen
+    window.addEventListener("load", ()=>{
+      setTimeout(()=>{
+        document.getElementById("loading").style.display="none";
+      },1500);
+    });
 
-    // Burger Menü
-    function toggleMenu() {
-      document.getElementById("menu").style.display =
-        document.getElementById("menu").style.display === "block" ? "none" : "block";
-    }
-
-    // Popup Liderler
-    function togglePopup() {
-      document.getElementById("popup").classList.toggle("active");
-    }
-
-    // Form Başarı Mesajı
-    function showSuccess(e){
+    // Form başarı mesajı
+    const form = document.getElementById("applyForm");
+    form.addEventListener("submit", async function(e){
       e.preventDefault();
-      document.getElementById("form").style.display="none";
-      document.getElementById("success-msg").style.display="block";
-    }
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {'Accept':'application/json'}
+      });
+      if (response.ok) {
+        form.reset();
+        document.getElementById("success").style.display="block";
+      }
+    });
   </script>
 </body>
