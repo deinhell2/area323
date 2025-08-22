@@ -1,229 +1,288 @@
-<!DOCTYPE html>
-<html lang="tr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AREA323</title>
   <style>
-    /* Genel Reset */
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial Black', sans-serif;}
-
+    /* GENEL STİL */
     body {
-      background: black;
-      color: white;
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
       overflow-x: hidden;
+      background: black;
+    }
+    header {
       text-align: center;
+      padding: 30px 0;
+      position: relative;
+    }
+    header img.logo {
+      width: 120px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1);}
+      50% { transform: scale(1.1);}
+    }
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 0 0 15px cyan;
     }
 
-    /* Hareketli Neon Grid */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('logo.png') center/30% no-repeat, 
-                  repeating-linear-gradient(90deg, rgba(0,255,255,0.1) 0 2px, transparent 2px 40px),
-                  repeating-linear-gradient(0deg, rgba(255,0,255,0.1) 0 2px, transparent 2px 40px);
-      z-index: -1;
-      animation: moveGrid 10s linear infinite;
-    }
-    @keyframes moveGrid {
-      0% {background-position: 0 0, 0 0, 0 0;}
-      100% {background-position: 100px 100px, 40px 0, 0 40px;}
+    /* Dinamik Slogan */
+    .slogan {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      height: 30px;
     }
 
-    /* Loading Screen */
-    #loading {
-      position: fixed;
-      top:0; left:0; right:0; bottom:0;
-      background:black;
-      display:flex; justify-content:center; align-items:center;
-      z-index:9999;
-    }
-    #loading img {width: 200px; animation: pulse 1.5s infinite;}
-    @keyframes pulse {0%,100%{opacity:0.3;}50%{opacity:1;}}
-
-    /* Navbar */
-    nav {
-      width:100%;
-      padding:15px 30px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:rgba(0,0,0,0.7);
-      position:fixed;
-      top:0;
-      z-index:1000;
-    }
-    nav h1 {font-size: 1.5rem; color: cyan;}
-    nav ul {display:flex; gap:20px; list-style:none;}
-    nav ul li a {color:white; text-decoration:none; transition:0.3s;}
-    nav ul li a:hover {color:cyan; text-shadow:0 0 10px cyan;}
-
-    /* Burger Menü */
-    .burger {display:none; flex-direction:column; cursor:pointer;}
-    .burger div {width:25px; height:3px; background:white; margin:5px; transition:0.3s;}
-    @media (max-width:768px) {
-      nav ul {display:none; flex-direction:column; background:black; position:absolute; top:60px; right:0; width:200px; text-align:right; padding:10px;}
-      nav ul.active {display:flex;}
-      .burger {display:flex;}
-    }
-
-    /* Hero */
-    .hero {
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      gap:20px;
-    }
-    .hero img {width:220px;}
+    /* Glitch Button */
     .glitch-btn {
-      font-size:1.2rem;
-      padding:15px 30px;
-      border:none;
-      color:white;
-      background:black;
-      border:2px solid cyan;
-      cursor:pointer;
-      position:relative;
-      overflow:hidden;
+      display: inline-block;
+      padding: 15px 40px;
+      margin-top: 20px;
+      background: transparent;
+      color: cyan;
+      border: 2px solid cyan;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
     }
     .glitch-btn::before, .glitch-btn::after {
-      content:"KLANA KATIL";
-      position:absolute;
-      left:0; top:0;
-      width:100%; height:100%;
-      background:black;
-      color:magenta;
-      overflow:hidden;
-      clip:rect(0,900px,0,0);
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
     }
-    .glitch-btn:hover::before {
-      animation:glitchTop 1s infinite;
+    .glitch-btn::before {
+      left: 2px;
+      text-shadow: -2px 0 red;
+      animation: glitch 2s infinite linear alternate-reverse;
     }
-    .glitch-btn:hover::after {
-      color:cyan;
-      animation:glitchBot 1s infinite;
+    .glitch-btn::after {
+      left: -2px;
+      text-shadow: -2px 0 blue;
+      animation: glitch 3s infinite linear alternate-reverse;
     }
-    @keyframes glitchTop {
-      0%{clip:rect(0,900px,0,0);}
-      50%{clip:rect(0,900px,60px,0);}
-      100%{clip:rect(0,900px,0,0);}
-    }
-    @keyframes glitchBot {
-      0%{clip:rect(0,900px,0,0);}
-      50%{clip:rect(60px,900px,900px,0);}
-      100%{clip:rect(0,900px,0,0);}
+    @keyframes glitch {
+      0% { clip: rect(0, 900px, 0, 0); }
+      20% { clip: rect(0, 900px, 100px, 0); }
+      40% { clip: rect(0, 900px, 50px, 0); }
+      60% { clip: rect(0, 900px, 150px, 0); }
+      80% { clip: rect(0, 900px, 80px, 0); }
+      100% { clip: rect(0, 900px, 120px, 0); }
     }
 
-    /* Slogan */
-    #slogan {font-size:1.5rem; color:magenta; text-shadow:0 0 10px cyan;}
-
-    /* Popup */
+    /* Liderler Pop-up */
     .popup {
-      position:fixed;
-      top:50%; left:50%;
-      transform:translate(-50%,-50%);
-      background:black;
-      border:2px solid cyan;
-      padding:20px;
-      display:none;
-      flex-direction:column;
-      gap:15px;
-      z-index:2000;
-      width:300px;
-      border-radius:10px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.8);
+      border: 2px solid cyan;
+      padding: 15px;
+      border-radius: 10px;
+      display: none;
+      z-index: 1000;
     }
-    .popup h2 {color:cyan; font-size:1.3rem;}
-    .popup .leader {display:flex; align-items:center; gap:10px;}
-    .popup img {width:50px; border-radius:50%;}
-    .close {cursor:pointer; color:red;}
+    .popup.active {
+      display: block;
+    }
+    .popup h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: cyan;
+    }
+
+    /* Başvuru Formu */
+    form {
+      max-width: 400px;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(0,0,0,0.7);
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid cyan;
+    }
+    form input, form select, form button {
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+    }
+    form input, form select {
+      background: #111;
+      color: #fff;
+    }
+    form button {
+      background: cyan;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .success-msg {
+      text-align: center;
+      font-size: 1.2rem;
+      color: lime;
+      display: none;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
 
     /* Footer */
     footer {
-      background:black;
-      padding:20px;
-      border-top:2px solid cyan;
-      margin-top:50px;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.8);
+      margin-top: 40px;
     }
-    footer p {color:gray; font-size:0.9rem;}
+
+    /* Burger Menü */
+    .burger {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      cursor: pointer;
+      z-index: 2000;
+    }
+    .burger div {
+      width: 30px;
+      height: 3px;
+      background: cyan;
+      margin: 5px;
+    }
+    .menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      height: 100%; width: 200px;
+      background: #111;
+      padding-top: 60px;
+      z-index: 1500;
+    }
+    .menu a {
+      display: block;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      border-bottom: 1px solid cyan;
+    }
+
+    @media(max-width:768px) {
+      .burger { display: block;}
+    }
+
+    /* Neon Grid Background */
+    .grid {
+      position: fixed;
+      top:0; left:0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      animation: move 20s linear infinite;
+    }
+    @keyframes move {
+      from { background-position: 0 0; }
+      to { background-position: 100px 100px; }
+    }
   </style>
 </head>
 <body>
-  <!-- Loading -->
-  <div id="loading"><img src="logo.png" alt="logo"></div>
+  <div class="grid"></div>
 
-  <!-- Navbar -->
-  <nav>
-    <h1>AREA323</h1>
-    <ul>
-      <li><a href="#hero">Ana Sayfa</a></li>
-      <li><a href="#" onclick="togglePopup()">Liderler</a></li>
-      <li><a href="https://formspree.io/f/xqalrayd" target="_blank">Başvuru</a></li>
-    </ul>
-    <div class="burger" onclick="toggleMenu()">
-      <div></div><div></div><div></div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <img src="logo.png" alt="AREA323 Logo">
-    <button class="glitch-btn" onclick="location.href='https://formspree.io/f/xqalrayd'">KLANA KATIL</button>
-    <p id="slogan">Für die Famillia</p>
-  </section>
-
-  <!-- Popup Liderler -->
-  <div class="popup" id="popup">
-    <span class="close" onclick="togglePopup()">Kapat ✖</span>
-    <h2>Liderler</h2>
-    <div class="leader">
-      <img src="exile.png" alt="EXILE323">
-      <div>
-        <p>EXILE323</p>
-        <p>ID: 516572604</p>
-        <p>TikTok: exile323</p>
-      </div>
-    </div>
-    <div class="leader">
-      <img src="exile.png" alt="BABAVIZYONDA">
-      <div>
-        <p>BABAVIZYONDA</p>
-        <p>TikTok: babavizyondapm</p>
-      </div>
-    </div>
+  <!-- Burger Menü -->
+  <div class="burger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+  <div class="menu" id="menu">
+    <a href="#">Ana Sayfa</a>
+    <a href="#form">Başvuru</a>
+    <a href="#" onclick="togglePopup()">Liderler</a>
   </div>
 
-  <!-- Footer -->
+  <header>
+    <img src="logo.png" alt="logo" class="logo">
+    <h1>AREA323</h1>
+    <div class="slogan" id="slogan"></div>
+    <button class="glitch-btn" data-text="Katıl">Klana Katıl</button>
+  </header>
+
+  <!-- Başvuru Formu -->
+  <form id="form" action="https://formspree.io/f/xldnljve" method="POST" onsubmit="showSuccess(event)">
+    <input type="text" name="Ad" placeholder="Ad" required>
+    <input type="text" name="Nick" placeholder="Nick" required>
+    <input type="number" name="FPS" placeholder="FPS" required>
+    <input type="number" name="Yaş" placeholder="Yaş" required>
+    <select name="Cihaz" required>
+      <option value="">Cihaz Seç</option>
+      <option value="Telefon">Telefon</option>
+      <option value="Tablet">Tablet</option>
+      <option value="Emülatör">Emülatör</option>
+    </select>
+    <input type="text" name="Aktiflik" placeholder="Aktiflik (gün/saat)" required>
+    <input type="text" name="Tecrübe" placeholder="Tecrübe" required>
+    <button type="submit">Gönder</button>
+  </form>
+  <div class="success-msg" id="success-msg">✅ Başvurun alındı! Kontrol edildikten sonra bilgilendirileceksin.</div>
+
+  <!-- Liderler Pop-up -->
+  <div class="popup" id="popup">
+    <h3>Liderler</h3>
+    <p>EXILE323 - TikTok: exile323</p>
+    <p>BABAVIZYONDA - TikTok: babavizyondapm</p>
+  </div>
+
   <footer>
-    <p>Für die Famillia | SINCE 2018</p>
+    Für die Familia – Since 2018
   </footer>
 
   <script>
-    // Loading
-    window.onload = () => {
-      setTimeout(()=>{document.getElementById('loading').style.display='none';},1500);
-    };
+    // Dinamik Slogan
+    const slogans = [
+      "SINCE 2018",
+      "Für die Familia",
+      "AREA323 ELİT TAKIM",
+      "PUBG MOBILE BEST"
+    ];
+    let idx = 0;
+    const sloganEl = document.getElementById("slogan");
+    setInterval(()=>{
+      sloganEl.textContent = slogans[idx];
+      idx = (idx + 1) % slogans.length;
+    }, 3000);
 
     // Burger Menü
-    function toggleMenu(){
-      document.querySelector('nav ul').classList.toggle('active');
+    function toggleMenu() {
+      document.getElementById("menu").style.display =
+        document.getElementById("menu").style.display === "block" ? "none" : "block";
     }
 
-    // Popup
-    function togglePopup(){
-      const p = document.getElementById('popup');
-      p.style.display = p.style.display === 'flex' ? 'none' : 'flex';
+    // Popup Liderler
+    function togglePopup() {
+      document.getElementById("popup").classList.toggle("active");
     }
 
-    // Dinamik slogan
-    const slogans = ["Für die Famillia","Zafer Bizim","AREA323 Her Yerde"];
-    let i=0;
-    setInterval(()=>{
-      i=(i+1)%slogans.length;
-      document.getElementById("slogan").innerText=slogans[i];
-    },3000);
+    // Form Başarı Mesajı
+    function showSuccess(e){
+      e.preventDefault();
+      document.getElementById("form").style.display="none";
+      document.getElementById("success-msg").style.display="block";
+    }
   </script>
 </body>
-</html>
