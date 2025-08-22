@@ -1,208 +1,241 @@
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AREA323</title>
+  <meta name="theme-color" content="#0a0a0a" />
   <style>
-    /* Reset */
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      overflow-x: hidden;
-      background: linear-gradient(135deg, #0a0a1a, #1a1a3a, #0a0a1a);
-      background-size: 400% 400%;
-      animation: bgMove 20s ease infinite;
+    :root{
+      --bg:#0a0a0a;--card:#111;--txt:#fff;--muted:#9aa1a6;--primary:#ff003c;--accent:#00e6ff;
     }
-    @keyframes bgMove {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
-    }
-    a{text-decoration:none;color:inherit}
-    h1,h2,h3{margin-bottom:10px}
-    section{padding:60px 20px;text-align:center}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:"Segoe UI",system-ui,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none}/* === Loading (Preloader) === */
+#loading{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999}
+#loading .pulse{width:140px;height:140px;border-radius:20px;display:flex;align-items:center;justify-content:center;background:#0f0f0f;box-shadow:0 0 40px rgba(255,0,60,.3);animation:floaty 2.2s ease-in-out infinite}
+#loading .pulse img{width:110px;filter:drop-shadow(0 0 18px var(--primary))}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-    /* Preloader */
-    #preloader {
-      position:fixed;top:0;left:0;width:100%;height:100%;
-      display:flex;align-items:center;justify-content:center;
-      background:#000;z-index:1000;
-    }
-    #preloader img {width:120px; animation:spin 3s infinite linear;}
-    @keyframes spin {100%{transform:rotate(360deg)}}
+/* === Navbar + Burger === */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--primary)}
+.brand img{width:30px;height:30px;filter:drop-shadow(0 0 8px var(--primary))}
+ul.menu{list-style:none;display:flex;gap:18px;margin:0;padding:0}
+ul.menu a{color:#fff;opacity:.9}
+ul.menu a:hover{color:var(--primary)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:26px;height:3px;background:#fff;transition:.3s}
+@media(max-width:840px){ul.menu{display:none;position:absolute;right:12px;top:56px;background:#0d0d0d;border:1px solid rgba(255,255,255,.06);border-radius:12px;flex-direction:column;padding:10px;width:200px}
+  ul.menu.open{display:flex}
+  .burger{display:flex}
+}
 
-    /* Navbar */
-    nav {
-      position:fixed;top:0;left:0;width:100%;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:15px 30px;background:rgba(0,0,0,0.6);
-      z-index:999;
-    }
-    nav .logo {font-size:24px;font-weight:bold;color:#0ff;}
-    nav ul {display:flex;gap:20px;list-style:none;}
-    nav ul li a {transition:0.3s;}
-    nav ul li a:hover {color:#0ff;}
-    .burger {display:none;flex-direction:column;cursor:pointer;}
-    .burger div {width:25px;height:3px;background:#fff;margin:4px;}
+/* === Background subtle motion === */
+.bg-animation{position:fixed;inset:0;z-index:-1;background:url('https://www.transparenttextures.com/patterns/dark-matter.png');animation:movebg 60s linear infinite}
+@keyframes movebg{from{background-position:0 0}to{background-position:1000px 1000px}}
 
-    @media(max-width:768px){
-      nav ul {
-        position:absolute;top:60px;right:-100%;
-        flex-direction:column;background:#111;width:200px;padding:20px;
-        transition:0.5s;
-      }
-      nav ul.active{right:0;}
-      .burger{display:flex;}
-    }
+/* === Hero === */
+.hero{min-height:100vh;display:grid;place-items:center;padding-top:80px;text-align:center;background:radial-gradient(60% 60% at 50% 30%,#1a1a1a 0%,#000 100%)}
+.hero-inner{display:flex;flex-direction:column;align-items:center;gap:16px;animation:fadeIn 1s}
+.hero-inner img{width:210px;filter:drop-shadow(0 0 20px var(--primary))}
+.title{font-size:40px;text-shadow:0 0 10px var(--primary)}
+.subtitle{opacity:.8}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-    /* Hero */
-    #hero {height:100vh;display:flex;flex-direction:column;
-      align-items:center;justify-content:center;}
-    #slogan {font-size:40px;color:#0ff;text-shadow:0 0 20px #0ff;}
-    .btn {
-      margin-top:20px;padding:10px 20px;border:2px solid #0ff;
-      color:#0ff;border-radius:8px;transition:0.3s;
-    }
-    .btn:hover {background:#0ff;color:#000;box-shadow:0 0 20px #0ff;}
+/* === Sections / Page transition feel === */
+main{opacity:0;transition:opacity .5s ease}
+main.ready{opacity:1}
+section{padding:80px 16px}
+.container{max-width:1100px;margin:auto}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:20px}
 
-    /* About */
-    #about {background:rgba(255,255,255,0.05);border-radius:12px;margin:20px;}
-    #about p{max-width:600px;margin:0 auto;line-height:1.6;}
+/* === Neon buttons === */
+.btn{display:inline-block;padding:12px 18px;border:2px solid var(--primary);color:var(--primary);font-weight:700;text-transform:uppercase;border-radius:12px;transition:.25s;letter-spacing:.5px}
+.btn:hover{background:var(--primary);color:#fff;box-shadow:0 0 16px var(--primary),0 0 36px var(--primary)}
 
-    /* Leaders */
-    .leader {margin:20px auto;padding:20px;max-width:400px;
-      background:rgba(0,0,0,0.4);border-radius:12px;box-shadow:0 0 15px #0ff;}
-    .leader h3{color:#0ff;}
+/* === Grid helpers === */
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:1fr 1fr}
+@media(max-width:840px){.grid-2{grid-template-columns:1fr}}
 
-    /* Form */
-    form {max-width:400px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
-    input,textarea {padding:10px;border:none;border-radius:6px;}
-    button {padding:10px;border:none;border-radius:6px;background:#0ff;color:#000;cursor:pointer;transition:0.3s;}
-    button:hover {background:#0cc;}
+/* === Forms === */
+form{display:flex;flex-direction:column;gap:12px}
+input,textarea,select{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:#0c0c0c;color:#fff}
+label{font-size:14px;color:var(--muted)}
 
-    /* TikTok */
-    #tiktok a {font-size:20px;color:#fff;background:#ff0050;
-      padding:10px 20px;border-radius:8px;transition:0.3s;}
-    #tiktok a:hover {background:#fff;color:#ff0050;}
+/* === Footer === */
+footer{background:#0d0d0d;border-top:1px solid rgba(255,255,255,.06);padding:24px;text-align:center;color:#9aa1a6}
 
-    /* Footer */
-    footer {padding:20px;text-align:center;background:#000;color:#888;margin-top:40px;}
-
-    /* Particles (background dots) */
-    #particles {
-      position:fixed;top:0;left:0;width:100%;height:100%;
-      z-index:-1;overflow:hidden;
-    }
-    .dot {
-      position:absolute;width:3px;height:3px;background:#0ff;border-radius:50%;
-      animation:float 20s linear infinite;
-    }
-    @keyframes float {
-      0% {transform:translateY(0);}
-      100% {transform:translateY(-100vh);}
-    }
   </style>
 </head>
 <body>
   <!-- Preloader -->
-  <div id="preloader">
-    <img src="logo.png" alt="logo">
+  <div id="loading" aria-label="Loading">
+    <div class="pulse"><img src="logo.png" alt="AREA323 Logo" /></div>
+  </div>  <!-- BG effect -->  <div class="bg-animation" aria-hidden="true"></div>  <!-- Navbar -->  <nav>
+    <div class="nav-inner">
+      <div class="brand"><img src="logo.png" alt="A"/>AREA323</div>
+      <div class="burger" id="burger" aria-label="Menüyü aç/kapat" aria-expanded="false"><span></span><span></span><span></span></div>
+      <ul class="menu" id="menu">
+        <li><a href="#hero">Ana Sayfa</a></li>
+        <li><a href="#about">Hakkımızda</a></li>
+        <li><a href="#leaders">Liderler</a></li>
+        <li><a href="#apply">Başvuru</a></li>
+        <li><a href="#tracker">Takip</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
+    </div>
+  </nav>  <!-- Hero -->  <header id="hero" class="hero">
+    <div class="hero-inner">
+      <img src="logo.png" alt="AREA323" />
+      <h1 class="title">Für die Famillia</h1>
+      <p class="subtitle">SINCE 2018 • Beyond Limits</p>
+      <div>
+        <a class="btn" href="#apply">Klan Başvurusu</a>
+        <a class="btn" href="#tracker">Başvuru Takip</a>
+      </div>
+    </div>
+  </header>  <main id="main">
+    <!-- Hakkımızda -->
+    <section id="about">
+      <div class="container grid grid-2">
+        <div class="card">
+          <h2>Hakkımızda</h2>
+          <p>AREA323, sadece bir klan değil bir aile. 2018’den beri PUBG Mobile sahnesinde aktif olan ekibimiz, disiplin, dostluk ve rekabeti aynı potada eritiyor. Amacımız birlikte büyümek, sahnede en iyiler arasında yer almak ve her maçta takım ruhunu hissettirmek.</p>
+        </div>
+        <div class="card">
+          <h3>Değerlerimiz</h3>
+          <ul>
+            <li>Takım Ruhu ve Saygı</li>
+            <li>Sürekli Gelişim</li>
+            <li>Rekabet ve Eğlence Dengesi</li>
+          </ul>
+        </div>
+      </div>
+    </section><!-- Liderler -->
+<section id="leaders">
+  <div class="container">
+    <div class="card">
+      <h2>Liderler</h2>
+      <div class="grid grid-2" style="margin-top:12px">
+        <div class="card">
+          <h3>EXILE323</h3>
+          <p><strong>ID:</strong> 516572604</p>
+        </div>
+        <div class="card">
+          <h3>Yakında</h3>
+          <p>Yeni lider veya moderatör eklenecek.</p>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- Particles -->
-  <div id="particles"></div>
-
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">AREA323</div>
-    <ul>
-      <li><a href="#hero">Ana Sayfa</a></li>
-      <li><a href="#about">Hakkımızda</a></li>
-      <li><a href="#leaders">Liderler</a></li>
-      <li><a href="#apply">Başvuru</a></li>
-      <li><a href="#tiktok">TikTok</a></li>
-    </ul>
-    <div class="burger">
-      <div></div><div></div><div></div>
+<!-- Başvuru Formu (Formspree) -->
+<section id="apply">
+  <div class="container">
+    <div class="card">
+      <h2>Klan Başvurusu</h2>
+      <form action="https://formspree.io/f/xqalrayd" method="POST">
+        <label>UID
+          <input name="uid" type="text" placeholder="Oyun UID" required />
+        </label>
+        <label>Oyun Nicki
+          <input name="nick" type="text" placeholder="Nick" required />
+        </label>
+        <label>Yaş
+          <input name="age" type="number" min="10" max="80" placeholder="18" required />
+        </label>
+        <label>Cihaz
+          <input name="device" type="text" placeholder="iOS / Android / Model" />
+        </label>
+        <label>Aktiflik
+          <select name="activity">
+            <option value="gunluk">Günlük</option>
+            <option value="haftalik">Haftalık</option>
+            <option value="degisken">Değişken</option>
+          </select>
+        </label>
+        <label>Not
+          <textarea name="note" rows="3" placeholder="Eklemek istediğin bir şey var mı?"></textarea>
+        </label>
+        <button class="btn" type="submit">Gönder</button>
+      </form>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section id="hero">
-    <h1 id="slogan">Für die Famillia</h1>
-    <a href="#apply" class="btn">Klana Katıl</a>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <h2>Hakkımızda</h2>
-    <p>AREA323, 2018’den beri sahalarda olan, dayanışmayı ve aile ruhunu ön planda tutan bir PUBG Mobile klanıdır. 
-    Amacımız hem rekabetçi alanda başarı göstermek hem de samimi bir topluluk oluşturmaktır.</p>
-  </section>
-
-  <!-- Leaders -->
-  <section id="leaders">
-    <h2>Liderler</h2>
-    <div class="leader">
-      <h3>EXILE323</h3>
-      <p>ID: 516572604</p>
+<!-- Başvuru Takip Sistemi (Mock) -->
+<section id="tracker">
+  <div class="container">
+    <div class="card">
+      <h2>Başvuru Takip</h2>
+      <p>Başvuru yaptıktan sonra aşağıya UID veya ID girerek durumunu kontrol edebilirsin.</p>
+      <form id="trackForm" onsubmit="return false;">
+        <label>UID / ID
+          <input id="trackId" type="text" placeholder="Örn: 516572604" required />
+        </label>
+        <button class="btn" id="trackBtn">Durumu Sorgula</button>
+      </form>
+      <div id="trackResult" style="margin-top:12px;color:#cbd5e1"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Apply -->
-  <section id="apply">
-    <h2>Başvuru Formu</h2>
-    <form action="https://formspree.io/f/xqalrayd" method="POST">
-      <input type="text" name="uid" placeholder="Oyun UID" required>
-      <input type="text" name="nick" placeholder="Oyun Nicki" required>
-      <input type="text" name="isim" placeholder="İsim" required>
-      <input type="number" name="yas" placeholder="Yaş" required>
-      <input type="text" name="cihaz" placeholder="Cihaz" required>
-      <input type="text" name="aktiflik" placeholder="Aktiflik (gün/saat)" required>
-      <button type="submit">Gönder</button>
-    </form>
-  </section>
+<!-- İletişim / Sosyal -->
+<section id="contact">
+  <div class="container grid grid-2">
+    <div class="card">
+      <h2>İletişim</h2>
+      <p>İşbirliği ve takım başvuruları için bize sosyal medya üzerinden ulaşabilirsin.</p>
+      <p><strong>TikTok:</strong> <a href="https://www.tiktok.com/@exile323" target="_blank" rel="noopener">@exile323</a></p>
+    </div>
+    <div class="card">
+      <h3>Duyuru</h3>
+      <p>Başvurular **açıktır**. Formu doldurduktan sonra Takip bölümünden durumunu sorgulayabilirsin.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- TikTok -->
-  <section id="tiktok">
-    <h2>Bizi Takip Et</h2>
-    <a href="https://www.tiktok.com/@exile323" target="_blank">@exile323</a>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>Für die Famillia | SINCE 2018</p>
-  </footer>
-
-  <script>
-    // Preloader
-    window.addEventListener("load", ()=>{
-      document.getElementById("preloader").style.display="none";
+  </main>  <footer>
+    Für die Famillia | SINCE 2018
+  </footer>  <script>
+    // Preloader -> hide when ready
+    window.addEventListener('load',()=>{
+      document.getElementById('loading').style.display='none';
+      document.getElementById('main').classList.add('ready');
     });
 
-    // Burger Menu
-    const burger=document.querySelector('.burger');
-    const navUL=document.querySelector('nav ul');
-    burger.addEventListener('click', ()=> navUL.classList.toggle('active'));
+    // Burger menu
+    const burger=document.getElementById('burger');
+    const menu=document.getElementById('menu');
+    burger?.addEventListener('click',()=>{
+      const isOpen=menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded',isOpen?'true':'false');
+    });
 
-    // Dynamic slogan
-    const slogans=["Für die Famillia","SINCE 2018","AREA323"];
-    let i=0;
-    setInterval(()=>{
-      document.getElementById("slogan").textContent=slogans[i];
-      i=(i+1)%slogans.length;
-    },4000);
+    // Simple page-transition feel (fade on anchor click)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',()=>{
+        const main=document.getElementById('main');
+        main.classList.remove('ready');
+        setTimeout(()=>main.classList.add('ready'),250);
+      })
+    });
 
-    // Particles
-    const particles=document.getElementById("particles");
-    for(let i=0;i<50;i++){
-      let dot=document.createElement("div");
-      dot.className="dot";
-      dot.style.left=Math.random()*100+"%";
-      dot.style.top=Math.random()*100+"%";
-      dot.style.animationDuration=(10+Math.random()*20)+"s";
-      particles.appendChild(dot);
-    }
-  </script>
-</body>
+    // Tracker mock logic
+    const mockStatuses={
+      '516572604':{status:'Onaylandı ✅',note:'Lider ID'},
+      '123456789':{status:'Beklemede ⏳',note:'Değerlendirme sürecinde'},
+      '987654321':{status:'Reddedildi ❌',note:'Kriterleri karşılamıyor'}
+    };
+    const trackBtn=document.getElementById('trackBtn');
+    const trackId=document.getElementById('trackId');
+    const trackResult=document.getElementById('trackResult');
+    trackBtn?.addEventListener('click',()=>{
+      const key=(trackId.value||'').trim();
+      if(!key){trackResult.textContent='Lütfen bir UID/ID gir.';return}
+      const data=mockStatuses[key];
+      trackResult.innerHTML=data?`<strong>Durum:</strong> ${data.status}<br/><small>${data.note}</small>`:`<strong>Durum:</strong> Beklemede ⏳<br/><small>Kayıt bulunamadıysa başvurun yeni düşmüş olabilir.</small>`;
+    });
+  </script></body>
